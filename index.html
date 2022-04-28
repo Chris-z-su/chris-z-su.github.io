@@ -34,5 +34,29 @@
             <a href="h5zwjs/index.html">植物大战僵尸</a>
         </div>
     </div>
+    <div class="text-end">
+        <p id="hitokoto" class="blockquote"></p>
+        <span id="from_who"  class="blockquote-footer"></span>
+        <span id="from"  class="blockquote-footer"></span>
+    </div>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'https://v1.hitokoto.cn');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                var data = JSON.parse(xhr.responseText);
+                console.log(data);
+                var hitokoto = document.getElementById('hitokoto');
+                hitokoto.innerText = data.hitokoto;
+                var from = document.getElementById('from');
+                from.innerText = "——《" + data.from + "》";
+                var from_who = document.getElementById('from_who');
+                if(data.from_who != null && data.from_who != "null"){
+                    from_who.innerText = data.from_who;
+                }
+            }
+        }
+        xhr.send();
+    </script>
 </body>
 </html>
