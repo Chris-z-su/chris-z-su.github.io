@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* global Fluid, CONFIG, jQuery */
+=======
+/* global Fluid, CONFIG */
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
 
 HTMLElement.prototype.wrap = function(wrapper) {
   this.parentNode.insertBefore(wrapper, this);
@@ -26,11 +30,15 @@ Fluid.plugins = {
       subtitle.innerText = '';
     }
     jQuery(document).ready(function() {
+<<<<<<< HEAD
       jQuery('.typed-cursor').addClass('h2');
+=======
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
       typed.start();
     });
   },
 
+<<<<<<< HEAD
   initTocBot: function() {
     var toc = jQuery('#toc');
     if (toc.length === 0 || !window.tocbot) { return; }
@@ -57,6 +65,10 @@ Fluid.plugins = {
 
   initFancyBox: function(selector) {
     if (!('fancybox' in jQuery)) { return; }
+=======
+  fancyBox: function(selector) {
+    if (!CONFIG.image_zoom.enable || !('fancybox' in jQuery)) { return; }
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
 
     jQuery(selector || '.markdown-body :not(a) > img, .markdown-body > img').each(function() {
       var $image = jQuery(this);
@@ -79,6 +91,7 @@ Fluid.plugins = {
         <a class="fancybox fancybox.image" href="${imageUrl}"
           itemscope itemtype="http://schema.org/ImageObject" itemprop="url"></a>`
       ).parent('a');
+<<<<<<< HEAD
       if ($image.is('.group-image-container img')) {
         $imageWrap.attr('data-fancybox', 'group').attr('rel', 'group');
       } else {
@@ -89,6 +102,19 @@ Fluid.plugins = {
       if (imageTitle) {
         $imageWrap.append(`<p class="image-caption">${imageTitle}</p>`);
         $imageWrap.attr('title', imageTitle).attr('data-caption', imageTitle);
+=======
+      if ($imageWrap.length !== 0) {
+        if ($image.is('.group-image-container img')) {
+          $imageWrap.attr('data-fancybox', 'group').attr('rel', 'group');
+        } else {
+          $imageWrap.attr('data-fancybox', 'default').attr('rel', 'default');
+        }
+
+        var imageTitle = $image.attr('title') || $image.attr('alt');
+        if (imageTitle) {
+          $imageWrap.attr('title', imageTitle).attr('data-caption', imageTitle);
+        }
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
       }
     });
 
@@ -103,6 +129,7 @@ Fluid.plugins = {
     });
   },
 
+<<<<<<< HEAD
   initAnchor: function() {
     if (!('anchors' in window)) { return; }
 
@@ -164,4 +191,23 @@ Fluid.plugins = {
     });
   }
 
+=======
+  imageCaption: function(selector) {
+    if (!CONFIG.image_caption.enable) { return; }
+
+    jQuery(selector || `.markdown-body > p > img, .markdown-body > figure > img,
+      .markdown-body > p > a.fancybox, .markdown-body > figure > a.fancybox`).each(function() {
+      var $target = jQuery(this);
+      var $figcaption = $target.next('figcaption');
+      if ($figcaption.length !== 0) {
+        $figcaption.addClass('image-caption');
+      } else {
+        var imageTitle = $target.attr('title') || $target.attr('alt');
+        if (imageTitle) {
+          $target.after(`<figcaption aria-hidden="true" class="image-caption">${imageTitle}</figcaption>`);
+        }
+      }
+    });
+  }
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
 };
