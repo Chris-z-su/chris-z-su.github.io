@@ -24,7 +24,7 @@
 <meta property="og:description" content="Linux环境下weblogic的安装与配置，基于weblogic12 + jdk1.8。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-11T06:06:48.000Z">
-<meta property="article:modified_time" content="2022-05-03T06:01:22.117Z">
+<meta property="article:modified_time" content="2022-05-03T17:38:27.357Z">
 <meta property="article:author" content="Chris">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -161,7 +161,7 @@
                   
                   
                   
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://m.qq.com/">
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://y.qq.com/">
                     
                     QQ音乐
                   </a>
@@ -323,7 +323,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          5.5k 字
+          5.4k 字
         
       </span>
     
@@ -387,7 +387,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：11 小时前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -445,7 +445,7 @@
 <h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs bash">[weblogic@dcyscxcbap01 install]$ ll<br>总用量 846428<br>-rwxr-xr-x. 1 weblogic weblogic 866733871 7月  17 10:13 fmw_12.2.1.4.0_wls.jar<br>-rwxr-xr-x. 1 weblogic weblogic        62 7月  17 10:15 oraInst.loc<br>-rwxr-xr-x. 1 weblogic weblogic      1928 7月  17 16:24 wls12c.resp<br>[weblogic@dcyscxcbap01 install]$ java -jar fmw_12.2.1.4.0_wls.jar -silent -responseFile /home/install/wls12c.resp -invPtrLoc /home/install/oraInst.loc<br>启动程序日志文件为/tmp/OraInstall2021-07-17_04-38-00PM/launcher2021-07-17_04-38-00PM.<span class="hljs-built_in">log</span>。<br>正在提取安装程序... . . . 完成<br>检查 CPU 速度是否大于 300 MHz。   实际为 2419.200 MHz    通过<br>检查交换空间: 必须大于 512 MB。   实际为 1639 MB    通过<br>检查此平台是否需要 64 位 JVM。   实际为64    通过 (不需要 64 位)<br>检查临时空间: 必须大于 300 MB。   实际为 3437 MB    通过<br>准备从/tmp/OraInstall2021-07-17_04-38-00PM启动 Oracle Universal Installer<br>日志:/tmp/OraInstall2021-07-17_04-38-00PM/install2021-07-17_04-38-00PM.<span class="hljs-built_in">log</span><br>版权所有 (c) 1996, 2019, Oracle 和/或其关联公司。保留所有权利。<br>正在读取响应文件...<br>跳过软件更新<br>开始检查: CertifiedVersions<br>预期的结果: oracle-6, oracle-7, redhat-7, redhat-6, SuSE-11, SuSE-12, SuSE-15之一<br>实际结果: redhat-null<br>检查完成。此次检查的总体结果为: 通过<br>CertifiedVersions 检查: 成功。<br><br><br>开始检查: CheckJDKVersion<br>预期的结果: 1.8.0_191<br>实际结果: 1.8.0_291<br>检查完成。此次检查的总体结果为: 通过<br>CheckJDKVersion 检查: 成功。<br><br><br>已启用此会话的验证。<br>正在验证数据<br>复制文件<br>完成百分比: 10<br>完成百分比: 20<br>完成百分比: 30<br>完成百分比: 40<br>完成百分比: 50<br>完成百分比: 60<br>完成百分比: 70<br>完成百分比: 80<br>完成百分比: 90<br>完成百分比: 100<br><br>Oracle Fusion Middleware 12c WebLogic Server 和 Coherence 12.2.1.4.0 的 安装 已成功完成。<br>日志已成功复制到/home/oraInventory/logs。<br>[weblogic@dcyscxcbap01 install]$ <br></code></pre></td></tr></table></figure>
 
 <h1 id="三、weblogic域安装与配置："><a href="#三、weblogic域安装与配置：" class="headerlink" title="三、weblogic域安装与配置："></a>三、weblogic域安装与配置：</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43434932/article/details/119334904">https://blog.csdn.net/weixin_43434932&#x2F;article&#x2F;details&#x2F;119334904</a></p>
+<p><a href="https://chris-z-su.github.io/2021/08/03/Linux%E7%8E%AF%E5%A2%83%E4%B8%8B%E7%9A%84weblogic%E5%9F%9F%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E9%85%8D%E7%BD%AE/">Linux环境下的weblogic域的创建与配置</a></p>
 </blockquote>
 
               
