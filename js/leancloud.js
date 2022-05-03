@@ -155,8 +155,6 @@
   var appKey = CONFIG.web_analytics.leancloud.app_key;
   var serverUrl = CONFIG.web_analytics.leancloud.server_url;
 
-<<<<<<< HEAD
-=======
   if (!appId) {
     throw new Error('LeanCloud appId is empty');
   }
@@ -164,7 +162,6 @@
     throw new Error('LeanCloud appKey is empty');
   }
 
->>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
   function fetchData(api_server) {
     var Counter = (method, url, data) => {
       return fetch(`${api_server}/1.1${url}`, {
