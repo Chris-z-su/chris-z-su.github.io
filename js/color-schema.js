@@ -1,11 +1,7 @@
 /* global Fluid */
 
 /**
-<<<<<<< HEAD
- * Modify by https://blog.skk.moe/post/hello-darkmode-my-old-friend/
-=======
  * Modified from https://blog.skk.moe/post/hello-darkmode-my-old-friend/
->>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
  */
 (function(window, document) {
   var rootElement = document.documentElement;
@@ -105,12 +101,9 @@
     // 根据当前模式设置图标
     setButtonIcon(current);
 
-<<<<<<< HEAD
-=======
     // 设置代码高亮
     setHighlightCSS(current);
 
->>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
     // 设置其他应用
     setApplications(current);
   }
@@ -186,8 +179,6 @@
     }
   }
 
-<<<<<<< HEAD
-=======
   function setHighlightCSS(schema) {
     // 启用对应的代码高亮的样式
     var lightCss = document.getElementById('highlight-css');
@@ -221,7 +212,6 @@
     }, 200);
   }
 
->>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
   function setApplications(schema) {
     // 设置 remark42 评论主题
     if (window.REMARK42) {
