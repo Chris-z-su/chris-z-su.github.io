@@ -1,67 +1,3 @@
-<<<<<<< HEAD
-<!--
- * @Author: your name
- * @Date: 2021-12-24 18:28:13
- * @LastEditTime: 2021-12-24 19:25:02
- * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \games\index.html
--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
-</head>
-<body>
-    <div>
-        <div>
-            <a href="clock/index.html">H5时钟</a>
-        </div>
-        <div>
-            <a href="tower-defense/src/td.html">塔防</a>
-        </div>
-        <div>
-            <a href="adarkroom/index.html">小黑屋</a>
-        </div>
-        <div>
-            <a href="muboard/muboard.html">数学白板工具</a>
-        </div>
-        <div>
-            <a href="UniverseSim/index.html">三体模拟程序</a>
-        </div>
-        <div>
-            <a href="h5zwjs/index.html">植物大战僵尸</a>
-        </div>
-    </div>
-    <div class="text-end">
-        <p id="hitokoto" class="blockquote"></p>
-        <span id="from_who"  class="blockquote-footer"></span>
-        <span id="from"  class="blockquote-footer"></span>
-    </div>
-    <script>
-        var xhr = new XMLHttpRequest();
-        xhr.open('get', 'https://v1.hitokoto.cn');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                var data = JSON.parse(xhr.responseText);
-                console.log(data);
-                var hitokoto = document.getElementById('hitokoto');
-                hitokoto.innerText = data.hitokoto;
-                var from = document.getElementById('from');
-                from.innerText = "——《" + data.from + "》";
-                var from_who = document.getElementById('from_who');
-                if(data.from_who != null && data.from_who != "null"){
-                    from_who.innerText = data.from_who;
-                }
-            }
-        }
-        xhr.send();
-    </script>
-=======
-
-
 <!DOCTYPE html>
 <html lang="zh-CN" data-default-color-scheme=auto>
 
@@ -601,7 +537,5 @@
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/js/boot.js" ></script>
 
-
->>>>>>> 94be3ed04a333e232f9965e723b7b496bc6212c3
 </body>
 </html>
