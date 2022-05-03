@@ -26,7 +26,11 @@ Fluid.utils = {
   },
 
   elementVisible: function(element, offsetFactor) {
+<<<<<<< HEAD
     offsetFactor = (offsetFactor && offsetFactor >= 0) ? offsetFactor : 0;
+=======
+    offsetFactor = offsetFactor && offsetFactor >= 0 ? offsetFactor : 0;
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
     var rect = element.getBoundingClientRect();
     var height = window.innerHeight || document.documentElement.clientHeight;
     var top = rect.top;
@@ -36,13 +40,22 @@ Fluid.utils = {
 
   waitElementVisible: function(selectorOrElement, callback, offsetFactor) {
     var runningOnBrowser = typeof window !== 'undefined';
+<<<<<<< HEAD
     var isBot = (runningOnBrowser && !('onscroll' in window)) ||
       (typeof navigator !== 'undefined' && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent));
+=======
+    var isBot = (runningOnBrowser && !('onscroll' in window))
+      || (typeof navigator !== 'undefined' && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent));
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
     if (!runningOnBrowser || isBot) {
       return;
     }
 
+<<<<<<< HEAD
     offsetFactor = (offsetFactor && offsetFactor >= 0) ? offsetFactor : 0;
+=======
+    offsetFactor = offsetFactor && offsetFactor >= 0 ? offsetFactor : 0;
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
 
     function waitInViewport(element) {
       if (Fluid.utils.elementVisible(element, offsetFactor)) {
@@ -81,8 +94,13 @@ Fluid.utils = {
 
   waitElementLoaded: function(selector, callback) {
     var runningOnBrowser = typeof window !== 'undefined';
+<<<<<<< HEAD
     var isBot = (runningOnBrowser && !('onscroll' in window)) ||
       (typeof navigator !== 'undefined' && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent));
+=======
+    var isBot = (runningOnBrowser && !('onscroll' in window))
+      || (typeof navigator !== 'undefined' && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent));
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
     if (!runningOnBrowser || isBot) {
       return;
     }
@@ -130,10 +148,16 @@ Fluid.utils = {
         s.onload = onload;
       }
     }
+<<<<<<< HEAD
     var e = document.getElementsByTagName('script')[0]
     || document.getElementsByTagName('head')[0]
     || document.head || document.documentElement;
     e.parentNode.insertBefore(s, e);
+=======
+    var ss = document.getElementsByTagName('script');
+    var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+    e.parentNode.insertBefore(s, e.nextSibling);
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
   },
 
   createCssLink: function(url) {
@@ -147,17 +171,45 @@ Fluid.utils = {
     e.parentNode.insertBefore(l, e);
   },
 
+<<<<<<< HEAD
   loadComments: function(selectors, loadFunc) {
+=======
+  loadComments: function(selector, loadFunc) {
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
     var ele = document.querySelector('#comments[lazyload]');
     if (ele) {
       var callback = function() {
         loadFunc();
         ele.removeAttribute('lazyload');
       };
+<<<<<<< HEAD
       Fluid.utils.waitElementVisible(selectors, callback, CONFIG.lazyload.offset_factor);
     } else {
       loadFunc();
     }
+=======
+      Fluid.utils.waitElementVisible(selector, callback, CONFIG.lazyload.offset_factor);
+    } else {
+      loadFunc();
+    }
+  },
+
+  getBackgroundLightness(selectorOrElement) {
+    var ele = selectorOrElement;
+    if (typeof selectorOrElement === 'string') {
+      ele = document.querySelector(selectorOrElement);
+    }
+    var view = ele.ownerDocument.defaultView;
+    if (!view) {
+      view = window;
+    }
+    var rgbArr = view.getComputedStyle(ele).backgroundColor.replace(/rgba*\(/, '').replace(')', '').split(/,\s*/);
+    if (rgbArr.length < 3) {
+      return 0;
+    }
+    var colorCast = (0.213 * rgbArr[0]) + (0.715 * rgbArr[1]) + (0.072 * rgbArr[2]);
+    return colorCast === 0 || colorCast > 255 / 2 ? 1 : -1;
+>>>>>>> 45d387ae9ea807f1463d25fea20a341a3e289ca1
   }
 
 };
