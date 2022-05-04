@@ -1,0 +1,1095 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chris">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ActiveMQ是一个基于Java的消息队列服务器，它提供了一个简单的消息队列服务器，可以用来支持多个客户端进行消息的发送和接收。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ActiveMQ入门">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/04/21/ActiveMQ%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Bookpackage">
+<meta property="og:description" content="ActiveMQ是一个基于Java的消息队列服务器，它提供了一个简单的消息队列服务器，可以用来支持多个客户端进行消息的发送和接收。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chris-z-su.github.io/images/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%80%9A%E8%AE%AF%E6%96%B9%E5%BC%8F.png">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/6a1c4753-556e-4e59-aa9a-bc0f61794b97/fcf934ecb4c6bfc3d35b41acdcd0db48.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/13c2f74c-102a-4933-94f8-ff55698af2e5/bd4af40805acdeba73490f709b45c11d.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/1d95eea4-3427-46eb-b9db-450fe2567071/42221aa2fdb66d6d7320b8f65b8ffe89.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/4aeef141-e4a9-45cd-9135-570efa6396e8/c66e1d41d6cc07c91a4252fa8619b66c.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/3350677b-b14f-4d11-bcec-93de7e3ac31a/f18b1758998494e99858d9bcc91bdcc7.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/c458e8b9-fa52-4024-9b52-8b0fdb9b03f7/d4ba9a1079b2ae843bd4489eaae6ac75.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/e7587e63-6b06-4825-aab8-de07cfd1c3cb/03a630300f7b7dc980e409180a66a95c.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/48b94acc-3d5a-4b7a-918a-c0bec206414d/3b846106d078408c3474da63593fe92a.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/b08580b7-5fd2-46af-bef0-370a52c88a71/5ebde2abd78a62620dd3b467d56bc19a.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/07d3b4e3-5424-4029-810a-2821c1d4fbc9/521364d5b2704bd9d94707f611fab6ee.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/64d3faa7-7e49-49c2-9819-95af7d6184ee/2209959e1f5abf1d75100faa40807c91.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/7eb93ed8-6261-48ef-b45b-c06f8053e104/523443a72c1ea5b8a7ba4f557f2b8c3a.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/f2078f97-4c7e-4c8e-ba43-24c470248206/31f1441e8725ffbd6523ddf15f63d0e0.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/eb6a652f-51cb-439b-995f-065c893be329/bf6562f900272d674d66f13010f90f16.jpg">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220421122020902.png">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/f5d55b1a-d428-4084-978e-9c7c92187a2d/35b7bdcbdda625f4ed5e4e114e14ad76.jpg">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220421115732271.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220421115832777.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220421120024482.png">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/18dbf7b9-0912-49e5-8a5b-f87864e079cd/59175f7ca391dc4894ffc8318207cd01.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/6bfd8e9d-f568-4599-a860-0ed37b310c63/7f30e7239dbbc2274e1f19efa84f8bcb.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/69941a8e-44bd-48e7-bd48-2c6668972014/52b799e3f6942ac8e960368d2a80ede9.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/5b72f020-058a-455f-8e70-a6c660f7954b/387a9ba2ea3b172a45726d5d4acd9eb0.jpg">
+<meta property="og:image" content="https://app.yinxiang.com/shard/s10/res/b5d2f35f-4efb-48ef-8e4b-3aca125b1462/433cb29f2a156911203ff8b5d0750c8a.jpg">
+<meta property="article:published_time" content="2022-04-21T01:51:39.000Z">
+<meta property="article:modified_time" content="2022-05-04T14:11:56.416Z">
+<meta property="article:author" content="Chris">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chris-z-su.github.io/images/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%80%9A%E8%AE%AF%E6%96%B9%E5%BC%8F.png">
+  
+  
+  <title>ActiveMQ入门 - Bookpackage</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chris-z-su.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bookpackage</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://y.qq.com/">
+                    
+                    QQ音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://v.qq.com/">
+                    
+                    腾讯视频
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-books"></i>
+                小游戏
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/clock/index.html">
+                    
+                    H5时钟
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/tower-defense/src/td.html">
+                    
+                    塔防
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/adarkroom/index.html">
+                    
+                    小黑屋
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/muboard/muboard.html">
+                    
+                    数学白板工具
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/UniverseSim/index.html">
+                    
+                    三体模拟程序
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/h5zwjs/index.html">
+                    
+                    植物大战僵尸
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ActiveMQ入门"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Chris
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-21 09:51" pubdate>
+          2022年4月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          28k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          231 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ActiveMQ入门</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：10 分钟前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h2 id="1-ActiveMQ简介"><a href="#1-ActiveMQ简介" class="headerlink" title="1 ActiveMQ简介"></a>1 ActiveMQ简介</h2><h3 id="1-1-ActiveMQ是什么"><a href="#1-1-ActiveMQ是什么" class="headerlink" title="1.1 ActiveMQ是什么"></a>1.1 ActiveMQ是什么</h3><p>ActiveMQ是一个消息队列应用服务器（推送服务器）。支持JMS规范。</p>
+<h4 id="1-1-1-JMS概述"><a href="#1-1-1-JMS概述" class="headerlink" title="1.1.1 JMS概述"></a>1.1.1 JMS概述</h4><p>JMS 全称：Java Message Service ，即为 Java 消息服务，是一套 java 消息服务的 API 接口。实现了 JMS 标准的系统，称之为 JMS Provider。</p>
+<h4 id="1-1-2-消息队列"><a href="#1-1-2-消息队列" class="headerlink" title="1.1.2 消息队列"></a>1.1.2 消息队列</h4><p>消息队列是在消息的传输过程中保存消息的容器，提供一种不同进程或者同一进程不同线程直接通讯的方式。</p>
+<p><img src="/images/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E9%80%9A%E8%AE%AF%E6%96%B9%E5%BC%8F.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>Producer：消息生产者，负责产生和发送消息到 Broker；</li>
+<li>Broker：消息处理中心。负责消息存储、确认、重试等，一般其中会包含多个 queue；</li>
+<li>Consumer：消息消费者，负责从 Broker 中获取消息，并进行相应处理；</li>
+</ul>
+<p>常见消息队列应用：</p>
+<ol>
+<li>ActiveMQ</li>
+</ol>
+<blockquote>
+<p>ActiveMQ 是Apache出品，最流行的，能力强劲的开源消息总线。ActiveMQ 是一个完全支持JMS1.1和J2EE 1.4规范的 JMS Provider实现。</p>
+</blockquote>
+<ol start="2">
+<li>RabbitMQ</li>
+</ol>
+<blockquote>
+<p>RabbitMQ是一个在AMQP基础上完成的，可复用的企业消息系统。他遵循Mozilla Public License开源协议。开发语言为Erlang。</p>
+</blockquote>
+<ol start="3">
+<li>RocketMQ</li>
+</ol>
+<blockquote>
+<p>由阿里巴巴定义开发的一套消息队列应用服务。</p>
+</blockquote>
+<h3 id="1-2-ActiveMQ能做什么"><a href="#1-2-ActiveMQ能做什么" class="headerlink" title="1.2 ActiveMQ能做什么"></a>1.2 ActiveMQ能做什么</h3><ol>
+<li>实现两个不同应用(程序)之间的消息通讯。</li>
+<li>实现同一个应用，不同模块之间的消息通讯。（确保数据发送的稳定性）</li>
+</ol>
+<h3 id="1-3-ActiveMQ主要特点"><a href="#1-3-ActiveMQ主要特点" class="headerlink" title="1.3 ActiveMQ主要特点"></a>1.3 ActiveMQ主要特点</h3><ol>
+<li>支持多语言、多协议客户端。语言: Java,C,C++,C#,Ruby,Perl,Python,PHP。应用协议： OpenWire, Stomp REST, WS Notification, XMPP, AMQP</li>
+<li>对Spring的支持，ActiveMQ可以很容易整合到Spring的系统里面去。</li>
+<li>支持高可用、高性能的集群模式。</li>
+</ol>
+<h2 id="2-入门示例"><a href="#2-入门示例" class="headerlink" title="2 入门示例"></a>2 入门示例</h2><h3 id="2-1-需求"><a href="#2-1-需求" class="headerlink" title="2.1 需求"></a>2.1 需求</h3><p>使用 ActiveMQ 实现消息队列模型。</p>
+<h3 id="2-2-配置步骤说明"><a href="#2-2-配置步骤说明" class="headerlink" title="2.2 配置步骤说明"></a>2.2 配置步骤说明</h3><ol>
+<li>搭建ActiveMQ消息服务器。</li>
+<li>创建一个java项目。</li>
+<li>创建消息生产者，发送消息。</li>
+<li>创建消息消费者，接收消息。</li>
+</ol>
+<h3 id="2-3-第一部分：搭建ActiveMQ消息服务器"><a href="#2-3-第一部分：搭建ActiveMQ消息服务器" class="headerlink" title="2.3 第一部分：搭建ActiveMQ消息服务器"></a>2.3 第一部分：搭建ActiveMQ消息服务器</h3><h4 id="2-3-1-第一步：下载、上传至Linux，并解压"><a href="#2-3-1-第一步：下载、上传至Linux，并解压" class="headerlink" title="2.3.1 第一步：下载、上传至Linux，并解压"></a>2.3.1 第一步：下载、上传至Linux，并解压</h4><p><img src="https://app.yinxiang.com/shard/s10/res/6a1c4753-556e-4e59-aa9a-bc0f61794b97/fcf934ecb4c6bfc3d35b41acdcd0db48.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="2-3-2-第二步：启动ActiveMQ服务器"><a href="#2-3-2-第二步：启动ActiveMQ服务器" class="headerlink" title="2.3.2 第二步：启动ActiveMQ服务器"></a>2.3.2 第二步：启动ActiveMQ服务器</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-3-3-第三步：浏览器访问-ActiveMQ-管理界面"><a href="#2-3-3-第三步：浏览器访问-ActiveMQ-管理界面" class="headerlink" title="2.3.3 第三步：浏览器访问 ActiveMQ 管理界面"></a>2.3.3 第三步：浏览器访问 ActiveMQ 管理界面</h4><h5 id="2-3-3-1-Step1：查看ActiveMQ管理界面的服务端口。在-conf-jetty-xml-中"><a href="#2-3-3-1-Step1：查看ActiveMQ管理界面的服务端口。在-conf-jetty-xml-中" class="headerlink" title="2.3.3.1 Step1：查看ActiveMQ管理界面的服务端口。在 /conf/jetty.xml 中"></a>2.3.3.1 Step1：查看ActiveMQ管理界面的服务端口。在 <code>/conf/jetty.xml</code> 中</h5><p><img src="https://app.yinxiang.com/shard/s10/res/13c2f74c-102a-4933-94f8-ff55698af2e5/bd4af40805acdeba73490f709b45c11d.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>默认端口为: 8161</p>
+<h5 id="2-3-3-2-Step2：查看ActiveMQ用户、密码。在-conf-users-properties-中"><a href="#2-3-3-2-Step2：查看ActiveMQ用户、密码。在-conf-users-properties-中" class="headerlink" title="2.3.3.2 Step2：查看ActiveMQ用户、密码。在 /conf/users.properties 中"></a>2.3.3.2 Step2：查看ActiveMQ用户、密码。在 <code>/conf/users.properties</code> 中</h5><p>默认用户名密码均为 admin</p>
+<h5 id="2-3-3-3-Step3：访问ActiveMQ管理控制台。地址：http-ip-8161"><a href="#2-3-3-3-Step3：访问ActiveMQ管理控制台。地址：http-ip-8161" class="headerlink" title="2.3.3.3 Step3：访问ActiveMQ管理控制台。地址：http://ip:8161/"></a>2.3.3.3 Step3：访问ActiveMQ管理控制台。地址：<a href="https://link.zhihu.com/?target=http://ip:8161/">http://ip:8161/</a></h5><blockquote>
+<p>注意：若防火墙没有配置该服务的端口，必须在防火墙中配置。</p>
+</blockquote>
+<p><img src="https://app.yinxiang.com/shard/s10/res/1d95eea4-3427-46eb-b9db-450fe2567071/42221aa2fdb66d6d7320b8f65b8ffe89.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>点击图示选项后，进行登录</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/4aeef141-e4a9-45cd-9135-570efa6396e8/c66e1d41d6cc07c91a4252fa8619b66c.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>然后成功进入管理界面</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/3350677b-b14f-4d11-bcec-93de7e3ac31a/f18b1758998494e99858d9bcc91bdcc7.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="2-4-第二部分：创建java项目，导入jar包"><a href="#2-4-第二部分：创建java项目，导入jar包" class="headerlink" title="2.4 第二部分：创建java项目，导入jar包"></a>2.4 第二部分：创建java项目，导入jar包</h3><p>ActiveMQ 的解压包中，提供了运行 ActiveMQ 需要的 jar 包。</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/c458e8b9-fa52-4024-9b52-8b0fdb9b03f7/d4ba9a1079b2ae843bd4489eaae6ac75.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>ActiveMQ 是实现了 JMS 规范的。在实现消息服务的时候，必须基于 API 接口规范。</p>
+<h4 id="2-4-1-JMS-常用的-API-说明"><a href="#2-4-1-JMS-常用的-API-说明" class="headerlink" title="2.4.1 JMS 常用的 API 说明"></a>2.4.1 JMS 常用的 API 说明</h4><p>下述 API 都是接口类型，定义在 javax.jms 包中，是 JMS 标准接口定义。ActiveMQ 完全实现这一套 api 标准。</p>
+<h5 id="2-4-1-1-ConnectionFactory"><a href="#2-4-1-1-ConnectionFactory" class="headerlink" title="2.4.1.1 ConnectionFactory"></a>2.4.1.1 ConnectionFactory</h5><p>链接工厂, 用于创建链接的工厂类型。</p>
+<h5 id="2-4-1-2-Connection"><a href="#2-4-1-2-Connection" class="headerlink" title="2.4.1.2 Connection"></a>2.4.1.2 Connection</h5><p>链接，用于建立访问ActiveMQ连接的类型, 由链接工厂创建。</p>
+<h5 id="2-4-1-3-Session"><a href="#2-4-1-3-Session" class="headerlink" title="2.4.1.3 Session"></a>2.4.1.3 Session</h5><p>会话, 一次持久有效、有状态的访问，由链接创建。</p>
+<h5 id="2-4-1-4-Destination-amp-Queue-amp-Topic"><a href="#2-4-1-4-Destination-amp-Queue-amp-Topic" class="headerlink" title="2.4.1.4 Destination &amp; Queue &amp; Topic"></a>2.4.1.4 Destination &amp; Queue &amp; Topic</h5><p>目的地, 即本次访问ActiveMQ消息队列的地址，由Session会话创建。</p>
+<ol>
+<li>interface Queue extends Destination</li>
+<li>Queue：队列模型，只有一个消费者。消息一旦被消费，默认删除。</li>
+<li>Topic：主题订阅中的消息，会发送给所有的消费者同时处理。</li>
+</ol>
+<h5 id="2-4-1-5-Message"><a href="#2-4-1-5-Message" class="headerlink" title="2.4.1.5 Message"></a>2.4.1.5 Message</h5><p>消息，在消息传递过程中数据载体对象，是所有消息【文本消息TextMessage，对象消息ObjectMessage等】具体类型的顶级接口，可以通过会话创建或通过会话从 ActiveMQ 服务中获取。</p>
+<h5 id="2-4-1-6-MessageProducer"><a href="#2-4-1-6-MessageProducer" class="headerlink" title="2.4.1.6 MessageProducer"></a>2.4.1.6 MessageProducer</h5><p>消息生成者, 在一次有效会话中, 用于发送消息给ActiveMQ服务的工具，由Session会话创建。</p>
+<h5 id="2-4-1-7-MessageCustomer"><a href="#2-4-1-7-MessageCustomer" class="headerlink" title="2.4.1.7 MessageCustomer"></a>2.4.1.7 MessageCustomer</h5><p>消息消费者【消息订阅者，消息处理者】, 在一次有效会话中, 用于ActiveMQ服务中获取消息的工具，由Session会话创建。</p>
+<h3 id="2-5-第三部分：创建消息生成者，发送消息"><a href="#2-5-第三部分：创建消息生成者，发送消息" class="headerlink" title="2.5 第三部分：创建消息生成者，发送消息"></a>2.5 第三部分：创建消息生成者，发送消息</h3><blockquote>
+<p>注意：ActiveMQ 服务接受消息的入口是 61616 端口，防火墙还需要开放此端口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.ptp;<br><br><span class="hljs-keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><br><span class="hljs-keyword">import</span> javax.jms.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 消息生产者</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 10:30</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyProducer</span> &#123;<br><br>    <span class="hljs-comment">//定义连接工厂</span><br>    ConnectionFactory connectionFactory;<br><br>    <span class="hljs-comment">//定义连接</span><br>    Connection connection;<br><br>    <span class="hljs-comment">//定义session会话</span><br>    Session session;<br><br>    <span class="hljs-comment">//定义消息目的地</span><br>    Destination destination;<br><br>    <span class="hljs-comment">//定义消息生产者</span><br>    MessageProducer producer;<br><br>    <span class="hljs-comment">//定义消息</span><br>    Message message;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> JMSException &#123;<br>        <span class="hljs-comment">//创建连接工厂</span><br>        connectionFactory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveMQConnectionFactory</span>(<span class="hljs-string">&quot;tcp://localhost:61616&quot;</span>);<br>        <span class="hljs-comment">//创建连接</span><br>        connection = connectionFactory.createConnection();<br>        <span class="hljs-comment">//启动连接</span><br>        connection.start();<br>        <span class="hljs-comment">//创建session会话，第一个参数是是否开启事务，第二个参数是自动确认模式</span><br>        session = connection.createSession(<span class="hljs-literal">false</span>, Session.AUTO_ACKNOWLEDGE);<br>        <span class="hljs-comment">//创建消息目的地，Queue：消息类型是队列，Topic：消息类型是主题</span><br>        destination = session.createQueue(<span class="hljs-string">&quot;myQueue&quot;</span>);<br>        <span class="hljs-comment">//创建消息生产者</span><br>        producer = session.createProducer(destination);<br>        <span class="hljs-comment">//设置消息生产者的持久化</span><br>        <span class="hljs-comment">// producer.setDeliveryMode(DeliveryMode.PERSISTENT);</span><br>        <span class="hljs-comment">//创建消息</span><br>        message = session.createTextMessage(<span class="hljs-string">&quot;hello world&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sendMessage</span><span class="hljs-params">(String message)</span> <span class="hljs-keyword">throws</span> JMSException &#123;<br>        <span class="hljs-comment">//创建消息</span><br>        <span class="hljs-type">TextMessage</span> <span class="hljs-variable">textMessage</span> <span class="hljs-operator">=</span> session.createTextMessage(message);<br>        <span class="hljs-comment">//发送消息</span><br>        producer.send(textMessage);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> JMSException &#123;<br>        <span class="hljs-comment">//关闭消息生产者</span><br>        producer.close();<br>        <span class="hljs-comment">//关闭会话</span><br>        session.close();<br>        <span class="hljs-comment">//关闭连接</span><br>        connection.close();<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sentToActiveMQ</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">/*</span><br><span class="hljs-comment">             * 创建连接工厂，由 ActiveMQ 实现。构造方法参数</span><br><span class="hljs-comment">             * userName 用户名</span><br><span class="hljs-comment">             * password 密码</span><br><span class="hljs-comment">             * brokerURL 访问 ActiveMQ 服务的路径地址，结构为: 协议名://主机地址:端口号</span><br><span class="hljs-comment">             */</span><br>            connectionFactory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveMQConnectionFactory</span>(<span class="hljs-string">&quot;admin&quot;</span>, <span class="hljs-string">&quot;admin&quot;</span>, <span class="hljs-string">&quot;tcp://127.0.0.1:61616&quot;</span>);<br>            <span class="hljs-comment">//创建连接</span><br>            connection = connectionFactory.createConnection();<br>            <span class="hljs-comment">//启动连接</span><br>            connection.start();<br>            <span class="hljs-comment">/*</span><br><span class="hljs-comment">             * 创建会话，参数含义:</span><br><span class="hljs-comment">             * 1.transacted - 是否使用事务</span><br><span class="hljs-comment">             * 2.acknowledgeMode - 消息确认机制，可选机制为：</span><br><span class="hljs-comment">             *  1）Session.AUTO_ACKNOWLEDGE - 自动确认消息</span><br><span class="hljs-comment">             *  2）Session.CLIENT_ACKNOWLEDGE - 客户端确认消息机制</span><br><span class="hljs-comment">             *  3）Session.DUPS_OK_ACKNOWLEDGE - 有副本的客户端确认消息机制</span><br><span class="hljs-comment">             */</span><br>            session = connection.createSession(<span class="hljs-literal">false</span>, Session.AUTO_ACKNOWLEDGE);<br>            <span class="hljs-comment">//创建消息目的地，也就是队列名，Queue：消息类型是队列，Topic：消息类型是主题</span><br>            destination = session.createQueue(<span class="hljs-string">&quot;myQueue&quot;</span>);<br>            <span class="hljs-comment">//创建消息生产者</span><br>            producer = session.createProducer(destination);<br>            <span class="hljs-comment">//创建消息</span><br>            message = session.createTextMessage(<span class="hljs-string">&quot;hello world&quot;</span>);<br>            <span class="hljs-comment">//发送消息</span><br>            producer.send(message);<br>        &#125; <span class="hljs-keyword">catch</span> (JMSException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-comment">//关闭消息生产者</span><br>                <span class="hljs-keyword">if</span> (producer != <span class="hljs-literal">null</span>) &#123;<br>                    producer.close();<br>                &#125;<br>                <span class="hljs-comment">//关闭会话</span><br>                <span class="hljs-keyword">if</span> (session != <span class="hljs-literal">null</span>) &#123;<br>                    session.close();<br>                &#125;<br>                <span class="hljs-comment">//关闭连接</span><br>                <span class="hljs-keyword">if</span> (connection != <span class="hljs-literal">null</span>) &#123;<br>                    connection.close();<br>                &#125;<br>            &#125; <span class="hljs-keyword">catch</span> (JMSException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用测试方法执行后，可以看到成功将消息加入队列</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/e7587e63-6b06-4825-aab8-de07cfd1c3cb/03a630300f7b7dc980e409180a66a95c.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="2-6-第四部分：创建消息消费者，消费消息"><a href="#2-6-第四部分：创建消息消费者，消费消息" class="headerlink" title="2.6 第四部分：创建消息消费者，消费消息"></a>2.6 第四部分：创建消息消费者，消费消息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.ptp;<br><br><span class="hljs-keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;<br><br><span class="hljs-keyword">import</span> javax.jms.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 消费者</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 10:30</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyConsumer</span> &#123;<br><br>    <span class="hljs-comment">//定义连接工厂</span><br>    ConnectionFactory connectionFactory;<br><br>    <span class="hljs-comment">//定义连接</span><br>    Connection connection;<br><br>    <span class="hljs-comment">//定义会话</span><br>    Session session;<br><br>    <span class="hljs-comment">//定义目的地</span><br>    Destination destination;<br><br>    <span class="hljs-comment">//定义消费者</span><br>    MessageConsumer consumer;<br><br>    <span class="hljs-comment">//定义消息</span><br>    Message message;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//创建连接工厂</span><br>        connectionFactory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveMQConnectionFactory</span>(<span class="hljs-string">&quot;tcp://localhost:61616&quot;</span>);<br>        <span class="hljs-comment">//创建连接</span><br>        connection = connectionFactory.createConnection();<br>        <span class="hljs-comment">//启动连接</span><br>        connection.start();<br>        <span class="hljs-comment">//创建会话</span><br>        session = connection.createSession(<span class="hljs-literal">false</span>, Session.AUTO_ACKNOWLEDGE);<br>        <span class="hljs-comment">//创建目的地</span><br>        destination = session.createQueue(<span class="hljs-string">&quot;myQueue&quot;</span>);<br>        <span class="hljs-comment">//创建消费者</span><br>        consumer = session.createConsumer(destination);<br><br>        <span class="hljs-comment">//接收消息</span><br>        message = consumer.receive();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//关闭消费者</span><br>        consumer.close();<br>        <span class="hljs-comment">//关闭会话</span><br>        session.close();<br>        <span class="hljs-comment">//关闭连接</span><br>        connection.close();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">MyConsumer</span> <span class="hljs-variable">myConsumer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyConsumer</span>();<br>        myConsumer.init();<br>        System.out.println(<span class="hljs-string">&quot;接收到的消息是：&quot;</span> + ((TextMessage) myConsumer.message).getText());<br>        myConsumer.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>测试结果</p>
+<p>且后台管理界面也可以看到已被消费</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/48b94acc-3d5a-4b7a-918a-c0bec206414d/3b846106d078408c3474da63593fe92a.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="3-ActiveMQ监听器"><a href="#3-ActiveMQ监听器" class="headerlink" title="3 ActiveMQ监听器"></a>3 ActiveMQ监听器</h2><p>在前面的示例中，我们发现消费者每次只能消费一条消息。当队列中有多条消息的时候，我们需要多次运行消费者，才能消费完这些消息。我们希望一次将所有的消息全部接收，可以使用 ActiveMQ 监听器来监听队列，持续消费消息。</p>
+<p>答：使用ActiveMQ监听器来监听队列，持续消费消息。</p>
+<h3 id="3-1-配置步骤说明"><a href="#3-1-配置步骤说明" class="headerlink" title="3.1 配置步骤说明"></a>3.1 配置步骤说明</h3><ol>
+<li>创建一个监听器对象。</li>
+<li>修改消费者代码，加载监听器</li>
+</ol>
+<h3 id="3-2-配置步骤"><a href="#3-2-配置步骤" class="headerlink" title="3.2 配置步骤"></a>3.2 配置步骤</h3><h4 id="3-2-1-第一步：创建监听器-MyListener-类"><a href="#3-2-1-第一步：创建监听器-MyListener-类" class="headerlink" title="3.2.1 第一步：创建监听器 MyListener 类"></a>3.2.1 第一步：创建监听器 MyListener 类</h4><blockquote>
+<p>自定义监听器需要实现 MessageListener 接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.ptp;<br><br><span class="hljs-keyword">import</span> javax.jms.Message;<br><span class="hljs-keyword">import</span> javax.jms.MessageListener;<br><span class="hljs-keyword">import</span> javax.jms.TextMessage;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 消息监听器</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 10:30</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">MessageListener</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onMessage</span><span class="hljs-params">(Message message)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">TextMessage</span> <span class="hljs-variable">textMessage</span> <span class="hljs-operator">=</span> (TextMessage) message;<br>            System.out.println(<span class="hljs-string">&quot;收到消息：&quot;</span> + textMessage.getText());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-2-第二步：修改MyConsumer代码，加载监听器"><a href="#3-2-2-第二步：修改MyConsumer代码，加载监听器" class="headerlink" title="3.2.2 第二步：修改MyConsumer代码，加载监听器"></a>3.2.2 第二步：修改MyConsumer代码，加载监听器</h4><blockquote>
+<p>监听器需要持续加载，因此需要使消费程序不结束。这里我们使用输入流阻塞消费线程结束。（实际开发中，使用web项目加载）</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.ptp;<br><br><span class="hljs-keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;<br><br><span class="hljs-keyword">import</span> javax.jms.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 消费者</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 10:30</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyConsumer</span> &#123;<br><br>    <span class="hljs-comment">//定义连接工厂</span><br>    ConnectionFactory connectionFactory;<br><br>    <span class="hljs-comment">//定义连接</span><br>    Connection connection;<br><br>    <span class="hljs-comment">//定义会话</span><br>    Session session;<br><br>    <span class="hljs-comment">//定义目的地</span><br>    Destination destination;<br><br>    <span class="hljs-comment">//定义消费者</span><br>    MessageConsumer consumer;<br><br>    <span class="hljs-comment">//定义消息</span><br>    Message message;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//创建连接工厂</span><br>        connectionFactory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveMQConnectionFactory</span>(<span class="hljs-string">&quot;tcp://localhost:61616&quot;</span>);<br>        <span class="hljs-comment">//创建连接</span><br>        connection = connectionFactory.createConnection();<br>        <span class="hljs-comment">//启动连接</span><br>        connection.start();<br>        <span class="hljs-comment">//创建会话</span><br>        session = connection.createSession(<span class="hljs-literal">false</span>, Session.AUTO_ACKNOWLEDGE);<br>        <span class="hljs-comment">//创建目的地</span><br>        destination = session.createQueue(<span class="hljs-string">&quot;myQueue&quot;</span>);<br>        <span class="hljs-comment">//创建消费者</span><br>        consumer = session.createConsumer(destination);<br><br>        <span class="hljs-comment">//接收消息</span><br>        <span class="hljs-comment">// message = consumer.receive();</span><br><br>        <span class="hljs-comment">//加载监听器</span><br>        consumer.setMessageListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyListener</span>());<br><br>        <span class="hljs-comment">//监听器需要持续加载，所以需要一直调用，使用输入流的方式阻塞当前线程结束</span><br>        System.in.read();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-comment">//关闭消费者</span><br>        consumer.close();<br>        <span class="hljs-comment">//关闭会话</span><br>        session.close();<br>        <span class="hljs-comment">//关闭连接</span><br>        connection.close();<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">MyConsumer</span> <span class="hljs-variable">myConsumer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyConsumer</span>();<br>        myConsumer.init();<br>        System.out.println(<span class="hljs-string">&quot;接收到的消息是：&quot;</span> + ((TextMessage) myConsumer.message).getText());<br>        myConsumer.close();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-测试"><a href="#3-3-测试" class="headerlink" title="3.3 测试"></a>3.3 测试</h3><p>先添加 5 条消息到队列</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/b08580b7-5fd2-46af-bef0-370a52c88a71/5ebde2abd78a62620dd3b467d56bc19a.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>运行 Consumer 的测试程序，可以看到连续接受了 5 条消息，且接续添加会继续输出消息。</p>
+<h2 id="4-ActiveMQ消息服务模式"><a href="#4-ActiveMQ消息服务模式" class="headerlink" title="4 ActiveMQ消息服务模式"></a>4 ActiveMQ消息服务模式</h2><p>在入门示例中，只能向一个消费者发送消息。但是有一些场景，需求有多个消费者都能接收到消息，比如：美团 APP 每天的消息推送。该如何实现呢？</p>
+<p>ActiveMQ是通过不同的服务模式来解决这个问题的。要搞清楚这个问题，必须知道ActiveMQ有哪些应用模式。</p>
+<h3 id="4-1-PTP模式（point-to-point）"><a href="#4-1-PTP模式（point-to-point）" class="headerlink" title="4.1 PTP模式（point to point）"></a>4.1 PTP模式（point to point）</h3><p>消息模型</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/07d3b4e3-5424-4029-810a-2821c1d4fbc9/521364d5b2704bd9d94707f611fab6ee.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ol>
+<li>消息生产者生产消息发送到queue中，然后消息消费者从queue中取出并且消费消息。</li>
+<li>消息被消费以后，queue中不再有存储，所以消息消费者不可能消费到已经被消费的消息。</li>
+<li>Queue支持存在多个消费者，但是对一个消息而言，只会有一个消费者可以消费、其它的则不能消费此消息了。</li>
+<li>当消费者不存在时，消息会一直保存，直到有消费消费</li>
+</ol>
+<blockquote>
+<p>入门示例就是采用的这种 PTP 服务模式</p>
+</blockquote>
+<h3 id="4-2-TOPIC（主题订阅模式）"><a href="#4-2-TOPIC（主题订阅模式）" class="headerlink" title="4.2 TOPIC（主题订阅模式）"></a>4.2 TOPIC（主题订阅模式）</h3><p>消息模型</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/64d3faa7-7e49-49c2-9819-95af7d6184ee/2209959e1f5abf1d75100faa40807c91.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ol>
+<li>消息生产者（发布）将消息发布到topic中，同时有多个消息消费者（订阅）消费该消息。</li>
+<li>和点对点方式不同，发布到topic的消息会被所有订阅者消费。</li>
+<li>当生产者发布消息，不管是否有消费者。都不会保存消息</li>
+</ol>
+<p>所以，主题订阅模式下，&#x3D;&#x3D;一定要先有消息的消费者(订阅者)，后有消息的生产者(发布者)&#x3D;&#x3D;。</p>
+<h2 id="5-Topic模式实现"><a href="#5-Topic模式实现" class="headerlink" title="5 Topic模式实现"></a>5 Topic模式实现</h2><h3 id="5-1-配置步骤说明"><a href="#5-1-配置步骤说明" class="headerlink" title="5.1 配置步骤说明"></a>5.1 配置步骤说明</h3><ol>
+<li><del>搭建ActiveMQ消息服务器。</del></li>
+<li>创建主题订阅者。</li>
+<li>创建主题发布者。</li>
+</ol>
+<h3 id="5-2-配置步骤"><a href="#5-2-配置步骤" class="headerlink" title="5.2 配置步骤"></a>5.2 配置步骤</h3><h4 id="5-2-1-第一部分：搭建消息服务器。（已实现）"><a href="#5-2-1-第一部分：搭建消息服务器。（已实现）" class="headerlink" title="5.2.1 第一部分：搭建消息服务器。（已实现）"></a>5.2.1 <del>第一部分：搭建消息服务器。（已实现）</del></h4><h4 id="5-2-2-第二部分：创建主题订阅者-MySubscriber"><a href="#5-2-2-第二部分：创建主题订阅者-MySubscriber" class="headerlink" title="5.2.2 第二部分：创建主题订阅者 MySubscriber"></a>5.2.2 第二部分：创建主题订阅者 MySubscriber</h4><p>主题订阅模式下，可以有多个订阅者。我们这里用多线程来模拟。创建 MySubscriber 类，实现 Runnable 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.topic;<br><br><span class="hljs-keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;<br><br><span class="hljs-keyword">import</span> javax.jms.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 主题订阅者</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 10:52</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MySubscriber</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;<br><br>    <span class="hljs-comment">// 定义连接工厂</span><br>    TopicConnectionFactory factory;<br><br>    <span class="hljs-comment">// JMS连接，属于Pub/Sub方式的连接</span><br>    TopicConnection connection;<br><br>    <span class="hljs-comment">// JMS会话，属于Pub/Sub方式的会话</span><br>    TopicSession session;<br><br>    <span class="hljs-comment">// 定义消息队列，消息队列名称为：TEST_QUEUE</span><br>    Topic topic;<br><br>    <span class="hljs-comment">// 主题订阅者</span><br>    TopicSubscriber subscriber;<br><br>    <span class="hljs-comment">// 定义消息</span><br>    Message message;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">// 创建连接工厂</span><br>            factory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveMQConnectionFactory</span>(<span class="hljs-string">&quot;tcp://localhost:61616&quot;</span>);<br>            <span class="hljs-comment">// 通过工厂创建连接</span><br>            connection = factory.createTopicConnection();<br>            <span class="hljs-comment">// 开启连接</span><br>            connection.start();<br>            <span class="hljs-comment">// 创建会话</span><br>            session = connection.createTopicSession(<span class="hljs-literal">false</span>, TopicSession.AUTO_ACKNOWLEDGE);<br>            <span class="hljs-comment">// 创建消息队列 参数：主题名称，是否独占，是否支持事务（topic模型）</span><br>            topic = session.createTopic(<span class="hljs-string">&quot;topic&quot;</span>);<br>            <span class="hljs-comment">// 创建订阅者</span><br>            subscriber = session.createSubscriber(topic);<br>            <span class="hljs-comment">// 接收消息，会阻塞线程</span><br>            message = subscriber.receive();<br>            <span class="hljs-comment">// 打印消息</span><br>            System.out.println(<span class="hljs-string">&quot;收到消息：&quot;</span> + ((TextMessage) message).getText());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-comment">// 关闭资源</span><br>                <span class="hljs-keyword">if</span> (subscriber != <span class="hljs-literal">null</span>) &#123;<br>                    subscriber.close();<br>                &#125;<br>                <span class="hljs-keyword">if</span> (session != <span class="hljs-literal">null</span>) &#123;<br>                    session.close();<br>                &#125;<br>                <span class="hljs-keyword">if</span> (connection != <span class="hljs-literal">null</span>) &#123;<br>                    connection.close();<br>                &#125;<br>            &#125; <span class="hljs-keyword">catch</span> (JMSException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注意 &#x3D;&#x3D;junit 不支持多线程测试&#x3D;&#x3D;，需要使用 main 方法执行测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.topic;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: Topic模式测试类</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 11:03</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ActiveMQTest</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">MySubscriber</span> <span class="hljs-variable">subscriber</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MySubscriber</span>();<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">t1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(subscriber);<br>        <span class="hljs-type">Thread</span> <span class="hljs-variable">t2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(subscriber);<br>        t1.start();<br>        t2.start();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>启动程序后可以从管理面板看到该 topic 下有两个订阅者</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/7eb93ed8-6261-48ef-b45b-c06f8053e104/523443a72c1ea5b8a7ba4f557f2b8c3a.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h4 id="5-2-3-第三部分：创建主题发布者-MyPublisher"><a href="#5-2-3-第三部分：创建主题发布者-MyPublisher" class="headerlink" title="5.2.3 第三部分：创建主题发布者 MyPublisher"></a>5.2.3 第三部分：创建主题发布者 MyPublisher</h4><p>创建 MyPublish 类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.topic;<br><br><span class="hljs-keyword">import</span> org.apache.activemq.ActiveMQConnectionFactory;<br><br><span class="hljs-keyword">import</span> javax.jms.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 主题发布者</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 11:07</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyPublisher</span> &#123;<br><br>    <span class="hljs-comment">// 定义连接工厂</span><br>    TopicConnectionFactory factory;<br><br>    <span class="hljs-comment">// 定义连接</span><br>    TopicConnection connection;<br><br>    <span class="hljs-comment">// 定义会话</span><br>    TopicSession session;<br><br>    <span class="hljs-comment">// 定义发布者</span><br>    TopicPublisher publisher;<br><br>    <span class="hljs-comment">// 定义主题</span><br>    Topic topic;<br><br>    <span class="hljs-comment">// 定义消息</span><br>    Message message;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">publishTopic</span><span class="hljs-params">(String topicName, String publishText)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">// 创建连接工厂</span><br>            factory = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ActiveMQConnectionFactory</span>(<span class="hljs-string">&quot;tcp://localhost:61616&quot;</span>);<br>            <span class="hljs-comment">// 通过连接工厂创建连接</span><br>            connection = factory.createTopicConnection();<br>            <span class="hljs-comment">// 启动连接</span><br>            connection.start();<br>            <span class="hljs-comment">// 创建会话</span><br>            session = connection.createTopicSession(<span class="hljs-literal">false</span>, TopicSession.AUTO_ACKNOWLEDGE);<br>            <span class="hljs-comment">// 创建主题</span><br>            topic = session.createTopic(topicName);<br>            <span class="hljs-comment">// 创建发布者</span><br>            publisher = session.createPublisher(topic);<br>            <span class="hljs-comment">// 创建消息</span><br>            message = session.createTextMessage(publishText);<br>            <span class="hljs-comment">// 发送消息</span><br>            publisher.send(message);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-comment">// 关闭资源</span><br>                <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != publisher) &#123;<br>                    publisher.close();<br>                &#125;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != session) &#123;<br>                    session.close();<br>                &#125;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != connection) &#123;<br>                    connection.close();<br>                &#125;<br>            &#125; <span class="hljs-keyword">catch</span> (JMSException e) &#123;<br>                e.printStackTrace();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>新增测试方法，发布主题消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.mq.activemq.topic;<br><br><span class="hljs-keyword">import</span> org.junit.Test;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: spring</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: 发布Topic消息测试类</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-04-21 11:18</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PublisherTest</span> &#123;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">topicPublishTest</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">MyPublisher</span> <span class="hljs-variable">publisher</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyPublisher</span>();<br>        publisher.publishTopic(<span class="hljs-string">&quot;topic&quot;</span>, <span class="hljs-string">&quot;hello, topic&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5-2-4-第四部分：执行测试"><a href="#5-2-4-第四部分：执行测试" class="headerlink" title="5.2.4 第四部分：执行测试"></a>5.2.4 第四部分：执行测试</h4><p>执行 topicPublisherTest，可以看到订阅者立即收到了消息</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/f2078f97-4c7e-4c8e-ba43-24c470248206/31f1441e8725ffbd6523ddf15f63d0e0.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>同时在管理页面也能看到一条消息进入，被读取了两次。</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/eb6a652f-51cb-439b-995f-065c893be329/bf6562f900272d674d66f13010f90f16.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h2 id="6-ActiveMQ持久化"><a href="#6-ActiveMQ持久化" class="headerlink" title="6 ActiveMQ持久化"></a>6 ActiveMQ持久化</h2><p>当队列中有未被消费的消息时，我们重新启动ActiveMQ服务器后，发现消息仍然在队列中。</p>
+<p>ActiveMQ 是支持持久化的，可以永久保存消息。消息是保存在内存中的。当内存空间不足，或者ActiveMQ服务关闭的时候，消息会被持久化到磁盘上。被消费的时候，再加载到内存空间中。</p>
+<p>ActiveMQ持久化方式在 <code>activemq/conf/activemq.xml</code> 中指定</p>
+<h3 id="6-1-kahadb-方式"><a href="#6-1-kahadb-方式" class="headerlink" title="6.1 kahadb 方式"></a>6.1 kahadb 方式</h3><p>kahadb 方式是 ActiveMQ 默认的持久化策略。不会保存已经被消费过的消息。从配置文件中可以看到默认的存储地址，也就是 <code>/usr/local/activemq/data/kahadb</code></p>
+<p><img src="/images/image-20220421122020902.png" srcset="/img/loading.gif" lazyload alt="image-20220421122020902"></p>
+<h3 id="6-2-AMQ方式（已过时）"><a href="#6-2-AMQ方式（已过时）" class="headerlink" title="6.2 AMQ方式（已过时）"></a>6.2 AMQ方式（已过时）</h3><p>5.3 版本之前，现在已经过时，不考虑。</p>
+<h3 id="6-3-JDBC持久化方式"><a href="#6-3-JDBC持久化方式" class="headerlink" title="6.3 JDBC持久化方式"></a>6.3 JDBC持久化方式</h3><p>ActiveMQ 可以将数据持久化到数据库中，支持使用任意的数据库。</p>
+<h4 id="6-3-1-配置步骤说明"><a href="#6-3-1-配置步骤说明" class="headerlink" title="6.3.1 配置步骤说明"></a>6.3.1 配置步骤说明</h4><ol>
+<li>创建数据库</li>
+<li>添加数据库连接 jar 依赖到 ActiveMQ 服务器</li>
+<li>修改 ActiveMQ 配置，创建数据源。</li>
+<li>修改 ActiveMQ 配置，修改持久化方式为 jdbc</li>
+</ol>
+<h4 id="6-3-2配置步骤"><a href="#6-3-2配置步骤" class="headerlink" title="6.3.2配置步骤"></a>6.3.2配置步骤</h4><h5 id="6-3-2-1-第一步：创建数据库"><a href="#6-3-2-1-第一步：创建数据库" class="headerlink" title="6.3.2.1 第一步：创建数据库"></a>6.3.2.1 第一步：创建数据库</h5><p>数据库最好不要跟 ActiveMQ 服务器在同一台机器。因为当 cpu 线程资源不足时，往队列中写入消息时，如果数据库上一次持久化还没结束，容易造成线程阻塞。</p>
+<p>这里数据库建立在宿主机上，ActiveMQ 服务部署在虚拟机。</p>
+<h5 id="6-3-2-2-第二步：添加jar依赖"><a href="#6-3-2-2-第二步：添加jar依赖" class="headerlink" title="6.3.2.2 第二步：添加jar依赖"></a>6.3.2.2 第二步：添加jar依赖</h5><p>配置数据源时，是支持连接池的，这里使用 druid 作为连接池。将 jdbc 驱动、druid 的 jar 包上传到 <code>activemq/lib/</code> 目录下</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/f5d55b1a-d428-4084-978e-9c7c92187a2d/35b7bdcbdda625f4ed5e4e114e14ad76.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h5 id="6-3-2-3-第三步：修改-activemq-conf-activemq-xml，创建数据源"><a href="#6-3-2-3-第三步：修改-activemq-conf-activemq-xml，创建数据源" class="headerlink" title="6.3.2.3 第三步：修改 activemq/conf/activemq.xml，创建数据源"></a>6.3.2.3 第三步：修改 <code>activemq/conf/activemq.xml</code>，创建数据源</h5><p>注意在 <code>&lt;broker&gt;</code> 节点外，创建数据源。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;mysql-ds&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.alibaba.druid.pool.DruidDataSource&quot;</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">&quot;close&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;driverClassName&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;com.mysql.cj.jdbc.Driver&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;url&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;jdbc:mysql://127.0.0.1:3306/activemq?serverTimezone=UTC<span class="hljs-symbol">&amp;amp;</span>useUnicode=true<span class="hljs-symbol">&amp;amp;</span>characterEncoding=utf8<span class="hljs-symbol">&amp;amp;</span>useSSL=false&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;root&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;1106135&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;maxActive&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;10&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;poolPreparedStatements&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20220421115732271.png" srcset="/img/loading.gif" lazyload alt="image-20220421115732271"></p>
+<h5 id="6-3-2-4-第四步：修改-conf-activemq-xml-，修改为-jdbc-持久化方式"><a href="#6-3-2-4-第四步：修改-conf-activemq-xml-，修改为-jdbc-持久化方式" class="headerlink" title="6.3.2.4 第四步：修改 /conf/activemq.xml ，修改为 jdbc 持久化方式"></a>6.3.2.4 第四步：修改 <code>/conf/activemq.xml</code> ，修改为 jdbc 持久化方式</h5><p>在 <code>&lt;broker&gt;</code> 节点内部，注释 kahadb 方式，添加 jdbc 方式。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">persistenceAdapter</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">jdbcPersistenceAdapter</span> <span class="hljs-attr">dataSource</span>=<span class="hljs-string">&quot;#mysql-ds&quot;</span> <span class="hljs-attr">createTablesOnStartup</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">persistenceAdapter</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/images/image-20220421115832777.png" srcset="/img/loading.gif" lazyload alt="image-20220421115832777"></p>
+<h4 id="6-3-3-测试"><a href="#6-3-3-测试" class="headerlink" title="6.3.3 测试"></a>6.3.3 测试</h4><p>进入 <code>activemq/bin</code> 目录，使用命令 <code>./activemq restart</code> 重新启动 ActiveMQ。可以看到，数据库中新增了三张表。</p>
+<p>运行入门示例中的测试类，往队列中写入一条消息，可以在表activemq_msgs中，看到新写入了一条数据</p>
+<p><img src="/images/image-20220421120024482.png" srcset="/img/loading.gif" lazyload alt="image-20220421120024482"></p>
+<h4 id="6-3-4-三张表说明"><a href="#6-3-4-三张表说明" class="headerlink" title="6.3.4 三张表说明"></a>6.3.4 三张表说明</h4><ul>
+<li>activemq_msgs ：存储消息，Queue和Topic都存储在这个表中</li>
+<li>activemq_acks ：用于存储订阅关系。订阅模式下有效</li>
+<li>activemq_lock ：集群模式下，存储主从节点关系</li>
+</ul>
+<h4 id="6-3-5-补充说明"><a href="#6-3-5-补充说明" class="headerlink" title="6.3.5 补充说明"></a>6.3.5 补充说明</h4><p>jdbc 持久化方式，只要Mysql数据库稳定运行，就能保证队列中消息的安全。安全级别高，但是效率低。因此，在实际开发中，除非是像银行这类对数据安全极高的业务，我们一般都是使用默认持久化方式 kahadb。</p>
+<h2 id="7-ActiveMQ应用场景"><a href="#7-ActiveMQ应用场景" class="headerlink" title="7 ActiveMQ应用场景"></a>7 ActiveMQ应用场景</h2><h3 id="7-1-多模块解耦-模块之间消息通讯"><a href="#7-1-多模块解耦-模块之间消息通讯" class="headerlink" title="7.1 多模块解耦(模块之间消息通讯)"></a>7.1 多模块解耦(模块之间消息通讯)</h3><p>我们判断一个程序的优劣，有一个很重要的指标：高内聚、低耦合。</p>
+<ul>
+<li>高内聚：同一个模块中，功能是高度紧密的。</li>
+<li>低耦合：各模块之间，业务尽量不要交叉。</li>
+</ul>
+<p>但是有一些业务功能，必须涉及到两个不同的业务，那我们就要想办法，尽量将它们解耦。以我们前面学习的 solr 为例，我们知道 solr 的数据来自数据库。这就意味着，当数据库中的商品发生变化时，我们需要同步更新索引库。这个时候我们就可以使用消息队列模型来解耦，添加添加业务和同步索引库业务。</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/18dbf7b9-0912-49e5-8a5b-f87864e079cd/59175f7ca391dc4894ffc8318207cd01.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="7-2-流量削峰（解决并发请求）"><a href="#7-2-流量削峰（解决并发请求）" class="headerlink" title="7.2 流量削峰（解决并发请求）"></a>7.2 流量削峰（解决并发请求）</h3><p><img src="https://app.yinxiang.com/shard/s10/res/6bfd8e9d-f568-4599-a860-0ed37b310c63/7f30e7239dbbc2274e1f19efa84f8bcb.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>订单处理，就可以由前端应用将订单信息放到队列，后端应用从队列里依次获得消息处理，高峰时的大量订单可以积压在队列里慢慢处理掉。由于同步通常意味着阻塞，而大量线程的阻塞会降低计算机的性能。</p>
+<h3 id="7-3-日志处理"><a href="#7-3-日志处理" class="headerlink" title="7.3 日志处理"></a>7.3 日志处理</h3><p>日志处理是指将消息队列用在日志处理中，比如Kafka的应用，解决大量日志传输的问题。架构简化如下：</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/69941a8e-44bd-48e7-bd48-2c6668972014/52b799e3f6942ac8e960368d2a80ede9.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<h3 id="7-4-同步业务异步处理"><a href="#7-4-同步业务异步处理" class="headerlink" title="7.4 同步业务异步处理"></a>7.4 同步业务异步处理</h3><p>需要：当我们在网站注册的时候，有时候需要认证邮箱或者手机号，这个时候保存数据到数据库之前，需要先等待认证结束。如果说认证程序耗时比较大，会影响影响用户注册的业务。这个时候，我们可以使用消息队列模型，将同步执行的业务，通过队列，变成异步处理。</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/5b72f020-058a-455f-8e70-a6c660f7954b/387a9ba2ea3b172a45726d5d4acd9eb0.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+<ol>
+<li>在保存数据到数据库的时候，只需要将用户的邮箱写入队列，不需要等待邮箱认证程序执行结束，才把数据保存到数据库。</li>
+<li>认证程序，通过监听队列，从中获取用户的邮箱地址，发送认证链接。</li>
+</ol>
+<h2 id="8-Spring-整合-ActiveMQ"><a href="#8-Spring-整合-ActiveMQ" class="headerlink" title="8 Spring 整合 ActiveMQ"></a>8 Spring 整合 ActiveMQ</h2><h3 id="8-1-必要性"><a href="#8-1-必要性" class="headerlink" title="8.1 必要性"></a>8.1 必要性</h3><p>Spring已经整合了jms规范了(spring-jms.jar)，而ActiveMQ是实现了jms规范的。这就意味着Spring整合ActiveMQ是非常方便的。并且Spring-jms，提供了一个JmsTemplate类，用来简化消息读写的业务代码。Spring整合ActivMQ之后，就可以使用该类，简化开发。</p>
+<h3 id="8-2-需求"><a href="#8-2-需求" class="headerlink" title="8.2 需求"></a>8.2 需求</h3><p>使用Spring整合ActiveMQ，模拟限时抢购下的流量削峰问题。</p>
+<h3 id="8-3-配置步骤"><a href="#8-3-配置步骤" class="headerlink" title="8.3 配置步骤"></a>8.3 配置步骤</h3><h4 id="8-3-1-第一部分：创建项目（使用maven）"><a href="#8-3-1-第一部分：创建项目（使用maven）" class="headerlink" title="8.3.1 第一部分：创建项目（使用maven）"></a>8.3.1 第一部分：创建项目（使用maven）</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.oza<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>activemq-demo04-spring<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">packaging</span>&gt;</span>war<span class="hljs-tag">&lt;/<span class="hljs-name">packaging</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><span class="hljs-comment">&lt;!-- activemq --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.activemq<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>activemq-all<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.15.9<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.activemq<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>activemq-pool<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.15.9<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-comment">&lt;!-- spring jms --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-jms<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-webmvc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-comment">&lt;!-- jsp相关 --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jstl<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>javax.servlet-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>provided<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.servlet.jsp<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>javax.servlet.jsp-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>provided<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-comment">&lt;!-- jms api --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.jms<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>javax.jms-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.0.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="8-3-2-第二部分：spring整合springmvc"><a href="#8-3-2-第二部分：spring整合springmvc" class="headerlink" title="8.3.2 第二部分：spring整合springmvc"></a>8.3.2 第二部分：spring整合springmvc</h4><h5 id="8-3-2-1-第一步：修改web-xml，配置springmvc核心控制器"><a href="#8-3-2-1-第一步：修改web-xml，配置springmvc核心控制器" class="headerlink" title="8.3.2.1 第一步：修改web.xml，配置springmvc核心控制器"></a>8.3.2.1 第一步：修改web.xml，配置springmvc核心控制器</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://java.sun.com/xml/ns/javaee&quot;</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;2.5&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">display-name</span>&gt;</span>activemq-demo04-spring<span class="hljs-tag">&lt;/<span class="hljs-name">display-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>characterEncodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>encoding<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>characterEncodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>dispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath:spring*.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">load-on-startup</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">load-on-startup</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>dispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="8-3-2-2-第二步：配置springmvc-xml核心配置文件"><a href="#8-3-2-2-第二步：配置springmvc-xml核心配置文件" class="headerlink" title="8.3.2.2 第二步：配置springmvc.xml核心配置文件"></a>8.3.2.2 第二步：配置springmvc.xml核心配置文件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span><span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span><span class="hljs-attr">xmlns:mvc</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/mvc&quot;</span><span class="hljs-attr">xmlns:jms</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/jms&quot;</span><span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.3.xsdhttp://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsdhttp://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsdhttp://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">&quot;org.oza.activemq&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-2-3-第三步：创建相关jsp页面"><a href="#8-3-2-3-第三步：创建相关jsp页面" class="headerlink" title="8.3.2.3 第三步：创建相关jsp页面"></a>8.3.2.3 第三步：创建相关jsp页面</h5><p>订单页面：order.jsp</p>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erb"><span class="language-xml">&lt;%</span><span class="language-ruby">@ page language=<span class="hljs-string">&quot;java&quot;</span> contentType=<span class="hljs-string">&quot;text/html; charset=UTF-8&quot;</span>pageEncoding=<span class="hljs-string">&quot;UTF-8&quot;</span></span><span class="language-xml">%&gt;<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Insert title here<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;save&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span>用户编号：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;userId&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>订单金额：<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;price&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;提交&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>结果页面：success.jsp</p>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erb"><span class="language-xml">&lt;%</span><span class="language-ruby">@ page language=<span class="hljs-string">&quot;java&quot;</span> contentType=<span class="hljs-string">&quot;text/html; charset=UTF-8&quot;</span>pageEncoding=<span class="hljs-string">&quot;UTF-8&quot;</span></span><span class="language-xml">%&gt;<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Insert title here<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>订单提交成功!!!请稍后去结算中心支付。。。<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-2-4-第四步：java代码实现"><a href="#8-3-2-4-第四步：java代码实现" class="headerlink" title="8.3.2.4 第四步：java代码实现"></a>8.3.2.4 第四步：java代码实现</h5><p>创建 Order 类</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs typescript">package org.<span class="hljs-property">oza</span>.<span class="hljs-property">activemq</span>.<span class="hljs-property">pojo</span>;<span class="hljs-keyword">import</span> java.<span class="hljs-property">io</span>.<span class="hljs-property">Serializable</span>;<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Order</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span>&#123;<span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> final long serialVersionUID = 3622062034498580108L;<span class="hljs-keyword">private</span> <span class="hljs-title class_">Integer</span> id;<span class="hljs-keyword">private</span> <span class="hljs-title class_">Integer</span> userId;<span class="hljs-keyword">private</span> <span class="hljs-title class_">Float</span> price;<span class="hljs-keyword">public</span> <span class="hljs-title class_">Integer</span> <span class="hljs-title function_">getId</span>(<span class="hljs-params"></span>) &#123;<span class="hljs-keyword">return</span> id;&#125;<span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">setId</span>(<span class="hljs-params">Integer id</span>) &#123;<span class="hljs-variable language_">this</span>.<span class="hljs-property">id</span> = id;&#125;<span class="hljs-keyword">public</span> <span class="hljs-title class_">Integer</span> <span class="hljs-title function_">getUserId</span>(<span class="hljs-params"></span>) &#123;<span class="hljs-keyword">return</span> userId;&#125;<span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">setUserId</span>(<span class="hljs-params">Integer userId</span>) &#123;<span class="hljs-variable language_">this</span>.<span class="hljs-property">userId</span> = userId;&#125;<span class="hljs-keyword">public</span> <span class="hljs-title class_">Float</span> <span class="hljs-title function_">getPrice</span>(<span class="hljs-params"></span>) &#123;<span class="hljs-keyword">return</span> price;&#125;<span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">setPrice</span>(<span class="hljs-params">Float price</span>) &#123;<span class="hljs-variable language_">this</span>.<span class="hljs-property">price</span> = price;&#125;<span class="hljs-meta">@Overridepublic</span> <span class="hljs-title class_">String</span> <span class="hljs-title function_">toString</span>(<span class="hljs-params"></span>) &#123;<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Order [id=&quot;</span> + id + <span class="hljs-string">&quot;, userId=&quot;</span> + userId + <span class="hljs-string">&quot;, price=&quot;</span> + price + <span class="hljs-string">&quot;]&quot;</span>;&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>创建 OrderController 类</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">package</span> org.oza.activemq.controller;<span class="hljs-keyword">import</span> org.oza.activemq.pojo.Order;<span class="hljs-keyword">import</span> org.oza.activemq.producer.OrderProducer;<span class="hljs-keyword">import</span> org.springframework.beans.factory.<span class="hljs-keyword">annotation</span>.Autowired;<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;<span class="hljs-keyword">import</span> org.springframework.web.bind.<span class="hljs-keyword">annotation</span>.RequestMapping;<span class="hljs-meta">@Controllerpublic</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OrderController</span> </span>&#123;<span class="hljs-meta">@Autowiredprivate</span> OrderProducer producer;<span class="hljs-meta">@RequestMapping(<span class="hljs-string">&quot;/save&quot;</span>)</span><span class="hljs-keyword">public</span> String save(Order order) &#123;System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&quot;当前提交的订单用户是:&quot;</span> + order.getUserId() + <span class="hljs-string">&quot;,订单金额:&quot;</span> + order.getPrice());<span class="hljs-keyword">return</span> <span class="hljs-string">&quot;/success.jsp&quot;</span>;&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-2-5-第五步：整合测试"><a href="#8-3-2-5-第五步：整合测试" class="headerlink" title="8.3.2.5 第五步：整合测试"></a>8.3.2.5 第五步：整合测试</h5><p>访问 order 页面下订单，确定 springmvc 正常工作，然后进行下一步。</p>
+<h4 id="8-3-3-第三部分：Spring整合ActiveMQ"><a href="#8-3-3-第三部分：Spring整合ActiveMQ" class="headerlink" title="8.3.3 第三部分：Spring整合ActiveMQ"></a>8.3.3 第三部分：Spring整合ActiveMQ</h4><h5 id="8-3-3-1-第一步：创建消息生成者-OrderProducer"><a href="#8-3-3-1-第一步：创建消息生成者-OrderProducer" class="headerlink" title="8.3.3.1 第一步：创建消息生成者 OrderProducer"></a>8.3.3.1 第一步：创建消息生成者 OrderProducer</h5><p>在这里，我们注入 JmsTemplate 类，来简化代码。另外要注意：</p>
+<ol>
+<li>ActiveMQ 处理对象时，对象必须实现序列化。</li>
+<li>匿名内部类访问外部类属性，该属性需要用final修饰。</li>
+</ol>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">package org.oza.activemq.producer;<span class="hljs-keyword">import</span> javax.jms.JMSException;<span class="hljs-keyword">import</span> javax.jms.Message;<span class="hljs-keyword">import</span> javax.jms.<span class="hljs-keyword">Session</span>;<span class="hljs-keyword">import</span> org.oza.activemq.pojo.<span class="hljs-keyword">Order</span>;<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<span class="hljs-keyword">import</span> org.springframework.jms.core.JmsTemplate;<span class="hljs-keyword">import</span> org.springframework.jms.core.MessageCreator;<span class="hljs-keyword">import</span> org.springframework.stereotype.Component;@Componentpublic <span class="hljs-keyword">class</span> OrderProducer &#123;@Autowiredprivate JmsTemplate jmsTemplate;//注意：内部类调用外部类属性，需要用final修饰<span class="hljs-built_in">public</span> <span class="hljs-type">void</span> sendToMQ(final <span class="hljs-keyword">Order</span> <span class="hljs-keyword">order</span>) &#123;//使用 jmsTemplate 进行发送消息，参数一是队列名；参数二是一匿名内部类，指定生成消息的方式jmsTemplate.send(&quot;order-mq&quot;, <span class="hljs-built_in">new</span> MessageCreator() &#123;<span class="hljs-built_in">public</span> Message createMessage(<span class="hljs-keyword">Session</span> <span class="hljs-keyword">session</span>) throws JMSException &#123;Message message = <span class="hljs-keyword">session</span>.createObjectMessage(<span class="hljs-keyword">order</span>);<span class="hljs-keyword">return</span> message;&#125;&#125;);&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-3-2-第二步：创建消息消费者OrderListener类"><a href="#8-3-3-2-第二步：创建消息消费者OrderListener类" class="headerlink" title="8.3.3.2 第二步：创建消息消费者OrderListener类"></a>8.3.3.2 第二步：创建消息消费者OrderListener类</h5><p>这里使用监听器模式</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">package org.oza.activemq.listener;<span class="hljs-keyword">import</span> javax.jms.Message;<span class="hljs-keyword">import</span> javax.jms.MessageListener;<span class="hljs-keyword">import</span> javax.jms.ObjectMessage;<span class="hljs-keyword">import</span> org.oza.activemq.pojo.<span class="hljs-keyword">Order</span>;<span class="hljs-keyword">import</span> org.springframework.stereotype.Component;@Componentpublic <span class="hljs-keyword">class</span> OrderListener implements MessageListener &#123;<span class="hljs-built_in">public</span> <span class="hljs-type">void</span> onMessage(Message message) &#123;ObjectMessage oMsg = (ObjectMessage)message;try &#123;<span class="hljs-keyword">Order</span> <span class="hljs-keyword">order</span> = (<span class="hljs-keyword">Order</span>)oMsg.getObject();<span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(&quot;当前提交的订单用户是:&quot;+<span class="hljs-keyword">order</span>.getUserId()+&quot;,订单金额:&quot;+<span class="hljs-keyword">order</span>.getPrice());&#125; catch (<span class="hljs-keyword">Exception</span> e) &#123;e.printStackTrace();&#125;&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-3-3-第三步：spring整合ActiveMQ"><a href="#8-3-3-3-第三步：spring整合ActiveMQ" class="headerlink" title="8.3.3.3 第三步：spring整合ActiveMQ"></a>8.3.3.3 第三步：spring整合ActiveMQ</h5><p>修改 springmvc 的配置文件，添加整合 ActiveMQ 配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span><span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span><span class="hljs-attr">xmlns:mvc</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/mvc&quot;</span><span class="hljs-attr">xmlns:jms</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/jms&quot;</span><span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.3.xsdhttp://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsdhttp://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsdhttp://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">&quot;org.oza.activemq&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>/&gt;</span><span class="hljs-comment">&lt;!-- 1、配置activemq连接工厂 使用连接池好处：链接只需要初始化一次，每次要使用的时候，直接从连接池获取，用完之后还给连接池。省去了每次创建、销毁连接的时间。--&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;pooledConnectionFactory&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.apache.activemq.pool.PooledConnectionFactory&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;connectionFactory&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.apache.activemq.ActiveMQConnectionFactory&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;brokerURL&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;tcp://192.168.125.87:61616&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;userName&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;admin&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;admin&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;trustAllPackages&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;maxConnections&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;20&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><span class="hljs-comment">&lt;!-- 2、spring整合activemq链接工厂 可以缓存session。--&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;cachingConnectionFactory&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.jms.connection.CachingConnectionFactory&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;targetConnectionFactory&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;pooledConnectionFactory&quot;</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;sessionCacheSize&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;5&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><span class="hljs-comment">&lt;!-- 3、spring整合消息操作对象JmsTemplate 使用jmsTemplate可以简化代码，不需要自己去创建消息的发送对象。--&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;jmsTemplate&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.jms.core.JmsTemplate&quot;</span>&gt;</span>&lt;propertyname=&quot;connectionFactory&quot; ref=&quot;cachingConnectionFactory&quot;/&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><span class="hljs-comment">&lt;!-- 4、spring加载监听器 acknowledge=&quot;auto&quot;表示消息获取之后，自动出队列container-type表示的容器的类型 default|simpledefault:支持session缓存。--&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">jms:listener-container</span> <span class="hljs-attr">acknowledge</span>=<span class="hljs-string">&quot;auto&quot;</span> <span class="hljs-attr">container-type</span>=<span class="hljs-string">&quot;default&quot;</span> <span class="hljs-attr">destination-type</span>=<span class="hljs-string">&quot;queue&quot;</span> <span class="hljs-attr">connection-factory</span>=<span class="hljs-string">&quot;cachingConnectionFactory&quot;</span>&gt;</span><span class="hljs-comment">&lt;!-- 指定监听器destination=&quot;order-mq&quot;指定监听的是哪一个队列ref=&quot;orderListener&quot; 指定监听器对象使用注解的时候，对象的名称是类名首字母小写 --&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">jms:listener</span> <span class="hljs-attr">destination</span>=<span class="hljs-string">&quot;order-mq&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;orderListener&quot;</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">jms:listener-container</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h5 id="8-3-3-4-第四步：修改OrderController类"><a href="#8-3-3-4-第四步：修改OrderController类" class="headerlink" title="8.3.3.4 第四步：修改OrderController类"></a>8.3.3.4 第四步：修改OrderController类</h5><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">package org.oza.activemq.controller;<span class="hljs-keyword">import</span> org.oza.activemq.pojo.<span class="hljs-keyword">Order</span>;<span class="hljs-keyword">import</span> org.oza.activemq.producer.OrderProducer;<span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;@Controllerpublic <span class="hljs-keyword">class</span> OrderController &#123;@Autowiredprivate OrderProducer producer;@RequestMapping(&quot;/save&quot;)<span class="hljs-built_in">public</span> String save(<span class="hljs-keyword">Order</span> <span class="hljs-keyword">order</span>) &#123;//<span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(&quot;当前提交的订单用户是:&quot; + <span class="hljs-keyword">order</span>.getUserId() + &quot;,订单金额:&quot; + <span class="hljs-keyword">order</span>.getPrice());producer.sendToMQ(<span class="hljs-keyword">order</span>);<span class="hljs-keyword">return</span> &quot;/success.jsp&quot;;&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="8-4-整合测试"><a href="#8-4-整合测试" class="headerlink" title="8.4 整合测试"></a>8.4 整合测试</h3><p>重新启动项目，提交多个订单，可以看到控制台持续输出，测试成功。</p>
+<p><img src="https://app.yinxiang.com/shard/s10/res/b5d2f35f-4efb-48ef-8e4b-3aca125b1462/433cb29f2a156911203ff8b5d0750c8a.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
+
+              
+            </div>
+            
+            <!-- 打赏模块，参考：https://blog.kukmoon.com/7bf76e1d.html -->
+            <div style="text-align: center; margin: auto;"><!--自己添加的打赏模块：开始-->
+              <!--如果主题的  _config.yml 中开启打赏-->
+                <hr><!--放一条水平线与文章正文内容区分-->
+                <div style="background-color: #663399; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; border-radius: 8px;margin-bottom: 10px;"><!-- 显示“打赏支持”的盒子-->
+                 <!--如果博客语言是中文，就显示“打赏支持”，非中文一律显示“Donate”-->
+                  打赏支持
+                	
+              </div>
+                <div style="font-size: 14px;margin-bottom: 10px;">
+                “请博主喝杯咖啡 o(*^ω^*)o” <!--在主题的 _config.yml 中设置打赏提示语-->
+              </div>
+                <div style="width: auto; height: auto; max-width: 600px; max-height: 600px; text-align: center; margin: auto; "><!--两张二维码强制放在同一行，以免换行，强制设定图片的宽度随页面的变化而变化，图片最大宽度为300 px-->
+                <img src="/img/alipay_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height:auto; max-width: 50%;"><img src="/img/weChat_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height: auto; max-width: 50%;"><!--在主题的 _config.yaml 中设置打赏二维码图片-->
+              </div>
+              
+            </div> <!--自己添加的打赏模块：结束-->
+
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ActiveMQ入门</div>
+      <div>https://chris-z-su.github.io/2022/04/21/ActiveMQ入门/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Chris</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月21日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/22/%E3%80%90Carpet%20Mod%20%20%E5%9C%B0%E6%AF%AF%E6%A8%A1%E7%BB%84%E3%80%91%E4%B8%8B%E8%BD%BD%E4%BB%A5%E5%8F%8A%E7%AE%80%E5%8D%95%E6%95%99%E7%A8%8B/" title="【Carpet Mod / 地毯模组】下载以及简单教程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">【Carpet Mod / 地毯模组】下载以及简单教程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列">
+                        <span class="hidden-mobile">消息队列</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
