@@ -52,12 +52,12 @@
 <meta property="og:image" content="https://chris-z-su.github.io/images/clip_image054.jpg">
 <meta property="og:image" content="https://chris-z-su.github.io/images/clip_image056.jpg">
 <meta property="article:published_time" content="2021-03-21T08:41:18.000Z">
-<meta property="article:modified_time" content="2022-05-09T03:07:20.551Z">
+<meta property="article:modified_time" content="2022-05-23T08:45:50.109Z">
 <meta property="article:author" content="Chris">
+<meta property="article:tag" content="技术">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="编程语言">
 <meta property="article:tag" content="面试">
-<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://chris-z-su.github.io/images/clip_image002.jpg">
   
@@ -390,7 +390,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          27k 字
+          28k 字
         
       </span>
     
@@ -402,7 +402,7 @@
         
         
           <!-- compatible with older versions-->
-          230 分钟
+          234 分钟
         
       </span>
     
@@ -454,7 +454,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：7 天前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -475,7 +475,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h1 id="1-重写与重载之间的区别"><a href="#1-重写与重载之间的区别" class="headerlink" title="1. 重写与重载之间的区别"></a>1. 重写与重载之间的区别</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-override-overload.html">https://www.runoob.com/java/java-override-overload.html</a></p>
+<h1 id="一、前端基础"><a href="#一、前端基础" class="headerlink" title="一、前端基础"></a>一、前端基础</h1><h1 id="二、Java基础"><a href="#二、Java基础" class="headerlink" title="二、Java基础"></a>二、Java基础</h1><h1 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h1><h1 id="1-重写与重载之间的区别"><a href="#1-重写与重载之间的区别" class="headerlink" title="1. 重写与重载之间的区别"></a>1. 重写与重载之间的区别</h1><p><a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-override-overload.html">https://www.runoob.com/java/java-override-overload.html</a></p>
 <p><img src="/../images/clip_image004.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><img src="/../images/clip_image006.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p><img src="/../images/clip_image008.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
@@ -753,7 +753,7 @@
     </tr>
 </table>
 
- 
+
 
 <h2 id="18-访问修饰符"><a href="#18-访问修饰符" class="headerlink" title="18) 访问修饰符"></a>18) 访问修饰符</h2><ol>
 <li>访问修饰符 public,private,protected,以及不写（默认）时的区别<br>定义：Java中，可以使用访问修饰符来保护对类、变量、方法和构造方法的访问。Java 支持 4 种不同的访问权限。</li>
@@ -1101,6 +1101,14 @@
 <h1 id="22-solr的运行原理："><a href="#22-solr的运行原理：" class="headerlink" title="22. solr的运行原理："></a>22. solr的运行原理：</h1><p>概念：<br>顺序扫描:<br>对数据挨个的进行比较，直到找出所有符合要求的数据。效率极地。<br>全文检索:<br>给数据创建一个索引目录，通过目录对符合要求的数据快速检索的方式。<br>反向索引：<br>保存了关键字和文档之间的对应关系的索引表，我们成为反向索引<br>倒排表：<br>保存了关键字对应的文档的ID数据的表<br>词频：<br>在词条化检索字段的数据后，词汇在文档中出现的频率。<br>运行流程： </p>
 <h2 id="1、数据在solr库中的存储流程"><a href="#1、数据在solr库中的存储流程" class="headerlink" title="1、数据在solr库中的存储流程"></a>1、数据在solr库中的存储流程</h2><p>将文档数据存储到solr库中(josn数据)<br>—–&gt;使用词条化工具将检字段的值词条化：将数据分词，分成关键字<br>—–&gt;将分词结果给语言组件：将分词结果转化为词根形式<br>—-&gt;给检索字段创建索引目录（倒排索引）<br>—&gt;存储到索引库中(字段索引目录，文档数据 ) </p>
 <h2 id="2、检索流程"><a href="#2、检索流程" class="headerlink" title="2、检索流程"></a>2、检索流程</h2><p>检索语句<br>–&gt;词条化工具分词<br>–&gt;根据分词后词汇信息，按照每个词汇检索索引目录<br>–&gt;返回所有的符合要求的文档数据<br>注意：<br>solr索引库的索引创建是基于字段创建的。<br>Lucene和solr的区别：<br>Lucene：Lucene是solr的底层<br>solr：solr是对lucene的封装<br>参照博客：<a target="_blank" rel="noopener" href="http://www.importnew.com/12707.html">http://www.importnew.com/12707.html</a> </p>
+<h1 id="23-Mybatis中-和-的区别是什么"><a href="#23-Mybatis中-和-的区别是什么" class="headerlink" title="23.Mybatis中#{}和${}的区别是什么"></a>23.Mybatis中#{}和${}的区别是什么</h1><p>① #{}是预编译处理、是占位符，${}是字符串替换、是拼接符</p>
+<p>② Mybatis在处理#{}时，会将sql中#{}替换为?，调用PreparedStatement来赋值</p>
+<p>③ Mybatis在处理${}时，就是把${}替换为变量的值，调用Statement来赋值</p>
+<p>④ 使用#{}可以有效的防止sql注入，提高系统安全性</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 假设</span><br><span class="hljs-comment">-- name=&quot;zhangsan&quot;</span><br><span class="hljs-comment">-- passsword=&quot;1 or 1=1&quot;</span><br><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> #&#123;name&#125; <span class="hljs-keyword">and</span> password <span class="hljs-operator">=</span> #&#123;password&#125; 将转为<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;zhouyu&#x27;</span> <span class="hljs-keyword">and</span> password <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;1 or 1=1&#x27;</span><br><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> $&#123;name&#125; <span class="hljs-keyword">and</span> password <span class="hljs-operator">=</span> $&#123;password&#125; 将转为<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">where</span> name <span class="hljs-operator">=</span> zhouyu <span class="hljs-keyword">and</span> password <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">or</span> <span class="hljs-number">1</span><span class="hljs-operator">=</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h1 id="100-常见面试题-网址"><a href="#100-常见面试题-网址" class="headerlink" title="100.常见面试题(网址)"></a>100.常见面试题(网址)</h1><h2 id="Java面试题-锁定"><a href="#Java面试题-锁定" class="headerlink" title="Java面试题 | 锁定"></a>Java面试题 | 锁定</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41701956/article/details/86686492">https://blog.csdn.net/qq_41701956/article/details/86686492</a> | (1条消息) Java面试题及答案2019版（上）_Java笔记-CSDN博客_java面试题</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41701956/article/details/86699263">https://blog.csdn.net/qq_41701956/article/details/86699263</a> | (1条消息) Java面试题及答案2019版（下）_Java笔记-CSDN博客_java面试题</p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1er4y1A739?p=19&amp;spm_id_from=pageDriver">https://www.bilibili.com/video/BV1er4y1A739?p=19&amp;spm_id_from=pageDriver</a> | 2021年JAVA面试必考篇，我肝了100道Java面试题直接给了30K，免费分享给大家！_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili</p>
@@ -1212,13 +1220,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
         <a href="/tags/Java/">#Java</a>
       
         <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">#编程语言</a>
       
         <a href="/tags/%E9%9D%A2%E8%AF%95/">#面试</a>
-      
-        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
       
     </div>
   
