@@ -16,30 +16,31 @@
   <meta name="author" content="Chris">
   <meta name="keywords" content="">
   
-    <meta name="description" content="富强、民主、文明、和谐、自由、平等、公正、法治，爱国、敬业、诚信、友善。">
+    <meta name="description" content="Nginx学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bookpackage">
-<meta property="og:url" content="https://chris-z-su.github.io/2022/05/23/Untitled/index.html">
+<meta property="og:title" content="Nginx学习">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/05/27/Nginx%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Bookpackage">
-<meta property="og:description" content="富强、民主、文明、和谐、自由、平等、公正、法治，爱国、敬业、诚信、友善。">
+<meta property="og:description" content="Nginx学习">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-23T05:08:59.294Z">
-<meta property="article:modified_time" content="2022-05-23T05:08:59.294Z">
+<meta property="article:published_time" content="2022-05-27T12:08:23.000Z">
+<meta property="article:modified_time" content="2022-05-27T12:08:43.682Z">
 <meta property="article:author" content="Chris">
+<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>Bookpackage</title>
+  <title>Nginx学习 - Bookpackage</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -328,7 +329,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="Nginx学习"></span>
           
         </div>
 
@@ -344,8 +345,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-23 13:08" pubdate>
-          2022年5月23日 下午
+        <time datetime="2022-05-27 20:08" pubdate>
+          2022年5月27日 晚上
         </time>
       </span>
     
@@ -357,7 +358,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          0 字
+          1.3k 字
         
       </span>
     
@@ -369,7 +370,7 @@
         
         
           <!-- compatible with older versions-->
-          1 分钟
+          11 分钟
         
       </span>
     
@@ -415,20 +416,44 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">Nginx学习</h1>
             
               <p class="note note-info">
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：3 天前
+                    本文最后更新于：20 分钟前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              
+              <h1 id="Nginx学习"><a href="#Nginx学习" class="headerlink" title="Nginx学习"></a>Nginx学习</h1><h2 id="一、Nginx反向代理"><a href="#一、Nginx反向代理" class="headerlink" title="一、Nginx反向代理"></a>一、Nginx反向代理</h2><h3 id="1-配置代理组"><a href="#1-配置代理组" class="headerlink" title="1.配置代理组"></a>1.配置代理组</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">upstream</span> ssmp &#123;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:8080</span>;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:8081</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-在location中配置proxy-pass"><a href="#2-在location中配置proxy-pass" class="headerlink" title="2.在location中配置proxy_pass"></a>2.在location中配置proxy_pass</h3><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-keyword">location</span> / &#123;<br>    root   html;<br>    <span class="hljs-keyword">index</span>  <span class="hljs-keyword">index</span>.html <span class="hljs-keyword">index</span>.htm;<br><br>    <span class="hljs-meta"># Nginx负载均衡配置</span><br>    proxy_pass http:<span class="hljs-comment">//ssmp;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zxd1435513775/article/details/102508463">https://blog.csdn.net/zxd1435513775/article/details/102508463</a></p>
+<p>此处的意思为：<code>nginx </code>反向代理服务监听 <code>192.168.17.129</code>的<code>80</code>端口，如果有请求过来，则转到<code>proxy_pass</code>配置的对应服务器上，仅此而已。<br>在location下，同时配置root和proxy_pass选项时，两个选项只会二选一执行</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs axapta">...<br><br>http &#123;<br>    ...<br>    upstream ssmp &#123;<br>        <span class="hljs-keyword">server</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">8080</span>;<br>	    <span class="hljs-keyword">server</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">8081</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">server</span> &#123;<br>        listen       <span class="hljs-number">80</span>;<br>        server_name  localhost;<br><br>        <span class="hljs-meta">#charset koi8-r;</span><br><br>        <span class="hljs-meta">#access_log  logs/host.access.log  main;</span><br><br>        location / &#123;<br>            root   html;<br>            <span class="hljs-keyword">index</span>  <span class="hljs-keyword">index</span>.html <span class="hljs-keyword">index</span>.htm;<br>            <br>	        <span class="hljs-meta"># Nginx负载均衡配置</span><br>	        proxy_pass http:<span class="hljs-comment">//ssmp;</span><br>        &#125;<br>	    ...<br>    &#125;<br>	...<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<h2 id="二、Nginx动静分离"><a href="#二、Nginx动静分离" class="headerlink" title="二、Nginx动静分离"></a>二、Nginx动静分离</h2><h3 id="1-配置location匹配静态资源"><a href="#1-配置location匹配静态资源" class="headerlink" title="1.配置location匹配静态资源"></a>1.配置location匹配静态资源</h3><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/WangChuan_HHH/article/details/124761892">https://blog.csdn.net/WangChuan_HHH/article/details/124761892</a></p>
+</blockquote>
+<p>① 根据文件后缀匹配</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"><span class="hljs-comment"># 动静分离</span><br>location ~<span class="hljs-symbol">*</span> \.(html|<span class="hljs-string">css</span>|<span class="hljs-string">js</span>|<span class="hljs-string">otf</span>|<span class="hljs-string">eot</span>|<span class="hljs-string">ttf</span>|<span class="hljs-string">woff</span>|<span class="hljs-string">woff2</span>|<span class="hljs-string">svg</span>|<span class="hljs-string">jpg</span>|<span class="hljs-string">png</span>|<span class="hljs-string">gif</span>|<span class="hljs-string">swf</span>|<span class="hljs-string">flv</span>|<span class="hljs-string">wma</span>|<span class="hljs-string">wmv</span>|<span class="hljs-string">asf</span>|<span class="hljs-string">mp3</span>|<span class="hljs-string">mp4</span>|<span class="hljs-string">mmf</span>|<span class="hljs-string">zip</span>|<span class="hljs-string">rar</span>|<span class="hljs-string">7z)$ &#123;</span><br><span class="hljs-string">    root html;</span><br><span class="hljs-string">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>② 根据目录匹配</p>
+<p>同时也要把images文件夹，js文件夹，css文件夹放到nginx文件夹下的html目录里</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-keyword">location</span> /css &#123;<br>    root html;<br>    <span class="hljs-keyword">index</span> <span class="hljs-keyword">index</span>.html <span class="hljs-keyword">index</span>.htm;<br>&#125;<br><br><span class="hljs-keyword">location</span> /images &#123;<br>    root html;<br>    <span class="hljs-keyword">index</span> <span class="hljs-keyword">index</span>.html <span class="hljs-keyword">index</span>.htm;<br>&#125;<br><br><span class="hljs-keyword">location</span> /js &#123;<br>    root html;<br>    <span class="hljs-keyword">index</span> <span class="hljs-keyword">index</span>.html <span class="hljs-keyword">index</span>.htm;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>③ 使用正则表达式匹配目录</p>
+<figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-keyword">location</span> ~*/(js|css|images) &#123;<br>    root html;<br>    <span class="hljs-keyword">index</span> <span class="hljs-keyword">index</span>.html <span class="hljs-keyword">index</span>.htm;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
               
             </div>
             
@@ -454,6 +479,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Nginx/" class="category-chain-item">Nginx</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+    </div>
   
 </div>
 
@@ -463,8 +516,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>https://chris-z-su.github.io/2022/05/23/Untitled/</div>
+      <div>Nginx学习</div>
+      <div>https://chris-z-su.github.io/2022/05/27/Nginx学习/</div>
     </div>
     <div class="license-meta">
       
@@ -476,7 +529,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月23日</div>
+          <div>2022年5月27日</div>
         </div>
       
       
@@ -506,18 +559,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/25/Nginx%E5%AD%A6%E4%B9%A0/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/20/HTML%E5%B7%A5%E5%85%B7%E9%9B%86/" title="工具集">
-                        <span class="hidden-mobile">工具集</span>
+                      <a href="/2022/05/27/HTML%E5%B7%A5%E5%85%B7%E9%9B%86/" title="HTML工具集">
+                        <span class="hidden-mobile">HTML工具集</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -652,8 +699,8 @@
 
   <!-- Scripts -->
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -664,13 +711,13 @@
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
@@ -714,7 +761,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
     var toc = jQuery('#toc');
     if (toc.length === 0 || !window.tocbot) { return; }
     var boardCtn = jQuery('#board-ctn');
@@ -785,7 +832,7 @@
         getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
 
       if (enableCopy) {
-        Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js', function() {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
           var clipboard = new window.ClipboardJS('.copy-btn', {
             target: function(trigger) {
               var nodes = trigger.parentNode.childNodes;
@@ -812,7 +859,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -835,7 +882,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
     Fluid.plugins.fancyBox();
   });
 </script>
