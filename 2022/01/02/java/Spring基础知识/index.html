@@ -42,7 +42,7 @@
 <meta property="og:image" content="https://chris-z-su.github.io/images/2022-03-02-20-03-09-image.png">
 <meta property="og:image" content="https://chris-z-su.github.io/images/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E7%BA%A7%E5%88%AB.png">
 <meta property="article:published_time" content="2022-01-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-05-05T12:40:57.839Z">
+<meta property="article:modified_time" content="2022-06-09T08:27:59.899Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="Java">
@@ -388,7 +388,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          138k 字
+          140k 字
         
       </span>
     
@@ -400,7 +400,7 @@
         
         
           <!-- compatible with older versions-->
-          1151 分钟
+          1167 分钟
         
       </span>
     
@@ -452,7 +452,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：1 个月前
+                    本文最后更新于：4 天前
                   
                 
               </p>
@@ -1252,6 +1252,9 @@
 <td>在&lt;mvc:mapping path&#x3D;”” &#x2F;&gt;中配置了&#x2F;**之后，也可以对所有资源进行拦截，但是可以通过&lt;mvc:exclude-mapping path&#x3D;”” &#x2F;&gt;标签排除不需要拦截的资源</td>
 </tr>
 </tbody></table>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/30212464/answer/1786967139">Spring 拦截器和过滤器的区别？ - 知乎</a></p>
+<p><strong>1、实现原理不同</strong><br>过滤器和<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%8B%A6%E6%88%AA%E5%99%A8&spm=1001.2101.3001.7020">拦截器</a> 底层实现方式大不相同，过滤器 是基于函数回调的，拦截器 则是基于Java的反射机制（动态代理）实现的。<br><strong>2、使用范围不同</strong><br>我们看到过滤器 实现的是 javax.<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=servlet&spm=1001.2101.3001.7020">servlet</a>.Filter 接口，而这个接口是在Servlet规范中定义的，也就是说过滤器Filter 的使用要依赖于Tomcat等容器，导致它只能在web程序中使用。<br>而拦截器(Interceptor) 它是一个Spring组件，并由Spring容器管理，并不依赖Tomcat等容器，是可以单独使用的。不仅能应用在web程序中，也可以用于Application、Swing等程序中。<br><strong>3、触发时机不同</strong><br>过滤器Filter是在请求进入容器后，但在进入servlet之前进行预处理，请求结束是在servlet处理完以后。</p>
+<p>拦截器 Interceptor 是在请求进入servlet后，在进入Controller之前进行预处理的，Controller 中渲染了对应的视图之后请求结束。<br><strong>4、拦截的请求范围不同</strong><br>过滤器Filter执行了两次，拦截器Interceptor只执行了一次。这是因为过滤器几乎可以对所有进入容器的请求起作用，而拦截器只会对Controller中请求或访问static目录下的资源请求起作用。<br><strong>5、注入Bean情况不同</strong><br>这是因为加载顺序导致的问题，拦截器加载的时间点在springcontext之前，而Bean又是由spring进行管理。<br><strong>6、控制执行顺序不同</strong><br>过滤器用@Order注解控制执行顺序，通过@Order控制过滤器的级别，值越小级别越高越先执行。<br>拦截器默认的执行顺序，就是它的注册顺序，也可以通过Order手动设置控制，值越小越先执行</p>
 <h3 id="3-拦截器快速入门"><a href="#3-拦截器快速入门" class="headerlink" title="3. 拦截器快速入门"></a>3. 拦截器快速入门</h3><p>自定义拦截器的三步：</p>
 <h4 id="①-创建拦截器类实现HandlerInterceptor"><a href="#①-创建拦截器类实现HandlerInterceptor" class="headerlink" title="① 创建拦截器类实现HandlerInterceptor"></a>① 创建拦截器类实现HandlerInterceptor</h4><h4 id="②-配置拦截器"><a href="#②-配置拦截器" class="headerlink" title="② 配置拦截器"></a>② 配置拦截器</h4><h4 id="③-测试拦截器的拦截效果"><a href="#③-测试拦截器的拦截效果" class="headerlink" title="③ 测试拦截器的拦截效果"></a>③ 测试拦截器的拦截效果</h4><h3 id="4-拦截器方法说明"><a href="#4-拦截器方法说明" class="headerlink" title="4. 拦截器方法说明"></a>4. 拦截器方法说明</h3><table>
 <thead>
@@ -1302,7 +1305,7 @@
 <li><p>优势：减少重复代码，提高开发效率，并且便于维护</p>
 </li>
 </ul>
-<p><img src="/images/image-202200405224409481.png" srcset="/img/loading.gif" lazyload alt="AOP装配原理"></p>
+<p><img src="/../../images/image-202200405224409481.png" srcset="/img/loading.gif" lazyload alt="AOP装配原理"></p>
 <h4 id="3-AOP的底层实现"><a href="#3-AOP的底层实现" class="headerlink" title="(3) AOP的底层实现"></a>(3) AOP的底层实现</h4><p>实际上，AOP的底层是通过Spring提供的动态代理技术实现的。在运行期间，Spring通过动态代理技术动态的生成代理对象，代理对象方法执行时进行增强功能的介入，在去调佣目标对象的方法，从而完成功能的增强。</p>
 <h4 id="4-AOP的动态代理技术"><a href="#4-AOP的动态代理技术" class="headerlink" title="(4) AOP的动态代理技术"></a>(4) AOP的动态代理技术</h4><p>常用的动态代理技术：</p>
 <ul>
@@ -1311,7 +1314,7 @@
 <li><p>cglib代理：基于父类的动态代理技术</p>
 </li>
 </ul>
-<p><img src="/images/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF.png" srcset="/img/loading.gif" lazyload alt="常用的动态代理技术"></p>
+<p><img src="/../../images/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF.png" srcset="/img/loading.gif" lazyload alt="常用的动态代理技术"></p>
 <h4 id="5-AOP的相关概念"><a href="#5-AOP的相关概念" class="headerlink" title="(5) AOP的相关概念"></a>(5) AOP的相关概念</h4><p>Spring的AOP实现底层就是对上述的动态代理的代码进行了封装，封装后我们只需要对需要关注的部分进行代码编写，并通过配置的方式完成指定目标的方法增强。</p>
 <p>AOP的常用术语：</p>
 <ul>
@@ -1564,18 +1567,24 @@
 </tr>
 </tbody></table>
 <h5 id="①-事务隔离级别"><a href="#①-事务隔离级别" class="headerlink" title="① 事务隔离级别"></a>① 事务隔离级别</h5><p>设置隔离级别，可以解决事务并发产生的问题，如脏读、不可重复读和虚读。</p>
+<p>isolation_default、isolation_read_uncommitted、isolation_read_committed、isolation_repeatable_read、isolation_serializable</p>
 <ul>
-<li><p>ISOLATION_DEFAULT</p>
-</li>
-<li><p>ISOLATION_READ_UNCOMMITTED</p>
-</li>
-<li><p>ISOLATION_READ_COMMITTED</p>
-</li>
-<li><p>ISOLATION_REPEATABLE_READ</p>
-</li>
-<li><p>ISOLATION_SERIALIZABLE</p>
-</li>
+<li>ISOLATION_DEFAULT</li>
+<li>ISOLATION_READ_UNCOMMITTED</li>
+<li>ISOLATION_READ_COMMITTED</li>
+<li>ISOLATION_REPEATABLE_READ</li>
+<li>ISOLATION_SERIALIZABLE</li>
 </ul>
+<p>第一种隔离级别：Read uncommitted(读未提交)<br>如果一个事务已经开始写数据，则另外一个事务不允许同时进行写操作，但允许其他事务读此行数据，该隔离级别可以通过“排他写锁”，但是不排斥读线程实现。这样就避免了更新丢失，却可能出现脏读，也就是说事务B读取到了事务A未提交的数据</p>
+<p>解决了更新丢失，但还是可能会出现脏读</p>
+<p>第二种隔离级别：Read committed(读提交)<br>如果是一个读事务(线程)，则允许其他事务读写，如果是写事务将会禁止其他事务访问该行数据，该隔离级别避免了脏读，但是可能出现不可重复读。事务A事先读取了数据，事务B紧接着更新了数据，并提交了事务，而事务A再次读取该数据时，数据已经发生了改变。</p>
+<p>解决了更新丢失和脏读问题</p>
+<p>第三种隔离级别：Repeatable read(可重复读取)<br>可重复读取是指在一个事务内，多次读同一个数据，在这个事务还没结束时，其他事务不能访问该数据(包括了读写)，这样就可以在同一个事务内两次读到的数据是一样的，因此称为是可重复读隔离级别，读取数据的事务将会禁止写事务(但允许读事务)，写事务则禁止任何其他事务(包括了读写)，这样避免了不可重复读和脏读，但是有时可能会出现幻读。(读取数据的事务)可以通过“共享读镜”和“排他写锁”实现。</p>
+<p>解决了更新丢失、脏读、不可重复读、但是还会出现幻读</p>
+<p>第四种隔离级别：Serializable(可序化)<br>提供严格的事务隔离，它要求事务序列化执行，事务只能一个接着一个地执行，但不能并发执行，如果仅仅通过“行级锁”是无法实现序列化的，必须通过其他机制保证新插入的数据不会被执行查询操作的事务访问到。序列化是最高的事务隔离级别，同时代价也是最高的，性能很低，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻读</p>
+<p>解决了更新丢失、脏读、不可重复读、幻读(虚读)</p>
+<p>以上四种隔离级别最高的是Serializable级别，最低的是Read uncommitted级别，当然级别越高，执行效率就越低，像Serializeble这样的级别，就是以锁表的方式(类似于Java多线程中的锁)使得其他线程只能在锁外等待，所以平时选用何种隔离级别应该根据实际情况来，在MYSQL数据库中默认的隔离级别是Repeatable read（可重复读）。</p>
+<p>在MYSQL数据库中，支持上面四种隔离级别，默认的为Repeatable read(可重复读)；而在Oracle数据库中，只支持Serializeble(串行化)级别和Read committed(读已提交)这两种级别，其中默认的为Read committed级别</p>
 <h5 id="②-事务传播行为"><a href="#②-事务传播行为" class="headerlink" title="② 事务传播行为"></a>② 事务传播行为</h5><p>例如：a业务调用b业务（理解）</p>
 <ul>
 <li>REQUIRED：(required)如果当前没有事务，就新建一个事务，如果已经存在一个事务，就加入到这个事务中，一般的选择（默认值）</li>
@@ -1588,7 +1597,7 @@
 <li>超时时间：默认值是-1，没有超时限制。如果有，以秒为单位进行设置</li>
 <li>是否只读：建议查询时设置为只读</li>
 </ul>
-<p><img src="/images/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E7%BA%A7%E5%88%AB.png" srcset="/img/loading.gif" lazyload alt="事务传播级别"></p>
+<p><img src="/../../images/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E7%BA%A7%E5%88%AB.png" srcset="/img/loading.gif" lazyload alt="事务传播级别"></p>
 <h4 id="3-TransactionStatus"><a href="#3-TransactionStatus" class="headerlink" title="3) TransactionStatus"></a>3) TransactionStatus</h4><p>TransactionStatus接口提供的是事务具体的运行状态，方法介绍如下。</p>
 <table>
 <thead>
