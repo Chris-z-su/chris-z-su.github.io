@@ -1,0 +1,981 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chris">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="SQL查询语句的执行顺序解析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL查询语句的执行顺序解析">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/07/04/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="Bookpackage">
+<meta property="og:description" content="SQL查询语句的执行顺序解析">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chris-z-su.github.io/images/bffd7c92c21a427ea20f4936f45b6d69.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/b6c224ceaef04347a2269a3141d485f3.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/488d41b2fda94ba79808735038e95be9.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/ee8f5e59572e48288ef32d097942899b.png">
+<meta property="article:published_time" content="2022-07-04T14:31:53.000Z">
+<meta property="article:modified_time" content="2022-07-04T14:32:00.929Z">
+<meta property="article:author" content="Chris">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://chris-z-su.github.io/images/bffd7c92c21a427ea20f4936f45b6d69.png">
+  
+  
+  <title>SQL查询语句的执行顺序解析 - Bookpackage</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_pdf/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_yule/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_music/iconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chris-z-su.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bookpackage</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/pdf/">
+                <i class="iconfont icon-pdf"></i>
+                PDF
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-wenhuayule"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/music/">
+                    <i class="iconfont icon-yinle"></i>
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/galleries/">
+                    <i class="iconfont icon-yinle"></i>
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies/">
+                    <i class="iconfont icon-yinle"></i>
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://y.qq.com/">
+                    
+                    QQ音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://v.qq.com/">
+                    
+                    腾讯视频
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-yule"></i>
+                小游戏
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/clock/index.html">
+                    
+                    H5时钟
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/tower-defense/src/td.html">
+                    
+                    塔防
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/adarkroom/index.html">
+                    
+                    小黑屋
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/muboard/muboard.html">
+                    
+                    数学白板工具
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/UniverseSim/index.html">
+                    
+                    三体模拟程序
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/h5zwjs/index.html">
+                    
+                    植物大战僵尸
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="SQL查询语句的执行顺序解析"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Chris
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-04 22:31" pubdate>
+          2022年7月4日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          2.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          19 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SQL查询语句的执行顺序解析</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：8 分钟前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1 id="SQL查询语句的执行顺序解析"><a href="#SQL查询语句的执行顺序解析" class="headerlink" title="SQL查询语句的执行顺序解析"></a>SQL查询语句的执行顺序解析</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.toutiao.com/article/6729452080848699918/">https://www.toutiao.com/article/6729452080848699918/</a></p>
+</blockquote>
+<p><img src="/../images/bffd7c92c21a427ea20f4936f45b6d69.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
+<p>结合上图，整理出如下伪SQL查询语句。</p>
+<p><img src="/../images/b6c224ceaef04347a2269a3141d485f3.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
+<p>从这个顺序中我们可以发现，所有的查询语句都是从 <strong>FROM</strong> 开始执行的。在实际执行过程中，每个步骤都会为下一个步骤生成一个虚拟表，这个虚拟表将作为下一个执行步骤的输入。 接下来，我们详细的介绍下每个步骤的具体执行过程。</p>
+<hr>
+<h1 id="1-FROM-执行笛卡尔积"><a href="#1-FROM-执行笛卡尔积" class="headerlink" title="1 FROM 执行笛卡尔积"></a><strong>1 FROM</strong> 执行笛卡尔积</h1><p>FROM 才是 SQL 语句执行的第一步，并非 SELECT 。对FROM子句中的前两个表执行笛卡尔积(交叉联接），生成虚拟表VT1，获取不同数据源的数据集。</p>
+<p><strong>FROM子句执行顺序为从后往前、从右到左</strong>，FROM 子句中写在最后的表(基础表 driving table)将被最先处理，即最后的表为驱动表，当FROM 子句中包含多个表的情况下，我们需要选择数据最少的表作为基础表。</p>
+<hr>
+<h1 id="2-ON-应用ON过滤器"><a href="#2-ON-应用ON过滤器" class="headerlink" title="2 ON 应用ON过滤器"></a><strong>2 ON 应用ON过滤器</strong></h1><p>对虚拟表<strong>VT1</strong> 应用ON筛选器，ON 中的逻辑表达式将应用到虚拟表 <strong>VT1</strong>中的各个行，筛选出满足ON 逻辑表达式的行，生成虚拟表 <strong>VT2</strong> 。</p>
+<hr>
+<h1 id="3-JOIN-添加外部行"><a href="#3-JOIN-添加外部行" class="headerlink" title="3 JOIN 添加外部行"></a><strong>3 JOIN 添加外部行</strong></h1><p>如果指定了OUTER JOIN保留表中未找到匹配的行将作为外部行添加到虚拟表 <strong>VT2</strong>，生成虚拟表 <strong>VT3</strong>。保留表如下：</p>
+<ul>
+<li>LEFT OUTER JOIN把左表记为保留表</li>
+<li>RIGHT OUTER JOIN把右表记为保留表</li>
+<li>FULL OUTER JOIN把左右表都作为保留表</li>
+</ul>
+<p>在虚拟表 <strong>VT2</strong>表的基础上添加保留表中被过滤条件过滤掉的数据，非保留表中的数据被赋予NULL值，最后生成虚拟表 <strong>VT3</strong>。</p>
+<p>如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1~3，直到处理完所有的表为止。</p>
+<hr>
+<h1 id="4-WHERE-应用WEHRE过滤器"><a href="#4-WHERE-应用WEHRE过滤器" class="headerlink" title="4 WHERE 应用WEHRE过滤器"></a><strong>4 WHERE 应用WEHRE过滤器</strong></h1><p>对虚拟表 <strong>VT3</strong>应用WHERE筛选器。根据指定的条件对数据进行筛选，并把满足的数据插入虚拟表 <strong>VT4</strong>。</p>
+<ul>
+<li>由于数据还没有分组，因此现在还不能在WHERE过滤器中使用聚合函数对分组统计的过滤。</li>
+<li>同时，由于还没有进行列的选取操作，因此在SELECT中使用列的别名也是不被允许的。</li>
+</ul>
+<hr>
+<h1 id="5-GROUP-BY-分组"><a href="#5-GROUP-BY-分组" class="headerlink" title="5 GROUP BY 分组"></a><strong>5 GROUP BY 分组</strong></h1><p>按GROUP BY子句中的列&#x2F;列表将虚拟表 <strong>VT4</strong>中的行唯一的值组合成为一组，生成虚拟表<strong>VT5</strong>。如果应用了GROUP BY，那么后面的所有步骤都只能得到的虚拟表VT5的列或者是聚合函数（count、sum、avg等）。原因在于最终的结果集中只为每个组包含一行。</p>
+<p>同时，从这一步开始，后面的语句中都可以使用SELECT中的别名。</p>
+<hr>
+<h1 id="6-AGG-FUNC-计算聚合函数"><a href="#6-AGG-FUNC-计算聚合函数" class="headerlink" title="6 AGG_FUNC 计算聚合函数"></a><strong>6</strong> AGG_FUNC <strong>计算聚合函数</strong></h1><p>计算 max 等聚合函数。SQL Aggregate 函数计算从列中取得的值，返回一个单一的值。常用的 Aggregate 函数包涵以下几种：</p>
+<ul>
+<li>AVG：返回平均值</li>
+<li>COUNT：返回行数</li>
+<li>FIRST：返回第一个记录的值</li>
+<li>LAST：返回最后一个记录的值</li>
+<li>MAX： 返回最大值</li>
+<li>MIN：返回最小值</li>
+<li>SUM： 返回总和</li>
+</ul>
+<hr>
+<h1 id="7-WITH-应用ROLLUP或CUBE"><a href="#7-WITH-应用ROLLUP或CUBE" class="headerlink" title="7 WITH 应用ROLLUP或CUBE"></a><strong>7 WITH 应用ROLLUP或CUBE</strong></h1><p>对虚拟表 <strong>VT5</strong>应用ROLLUP或CUBE选项，生成虚拟表 <strong>VT6</strong>。</p>
+<p>CUBE 和 ROLLUP 区别如下：</p>
+<ul>
+<li>CUBE 生成的结果数据集显示了所选列中值的所有组合的聚合。</li>
+<li>ROLLUP 生成的结果数据集显示了所选列中值的某一层次结构的聚合。</li>
+</ul>
+<hr>
+<h1 id="8-HAVING-应用HAVING过滤器"><a href="#8-HAVING-应用HAVING过滤器" class="headerlink" title="8 HAVING 应用HAVING过滤器"></a><strong>8 HAVING 应用HAVING过滤器</strong></h1><p>对虚拟表VT6应用HAVING筛选器。根据指定的条件对数据进行筛选，并把满足的数据插入虚拟表VT7。</p>
+<p><strong>HAVING</strong> 语句在SQL中的主要作用与<strong>WHERE</strong>语句作用是相同的，但是<strong>HAVING</strong>是过滤聚合值，在 SQL 中增加 HAVING 子句原因就是，WHERE 关键字无法与聚合函数一起使用，HAVING子句主要和GROUP BY子句配合使用。</p>
+<hr>
+<h1 id="9-SELECT-选出指定列"><a href="#9-SELECT-选出指定列" class="headerlink" title="9 SELECT 选出指定列"></a><strong>9 SELECT 选出指定列</strong></h1><p>将虚拟表 <strong>VT7</strong>中的在SELECT中出现的列筛选出来，并对字段进行处理，计算SELECT子句中的表达式，产生虚拟表 <strong>VT8</strong>。</p>
+<hr>
+<h1 id="10-DISTINCT-行去重"><a href="#10-DISTINCT-行去重" class="headerlink" title="10 DISTINCT 行去重"></a><strong>10 DISTINCT 行去重</strong></h1><p>将重复的行从虚拟表 <strong>VT8</strong>中移除，产生虚拟表 <strong>VT9</strong>。DISTINCT用来删除重复行，只保留唯一的。</p>
+<hr>
+<h1 id="11-ORDER-BY-排列"><a href="#11-ORDER-BY-排列" class="headerlink" title="11 ORDER BY 排列"></a><strong>11 ORDER BY 排列</strong></h1><p>将虚拟表 <strong>VT9</strong>中的行按ORDER BY 子句中的列&#x2F;列表排序，生成游标 <strong>VC10</strong> ，注意不是虚拟表。因此使用 ORDER BY 子句查询不能应用于表达式。同时，ORDER BY子句的执行顺序为从左到右排序，是非常消耗资源的。</p>
+<hr>
+<h1 id="12-LIMIT-x2F-OFFSET-指定返回行"><a href="#12-LIMIT-x2F-OFFSET-指定返回行" class="headerlink" title="12 LIMIT&#x2F;OFFSET 指定返回行"></a><strong>12 LIMIT&#x2F;OFFSET 指定返回行</strong></h1><p>从VC10的开始处选择指定数量行，生成虚拟表 <strong>VT11</strong>，并返回调用者。</p>
+<hr>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a><strong>实例</strong></h1><p><strong>接下来，我们看一个实例，以下SQL查询语句是否存在问题？</strong></p>
+<p><img src="/../images/488d41b2fda94ba79808735038e95be9.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
+<p>首先，我们先看下如上<strong>SQL</strong>的执行顺序，如下：</p>
+<ol>
+<li>首先执行 FROM 子句, 从<strong>学生成绩表</strong>中组装数据源的数据。</li>
+<li>执行 WHERE 子句, 筛选<strong>学生成绩表</strong>中所有学生的数学成绩不为 NULL 的数据 。</li>
+<li>执行 GROUP BY 子句, 把<strong>学生成绩表</strong>按 “<strong>班级</strong>“ 字段进行分组。</li>
+<li>计算 avg 聚合函数, 按找每个班级分组求出 <strong>数学平均成绩</strong>。</li>
+<li>执行 HAVING 子句, 筛选出班级 <strong>数学平均成绩</strong>大于 75 分的。</li>
+<li>执行SELECT语句，返回数据，但别着急，还需要执行后面几个步骤。</li>
+<li>执行 ORDER BY 子句, 把最后的结果按 “数学平均成绩” 进行排序。</li>
+<li>执行LIMIT ，限制仅返回3条数据。结合ORDER BY 子句，即返回所有班级中数学平均成绩的前三的班级及其数学平均成绩。</li>
+</ol>
+<hr>
+<p><strong>思考一下，如果我们将上面语句改成，如下会怎样？</strong></p>
+<p><img src="/../images/ee8f5e59572e48288ef32d097942899b.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
+<p>我们发现，若将 <strong>avg(数学成绩) &gt; 75</strong> 放到WHERE子句中，此时GROUP BY语句还未执行，因此此时聚合值 <strong>avg(数学成绩)</strong> 还是未知的，因此会报错。</p>
+
+              
+            </div>
+            
+            <!-- 打赏模块，参考：https://blog.kukmoon.com/7bf76e1d.html -->
+            <div style="text-align: center; margin: auto;"><!--自己添加的打赏模块：开始-->
+              <!--如果主题的  _config.yml 中开启打赏-->
+                <hr><!--放一条水平线与文章正文内容区分-->
+                <div style="background-color: #663399; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; border-radius: 8px;margin-bottom: 10px;"><!-- 显示“打赏支持”的盒子-->
+                 <!--如果博客语言是中文，就显示“打赏支持”，非中文一律显示“Donate”-->
+                  打赏支持
+                	
+              </div>
+                <div style="font-size: 14px;margin-bottom: 10px;">
+                “请博主喝杯咖啡 o(*^ω^*)o” <!--在主题的 _config.yml 中设置打赏提示语-->
+              </div>
+                <div style="width: auto; height: auto; max-width: 600px; max-height: 600px; text-align: center; margin: auto; "><!--两张二维码强制放在同一行，以免换行，强制设定图片的宽度随页面的变化而变化，图片最大宽度为300 px-->
+                <img src="/img/alipay_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height:auto; max-width: 50%;"><img src="/img/weChat_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height: auto; max-width: 50%;"><!--在主题的 _config.yaml 中设置打赏二维码图片-->
+              </div>
+              
+            </div> <!--自己添加的打赏模块：结束-->
+
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>SQL查询语句的执行顺序解析</div>
+      <div>https://chris-z-su.github.io/2022/07/04/数据库/SQL查询语句的执行顺序解析/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Chris</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月4日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/18/%E5%85%B6%E4%BB%96/study/" title="我们为什么要努力？">
+                        <span class="hidden-mobile">我们为什么要努力？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
