@@ -23,12 +23,16 @@
 <meta property="og:site_name" content="Bookpackage">
 <meta property="og:description" content="redis启动命令">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zhangsubao/studynotes/blob/master/notes/images/20151204130539849.png">
+<meta property="og:image" content="https://gitee.com/zhangsubao/studynotes/raw/master/notes/images/20151204130539849.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/redis%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2022-06-13T05:53:26.000Z">
-<meta property="article:modified_time" content="2022-06-13T05:53:50.553Z">
+<meta property="article:modified_time" content="2022-06-23T08:29:27.343Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/zhangsubao/studynotes/blob/master/notes/images/20151204130539849.png">
   
   
   <title>redis启动命令 - Bookpackage</title>
@@ -367,7 +371,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          598 字
+          3.3k 字
         
       </span>
     
@@ -379,7 +383,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          28 分钟
         
       </span>
     
@@ -431,7 +435,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：4 分钟前
+                    本文最后更新于：11 天前
                   
                 
               </p>
@@ -440,9 +444,68 @@
               
               <h1 id="redis启动命令"><a href="#redis启动命令" class="headerlink" title="redis启动命令"></a>redis启动命令</h1><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ruby">[root<span class="hljs-variable">@10</span> ~]<span class="hljs-comment"># redis-server /usr/local/bin/rdconf/redis.conf </span><br>[root<span class="hljs-variable">@10</span> ~]<span class="hljs-comment"># </span><br>[root<span class="hljs-variable">@10</span> ~]<span class="hljs-comment"># systemctl status redis</span><br>Unit redis.service could <span class="hljs-keyword">not</span> be found.<br>[root<span class="hljs-variable">@10</span> ~]<span class="hljs-comment"># fuser -n tcp 6379</span><br><span class="hljs-number">6379</span>/<span class="hljs-symbol">tcp:</span>            <span class="hljs-number">21168</span><br>[root<span class="hljs-variable">@10</span> ~]<span class="hljs-comment"># </span><br>[root<span class="hljs-variable">@10</span> ~]<span class="hljs-comment"># ps -ef|grep redis</span><br>root       <span class="hljs-number">21168</span>       <span class="hljs-number">1</span>  <span class="hljs-number">0</span> 09<span class="hljs-symbol">:</span><span class="hljs-number">48</span> ?        <span class="hljs-number">00</span><span class="hljs-symbol">:</span><span class="hljs-number">00</span><span class="hljs-symbol">:</span><span class="hljs-number">00</span> redis-server <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span><span class="hljs-symbol">:</span><span class="hljs-number">6379</span><br>root       <span class="hljs-number">34592</span>    <span class="hljs-number">3136</span>  <span class="hljs-number">0</span> 09<span class="hljs-symbol">:</span><span class="hljs-number">53</span> pts/<span class="hljs-number">1</span>    <span class="hljs-number">00</span><span class="hljs-symbol">:</span><span class="hljs-number">00</span><span class="hljs-symbol">:</span><span class="hljs-number">00</span> grep --color=auto redis<br>[root<span class="hljs-variable">@10</span> ~]<span class="hljs-comment"># redis-cli</span><br><span class="hljs-meta prompt_">127.0.0.1:6379&gt;</span> ping<br><span class="hljs-variable constant_">PONG</span><br><span class="hljs-meta prompt_">127.0.0.1:6379&gt;</span> <br></code></pre></td></tr></table></figure>
 
-<p>Centos8 开发端口</p>
+<h1 id="CentOS-Stream-8-开放端口"><a href="#CentOS-Stream-8-开放端口" class="headerlink" title="CentOS Stream 8 开放端口"></a>CentOS Stream 8 开放端口</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.centos.org/centos-stream/">https://www.centos.org/centos-stream/</a></p>
+</blockquote>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-comment"># 新系统中应先判断 firewalld 是否在运行（Centos8 查看服务命令）</span><br>systemctl status firewalld<br><span class="hljs-comment"># 开放端口</span><br>firewall-cmd <span class="hljs-params">--permanent</span> <span class="hljs-params">--zone=public</span> <span class="hljs-params">--add-port=6379/tcp</span><br><span class="hljs-comment"># 使规则生效</span><br>firewall-cmd <span class="hljs-params">--reload</span><br><span class="hljs-comment"># 查看所有端口</span><br>firewall-cmd <span class="hljs-params">--list-all</span><br></code></pre></td></tr></table></figure>
 
+
+
+<p><img src="https://gitee.com/zhangsubao/studynotes/blob/master/notes/images/20151204130539849.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/zhangsubao/studynotes/raw/master/notes/images/20151204130539849.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="redis的持久化策略"><a href="#redis的持久化策略" class="headerlink" title="redis的持久化策略"></a>redis的持久化策略</h1><blockquote>
+<p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1qF41157D1">https://www.bilibili.com/video/BV1qF41157D1</a></p>
+</blockquote>
+<p>概述</p>
+<p>Redis是基于内存的非关系型K-V数据库，既然它是基于内存的，如果Redis服务器挂了，数据就会丢失，为了避免数据丢失，Redis提供了持久化，即把数据保存到磁盘。</p>
+<p>持久化机制：RDB和AOF</p>
+<h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>RDB（Redis database）持久化，是指在指定的时间间隔内将内存中的数据集快照写入磁盘，也就是Snapshot快照，它是Redis默认的持久化方式，执行完操作后，在指定目录下生成一个dump.rdb，Redis重启的时候，通过加载dump.rdb文件来恢复数据。</p>
+<h3 id="配置（redis-conf）"><a href="#配置（redis-conf）" class="headerlink" title="配置（redis.conf）"></a>配置（redis.conf）</h3><p>Redis默认提供了三种会触发rdb持久化的条件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># 关闭rdb持久化功能</span><br><span class="hljs-attribute">save</span> <span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-comment"># 900秒之内至少有一个key被改变</span><br><span class="hljs-attribute">save</span> <span class="hljs-number">900</span> <span class="hljs-number">1</span><br><span class="hljs-comment"># 300秒之内至少有十个key被改变</span><br><span class="hljs-attribute">save</span> <span class="hljs-number">300</span> <span class="hljs-number">10</span><br><span class="hljs-comment"># 60秒之内有一万次key被改变</span><br><span class="hljs-attribute">save</span> <span class="hljs-number">60</span> <span class="hljs-number">10000</span><br><br><span class="hljs-comment"># rdb默认配置文件名称</span><br><span class="hljs-attribute">dbfilename</span> dump.rdb<br></code></pre></td></tr></table></figure>
+
+<h3 id="触发机制"><a href="#触发机制" class="headerlink" title="触发机制"></a>触发机制</h3><h4 id="手动触发"><a href="#手动触发" class="headerlink" title="手动触发"></a>手动触发</h4><p>save：（同步）save时只管保存，其他不管，save是一个阻塞式命令，即当服务器接收了一条save命令之后就会开始拍摄快照，在此期间不会再去处理其他的请求，其他请求会被挂起直到备份结束，应该避免使用。</p>
+<p>bgsave：（异步）Redis会在后台进行快照操作，快照操作同时还可以响应客户端请求，与save命令区别就在于bgsave不会阻塞主进程处理的操作。Redis会单独创建（Fork）一个子进程来进行持久化，先将数据写入到一个临时文件中，待持久化过程都结束了，再用这个临时文件替换上次持久化好的文件。</p>
+<h4 id="自动触发"><a href="#自动触发" class="headerlink" title="自动触发"></a>自动触发</h4><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs excel"># m秒内数据集存在<span class="hljs-built_in">n</span>次修改时，自动触发bgsave（异步）<br>save m <span class="hljs-built_in">n</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>① 如果需要进行大规模的数据恢复，且对于数据恢复的完整性不是非常敏感，那么RDB方式要比AOF方式更加的高效</p>
+<p>② 与AOF相比，在恢复大的数据集的时候，RDB方式会更快一些</p>
+<p>③ RDB很适用于灾备，单文件很方便就能传输到远程的服务器上</p>
+<p>④ 可以定期备份RDB文件，直接写个脚本就可以，很方便</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>① 没有办法做到实时持久化&#x2F;秒级持久化</p>
+<p>② 最后一次持久化后的数据可能丢失</p>
+<p>③ RDB需要经常fork子进程来保存数据集到硬盘上，当数据集比较大的时候，fork的进程是非常耗时的，可能导致Redis在一些毫秒级不能响应客户端请求</p>
+<h2 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h2><p>全称“append only file”，AOF是以日志的形式来记录每个写操作，将Redis执行过的所有写指令记录下来（读操作不记录），只许追加文件但不可以改写文件，Redis启动之初会读取该文件重新构建数据，Redis重启的话根据日志文件的内容将写指令从头到尾执行一次以完成数据的恢复。AOF方式持久化默认保存的是appendonly.aof文件，它主要解决数据持久化的实时性问题，默认是不开启的。</p>
+<h3 id="配置（redis-conf）-1"><a href="#配置（redis-conf）-1" class="headerlink" title="配置（redis.conf）"></a>配置（redis.conf）</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># AOF持久化开关，默认是关闭的</span><br><span class="hljs-attribute">appendonly</span> no<br><br><span class="hljs-comment"># AOF备份文件的名称</span><br><span class="hljs-attribute">appendfilename</span> <span class="hljs-string">&quot;appendonly.aof&quot;</span><br><br><span class="hljs-comment"># AOF持久化策略</span><br><span class="hljs-comment"># Always：同步持久化，每次发生数据变更会立即记录到磁盘，性能较差但数据完整性较好</span><br><span class="hljs-comment"># appendfsync always</span><br><span class="hljs-comment"># Everysec：默认配置，异步操作，每秒记录，如果一秒内宕机，有数据丢失</span><br><span class="hljs-attribute">appendfsync</span> everysec<br><br><span class="hljs-comment"># 默认配置是当AOF文件大小是上次rewrite后大小的一倍且文件大于64M时触发重写</span><br><span class="hljs-attribute">auto</span>-aof-rewrite-percentage <span class="hljs-number">100</span><br><span class="hljs-attribute">auto</span>-aof-rewrite-min-size <span class="hljs-number">64</span>mb<br></code></pre></td></tr></table></figure>
+
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>AOF方式持久化通过保存Redis执行时候的所有写操作命令，注意，读操作命令不追加，将写命令追加到appendonly.aof文件中，理论上只要保存了所有写操作命令，那么恢复时将这些命令从头到尾再执行一次就可以从正常恢复数据。</p>
+<h3 id="AOF持久化策略"><a href="#AOF持久化策略" class="headerlink" title="AOF持久化策略"></a>AOF持久化策略</h3><ul>
+<li>appendfsync always：always（同步持久化），每次发生数据变更会立即记录到磁盘，性能较差但数据完整性较好，always会严重影响服务器的性能</li>
+<li>appendfsync everysec：everysec，默认方式，异步操作，每秒记录，如果一秒内宕机，有数据丢失</li>
+<li>appendfsync no：从不同步</li>
+</ul>
+<h3 id="重写机制"><a href="#重写机制" class="headerlink" title="重写机制"></a>重写机制</h3><p>AOF采用文件追加方式，文件会越来越大，为避免出现此种情况，Redis新增了重写机制，当AOF文件的大小超过所设定的阈值时，Redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集。当然我们也可以使用命令bgrewriteaof手动告诉Redis进行AOF文件的重写，这样可以有效减少AOF文件的体积。</p>
+<h3 id="重写原理"><a href="#重写原理" class="headerlink" title="重写原理"></a>重写原理</h3><ul>
+<li><p>Redis会fork出一个子进程来对AOF文件进行重写，原理跟快照持久化命令bgsave的工作原理类似，值得注意的是，进行AOF文件重写时，如果原来的AOF文件体积已经非常大，那么重写AOF并删除旧的AOF文件的过程将会对Redis的性能造成较大的影响。</p>
+</li>
+<li><p>auto-aof-rewrite-percentage：配置当AOF文件需要比旧AOF文件增大多少时才进行重写</p>
+</li>
+<li><p>auto-aof-rewrite-min-size：配置当AOF文件需要达到多大体积时才进行重写</p>
+</li>
+<li><p>只有这两个配置的条件都达到时，才会进行重写。</p>
+</li>
+</ul>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><p>① 数据的一致性和完整性更高</p>
+<p>② 使用默认的持久化策略：每秒同步一次，Redis数据最多只会丢失1秒的数据</p>
+<p>③ AOF文件的格式可读性较强，同时还可以检查AOF文件中的错误并进行修复</p>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p>① 对相同的数据集来说，AOF文件的体积通常要大于RDB文件的体积，恢复速度慢于RDB</p>
+<p>加载流程</p>
+<p><img src="/../images/redis%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="redis加载流程"></p>
+<p>如果存在dump.rdb文件和aof文件的话，会优先加载aof文件</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>Redis允许同时存在rdb和aof两种持久化方式，但是重启时会优先加载aof文件</li>
+<li>如果在项目中只是将redis作为缓存服务器的话，我们可以不用进行持久化，因为缓存对数据敏感性没那么强</li>
+<li>aof持久化方式最多只会丢失一秒的数据，但是这带来了很多额外的IO操作，其次就是重写造成的阻塞不可避免，所以应该尽量减少aof重写的频率，建议将参数auto-aof-rewrite-min-size修改为5G或者更大</li>
+</ul>
 
               
             </div>
@@ -550,6 +613,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/06/17/%E6%8A%80%E6%9C%AF/potplay%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="PotPlayer快捷键大全">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PotPlayer快捷键大全</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
