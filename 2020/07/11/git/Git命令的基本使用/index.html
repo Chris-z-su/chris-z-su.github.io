@@ -24,7 +24,7 @@
 <meta property="og:description" content="Git操作项目、Git分支管理以及Git合并、提交、回滚等">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-11T15:12:39.000Z">
-<meta property="article:modified_time" content="2022-05-27T12:18:22.444Z">
+<meta property="article:modified_time" content="2022-07-13T13:11:00.246Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="技术">
@@ -367,7 +367,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          4.8k 字
+          5.3k 字
         
       </span>
     
@@ -379,7 +379,7 @@
         
         
           <!-- compatible with older versions-->
-          41 分钟
+          45 分钟
         
       </span>
     
@@ -431,7 +431,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：1 个月前
+                    本文最后更新于：4 天前
                   
                 
               </p>
@@ -508,6 +508,28 @@
 <p>(2) 通过git revert是用一次新的commit来回滚之前的commit<br>git log # 得到你需要回退一次提交的commit id<br>git revert <commit_id> # 撤销指定的版本，撤销也会作为一次提交进行保存</p>
 <p>（3） git revert 和 git reset的区别<br>(a). git revert是用一次新的commit来回滚之前的commit，此次提交之前的commit都会被保留( 会有 两次 commit id)；<br>(b). git reset是回到某次提交，提交及之前的commit都会被保留，但是此commit id之后的修改都会被删除 ( 只有一次 commit id)</p>
 <p>作者：<em>画圆</em><br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c55958563f5a">https://www.jianshu.com/p/c55958563f5a</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h2 id="七、git回滚操作工作流"><a href="#七、git回滚操作工作流" class="headerlink" title="七、git回滚操作工作流"></a>七、git回滚操作工作流</h2><ol>
+<li>回滚至之前的版本</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard b23f8e17aaa24f6ae95b6c333f06d9261df2525e</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>回滚至之后的版本</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog  <span class="hljs-comment"># 显示之前操作</span></span><br>b23f8e1 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to b23f8e17aaa24f6ae95b6c333f06d9261df2525e<br>ef26ac6 HEAD@&#123;1&#125;: reset: moving to ef26ac6324424dbb549bc6a30866312b96679558<br>4e2bb67 HEAD@&#123;2&#125;: commit: add 约吗模块<br>b23f8e1 (HEAD -&gt; master) HEAD@&#123;3&#125;: commit: add 短视频模块<br>ef26ac6 HEAD@&#123;4&#125;: commit: v2<br>7111058 HEAD@&#123;5&#125;: commit (initial): v1<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">回到某个版本</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard 4e2bb67</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h2 id="九十九、错误解决："><a href="#九十九、错误解决：" class="headerlink" title="九十九、错误解决："></a>九十九、错误解决：</h2><h3 id="1、执行git命令时出现fatal-‘origin’-does-not-appear-to-be-a-git-repository错误"><a href="#1、执行git命令时出现fatal-‘origin’-does-not-appear-to-be-a-git-repository错误" class="headerlink" title="1、执行git命令时出现fatal: ‘origin’ does not appear to be a git repository错误"></a>1、执行git命令时出现fatal: ‘origin’ does not appear to be a git repository错误</h3><p>在执行git pull origin master时出现：<br>　　fatal: ‘origin’ does not appear to be a git repository<br>　　fatal: Could not read from remote repository.<br>　　Please make sure you have the correct access rights and the repository exists</p>
 <p>解决方案：</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs elixir">git remote add origin git<span class="hljs-variable">@github</span><span class="hljs-symbol">:bx_reader/bx-reader-api</span>.git<br><br>将关联远程仓库为origin<br></code></pre></td></tr></table></figure>
