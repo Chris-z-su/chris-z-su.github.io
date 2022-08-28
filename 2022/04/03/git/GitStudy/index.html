@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://chris-z-su.github.io/images/image-20220717222703789.png">
 <meta property="og:image" content="https://chris-z-su.github.io/images/git%E5%88%86%E5%8C%BA.png">
 <meta property="article:published_time" content="2022-04-03T08:26:39.000Z">
-<meta property="article:modified_time" content="2022-07-17T15:03:48.195Z">
+<meta property="article:modified_time" content="2022-07-27T13:50:36.134Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="技术">
@@ -376,7 +376,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          20k 字
+          21k 字
         
       </span>
     
@@ -388,7 +388,7 @@
         
         
           <!-- compatible with older versions-->
-          167 分钟
+          174 分钟
         
       </span>
     
@@ -440,7 +440,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：5 分钟前
+                    本文最后更新于：1 个月前
                   
                 
               </p>
@@ -507,6 +507,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> xxx.git <span class="hljs-string">&quot;指定目录&quot;</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="五、Git合并分支"><a href="#五、Git合并分支" class="headerlink" title="五、Git合并分支"></a>五、Git合并分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看分支</span><br>$ git branch<br>* master<br>  newtest<br><span class="hljs-comment"># 合并某分支到当前分支：git merge &lt;name&gt;</span><br>$ git merge newtest<br><span class="hljs-comment"># 合并完之后就可以删除掉不需要的分支了</span><br>$ git branch -d newtest<br>Deleted branch newtest (was c1501a2).<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="六、标签"><a href="#六、标签" class="headerlink" title="六、标签"></a>六、标签</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs shell">chris@DESKTOP-26G0Q2K MINGW64 /e/gitrepos/person (main)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git tag -a v1 -m <span class="hljs-string">&quot;第一版&quot;</span></span><br><br>chris@DESKTOP-26G0Q2K MINGW64 /e/gitrepos/person (main)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span></span><br>commit 744b74ad6d2c092b9de5ae15281f41090ffa1b6b (HEAD -&gt; main, tag: v1, origin/main)<br>Author: 小可爱的书包 &lt;42034225+Chris-z-su@users.noreply.github.com&gt;<br>Date:   Wed Jul 27 21:45:44 2022 +0800<br><br>    add README.md<br><br>commit 3e5286d0ef5a8f3d83a9b306f0ea38599118511c<br>Author: chris &lt;chris_z_su@163.com&gt;<br>Date:   Wed Jul 27 21:34:24 2022 +0800<br><br>    init project...<br><br>chris@DESKTOP-26G0Q2K MINGW64 /e/gitrepos/person (main)<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push origin --tags</span><br>Enumerating objects: 1, done.<br>Counting objects: 100% (1/1), done.<br>Writing objects: 100% (1/1), 164 bytes | 164.00 KiB/s, done.<br>Total 1 (delta 0), reused 0 (delta 0), pack-reused 0<br>To github.com:gitstudy-org/person.git<br> * [new tag]         v1 -&gt; v1<br><br>chris@DESKTOP-26G0Q2K MINGW64 /e/gitrepos/person (main)<br><span class="hljs-meta prompt_">$</span><span class="language-bash"></span><br><span class="language-bash"></span><br></code></pre></td></tr></table></figure>
+
+
 
 
 
@@ -714,6 +720,30 @@
             </div>
 
             
+  <article id="comments" lazyload>
+    
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.7.2/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"8473051591a04c3ceace","clientSecret":"e4bb585f0cd3f68106b176cd7409836f5e6899f5","repo":"wollo","owner":"Chris","admin":["Chris"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '73284ec165330c8f2bb3c9a47cd30c52'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
           </article>
         </div>
       </div>
