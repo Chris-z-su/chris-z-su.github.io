@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chris">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="db2学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="db2学习">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/09/25/%E6%95%B0%E6%8D%AE%E5%BA%93/db2/index.html">
+<meta property="og:site_name" content="Bookpackage">
+<meta property="og:description" content="db2学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-25T12:03:23.000Z">
+<meta property="article:modified_time" content="2022-09-25T12:10:07.126Z">
+<meta property="article:author" content="Chris">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>db2学习 - Bookpackage</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_pdf/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_yule/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_music/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_xiangce/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_shipin/iconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chris-z-su.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bookpackage</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/pdf/">
+                <i class="iconfont icon-pdf"></i>
+                PDF
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-wenhuayule"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/music/">
+                    <i class="iconfont icon-yinle"></i>
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/galleries/">
+                    <i class="iconfont icon-xiangce"></i>
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies/">
+                    <i class="iconfont icon-shipin"></i>
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://y.qq.com/">
+                    
+                    QQ音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://v.qq.com/">
+                    
+                    腾讯视频
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-yule"></i>
+                小游戏
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/clock/index.html">
+                    
+                    H5时钟
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/tower-defense/src/td.html">
+                    
+                    塔防
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/adarkroom/index.html">
+                    
+                    小黑屋
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/muboard/muboard.html">
+                    
+                    数学白板工具
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/UniverseSim/index.html">
+                    
+                    三体模拟程序
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/h5zwjs/index.html">
+                    
+                    植物大战僵尸
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/yanglegeyang/index.html">
+                    
+                    羊了个羊
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="db2学习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Chris
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-25 20:03" pubdate>
+          2022年9月25日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">db2学习</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2 天前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1 id="db2学习"><a href="#db2学习" class="headerlink" title="db2学习"></a>db2学习</h1><h2 id="1-db2-cmd"><a href="#1-db2-cmd" class="headerlink" title="1. db2 cmd"></a>1. db2 cmd</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><code class="hljs shell">C:\Users\db2admin&gt;db2cmd<br><br>C:\Users\db2admin&gt;<br><br><br>C:\Users\db2admin&gt;db2 list tablespaces<br>SQL1024N  不存在数据库连接。  SQLSTATE=08003<br><br>C:\Users\db2admin&gt;db2start<br>2022-08-24 21:03:49     0   0   SQL1026N  数据库管理器已活动。<br>SQL1026N  数据库管理器已活动。<br><br>C:\Users\db2admin&gt;db2 list db directory<br><br> 系统数据库目录<br><br> 目录中的条目数 = 1<br><br>数据库 1 条目：<br><br> 数据库别名                      = SAMPLE<br> 数据库名称                               = SAMPLE<br> 本地数据库目录                  = D:<br> 数据库发行版级别                = 15.00<br> 注释                            =<br> 目录条目类型                    = 间接<br> 目录数据库分区号                  = 0<br> 备用服务器主机名                =<br> 备用服务器端口号                =<br><br><br>C:\Users\db2admin&gt;db2 connect to SAMPLE<br><br>   数据库连接信息<br><br> 数据库服务器         = DB2/NT64 11.5.7.0<br> SQL 授权标识         = DB2ADMIN<br> 本地数据库别名       = SAMPLE<br><br><br>C:\Users\db2admin&gt;<br>C:\Users\db2admin&gt;db2 list tablespaces<br><br>           当前数据库的表空间<br><br> 表空间标识                          = 0<br> 名称                       = SYSCATSPACE<br> 类型                                       = 数据库管理空间<br> 内容                                = 所有持久数据。常规表空间。<br> 状态                   = 0x0000<br>   详细解释：<br>     正常<br><br> 表空间标识                          = 1<br> 名称                       = TEMPSPACE1<br> 类型                                       = 系统管理空间<br> 内容                                = 系统临时数据<br> 状态                   = 0x0000<br>   详细解释：<br>     正常<br><br> 表空间标识                          = 2<br> 名称                       = USERSPACE1<br> 类型                                       = 数据库管理空间<br> 内容                                = 所有持久数据。大型表空间。<br> 状态                   = 0x0000<br>   详细解释：<br>     正常<br><br> 表空间标识                          = 3<br> 名称                       = IBMDB2SAMPLEREL<br> 类型                                       = 数据库管理空间<br> 内容                                = 所有持久数据。大型表空间。<br> 状态                   = 0x0000<br>   详细解释：<br>     正常<br><br> 表空间标识                          = 4<br> 名称                       = IBMDB2SAMPLEXML<br> 类型                                       = 数据库管理空间<br> 内容                                = 所有持久数据。大型表空间。<br> 状态                   = 0x0000<br>   详细解释：<br>     正常<br><br> 表空间标识                          = 5<br> 名称                       = SYSTOOLSPACE<br> 类型                                       = 数据库管理空间<br> 内容                                = 所有持久数据。大型表空间。<br> 状态                   = 0x0000<br>   详细解释：<br>     正常<br><br><br>C:\Users\db2admin&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="db2查看端口号"><a href="#db2查看端口号" class="headerlink" title="db2查看端口号"></a>db2查看端口号</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><code class="hljs shell"><br>C:\Users\db2admin&gt;db2 get dbm cfg<br>DB21061E  未初始化命令行环境。<br><br>C:\Users\db2admin&gt;db2cmd<br><br>C:\Users\db2admin&gt;<br><br>C:\Users\db2admin&gt;db2 get dbm cfg<br><br>          数据库管理器配置<br><br>     节点类型                                            = 带有本地客户机和远程<br>客户机的企业服务器版<br><br> 数据库管理器配置发行版级别                              = 0x1500<br><br> CPU 速度（毫秒/指令）                       (CPUSPEED) = 1.613843e-007<br> 通信带宽（MB/秒）                     (COMM_BANDWIDTH) = 1.000000e+002<br><br> 最大并发活动数据库数                            (NUMDB) = 32<br> 联合数据库系统支持                          (FEDERATED) = NO<br> 事务处理器监视器名                        (TP_MON_NAME) =<br><br> 缺省对方付费帐户                      (DFT_ACCOUNT_STR) =<br><br> Java Development Kit 安装路径（JDK_PATH）               = D:\PROGRA~1\IBM\SQLLI<br>B\java\jdk<br><br> 诊断错误捕获级别                            (DIAGLEVEL) = 3<br> 通知级别                                  (NOTIFYLEVEL) = 3<br> 诊断数据目录路径                             (DIAGPATH) = D:\DEV\DB2\\IBM\DB2\D<br>B2COPY1\DB2\ $m<br> 当前成员已解析 DIAGPATH                        = D:\DEV\DB2\\IBM\DB2\DB2COPY1\D<br>B2\DIAG0000\<br> 备用诊断数据目录路径 (ALT_DIAGPATH) =<br> 当前成员已解析 ALT_DIAGPATH                    =<br> 轮转 db2diag 和通知日志的大小（MB）          (DIAGSIZE) = 0<br><br> 缺省数据库监视器开关<br>   缓冲池                              (DFT_MON_BUFPOOL) = OFF<br>   锁定                                   (DFT_MON_LOCK) = OFF<br>   排序                                   (DFT_MON_SORT) = OFF<br>   语句                                   (DFT_MON_STMT) = OFF<br>   表                                    (DFT_MON_TABLE) = OFF<br>   时间戳记                          (DFT_MON_TIMESTAMP) = ON<br>   工作单元                                (DFT_MON_UOW) = OFF<br> 监视实例和数据库的运行状况                 (HEALTH_MON) = OFF<br><br> SYSADM 组名                              (SYSADM_GROUP) =<br> SYSCTRL 组名                            (SYSCTRL_GROUP) =<br> SYSMAINT 组名                          (SYSMAINT_GROUP) =<br> SYSMON 组名                              (SYSMON_GROUP) =<br><br> 客户机用户标识-密码插件                (CLNT_PW_PLUGIN) =<br> 客户机 Kerberos 插件                  (CLNT_KRB_PLUGIN) = IBMkrb5<br> 组插件                                   (GROUP_PLUGIN) =<br> 本地授权的 GSS 插件                   (LOCAL_GSSPLUGIN) =<br> 服务器插件方式                        (SRV_PLUGIN_MODE) = UNFENCED<br> GSS 插件的服务器列表            (SRVCON_GSSPLUGIN_LIST) =<br> 服务器用户标识-密码插件              (SRVCON_PW_PLUGIN) =<br> 服务器连接认证                            (SRVCON_AUTH) = NOT_SPECIFIED<br> 集群管理器                                              =<br><br> 数据库管理器认证                       (AUTHENTICATION) = SERVER<br> 备用认证                           (ALTERNATE_AUTH_ENC) = NOT_SPECIFIED<br> 没有权限就允许编目                     (CATALOG_NOAUTH) = NO<br> 信赖所有客户机                         (TRUST_ALLCLNTS) = YES<br> 可信的客户机认证                       (TRUST_CLNTAUTH) = CLIENT<br> 绕过联合认证                               (FED_NOAUTH) = NO<br><br> 缺省数据库路径                              (DFTDBPATH) = D:<br><br> 数据库监视器堆大小 (4KB)                  (MON_HEAP_SZ) = AUTOMATIC(66)<br> “Java 虚拟机”堆大小 (4KB)              (JAVA_HEAP_SZ) = 65536<br> 审计缓冲区大小 (4KB)                     (AUDIT_BUF_SZ) = 0<br> 全局实例内存（% 或 4KB）       (INSTANCE_MEMORY) = AUTOMATIC(1215444)<br> 成员实例内存（% 或 4KB）                         = GLOBAL<br> 代理程序的堆栈大小                     (AGENT_STACK_SZ) = 16<br> 排序堆阈值 (4KB)                           (SHEAPTHRES) = 0<br><br> 目录高速缓存支持                            (DIR_CACHE) = YES<br><br> 应用程序支持层堆大小 (4KB)                  (ASLHEAPSZ) = 15<br> 最大请求者 I/O 块大小（以字节计）            (RQRIOBLK) = 65535<br> 已调速实用程序对工作负载的影响        (UTIL_IMPACT_LIM) = 10<br><br> 代理程序的优先级                             (AGENTPRI) = SYSTEM<br> 代理程序池大小                         (NUM_POOLAGENTS) = AUTOMATIC(100)<br> 池中的初始代理程序数                   (NUM_INITAGENTS) = 0<br> 最大协调代理程序数                    (MAX_COORDAGENTS) = AUTOMATIC(200)<br> 最大客户机连接数                      (MAX_CONNECTIONS) = AUTOMATIC(MAX_COORDAG<br>ENTS)<br><br> 保留受防护的进程                           (KEEPFENCED) = YES<br> 合用受防护的进程的数目                    (FENCED_POOL) = AUTOMATIC(MAX_COORDAG<br>ENTS)<br> 受防护的进程的初始数目                 (NUM_INITFENCED) = 0<br><br> 索引重新创建时间和重做索引构建               (INDEXREC) = RESTART<br><br> 事务管理器数据库名称                      (TM_DATABASE) = 1ST_CONN<br> 事务再同步时间间隔（秒）              (RESYNC_INTERVAL) = 180<br><br> SPM 名称                                     (SPM_NAME) = PC_20211<br> SPM 日志大小                          (SPM_LOG_FILE_SZ) = 256<br> SPM 再同步代理程序限制                 (SPM_MAX_RESYNC) = 20<br> SPM 日志路径                             (SPM_LOG_PATH) =<br><br> TCP/IP 服务名称                              (SVCENAME) = db2c_DB2<br> 发现方式                                     (DISCOVER) = SEARCH<br> 发现服务器实例                          (DISCOVER_INST) = ENABLE<br><br> SSL 服务器 keydb 文件                   (SSL_SVR_KEYDB) =<br> SSL 服务器隐藏文件                      (SSL_SVR_STASH) =<br> SSL 服务器证书标签                      (SSL_SVR_LABEL) =<br> SSL 服务名称                             (SSL_SVCENAME) =<br> SSL 密码规范                          (SSL_CIPHERSPECS) =<br> SSL 版本                                 (SSL_VERSIONS) =<br> SSL 客户机 keydb 文件                  (SSL_CLNT_KEYDB) =<br> SSL 客户机隐藏文件                     (SSL_CLNT_STASH) =<br><br> 最大查询并行度                        (MAX_QUERYDEGREE) = ANY<br> 启用分区内并行性                       (INTRA_PARALLEL) = NO<br><br> 每个查询的最大异步 TQ 数              (FEDERATED_ASYNC) = 0<br><br> FCM 缓冲区的数目                      (FCM_NUM_BUFFERS) = AUTOMATIC(4096)<br> FCM 缓冲区大小                            (FCM_BUFFER_SIZE) = 32768<br> FCM 通道的数目                        (FCM_NUM_CHANNELS) = AUTOMATIC(2048)<br> FCM 并行性                             (FCM_PARALLELISM) = AUTOMATIC(1)<br> 节点连接耗用时间（秒）                    (CONN_ELAPSE) = 10<br> 最大节点连接重试次数                  (MAX_CONNRETRIES) = 5<br> 节点间的最大时差（分钟）                (MAX_TIME_DIFF) = 60<br><br> db2start/db2stop 超时（分钟）         (START_STOP_TIME) = 10<br><br> WLM 分派器已启用                       (WLM_DISPATCHER) = NO<br> WLM 分派器并行性                      (WLM_DISP_CONCUR) = COMPUTED<br> WLM 分派器 CPU 份额已启用         (WLM_DISP_CPU_SHARES) = NO<br> WLM 分派器最低使用率 (%) (WLM_DISP_MIN_UTIL) = 5<br><br> 通信缓冲区出口库列表                   (COMM_EXIT_LIST) =<br> 当前有效体系结构级别 (CUR_EFF_ARCH_LVL) = V:11 R:5 M:7 F:0 I:0 SB:0<br> 当前有效代码级别 (CUR_EFF_CODE_LVL) = V:11 R:5 M:7 F:0 I:0 SB:0<br><br> 密钥库类型                           (KEYSTORE_TYPE) = NONE<br> 密钥库位置                   (KEYSTORE_LOCATION) =<br><br> Python 运行时的路径                (PYTHON_PATH) =<br> R 运行时的路径                              (R_PATH) =<br><br> 多重部件上载部件大小 (MULTIPARTSIZEMB) = 100<br><br><br>C:\Users\db2admin&gt;<br><br><br><br><br><br><br><br><br><br></code></pre></td></tr></table></figure>
+
+<p>查看DB2数据库占用的端口号，分为windows和linux系统查看方式，如下：<br>一、linux系统查看DB2占用端口号：<br>1.db2start启动了数据库管理器，并且通讯方式配置为TCP&#x2F;IP。<br>2.首先切换到db2inst1用户 su - db2inst1<br>3.查找TCP&#x2F;IP Service name db2 get dbm cfg | grep -i service<br>4.通过上一句命令的输出（如db2c_db2inst1）在&#x2F;etc&#x2F;services文件中找对应的端口号 grep db2c_db2inst1 &#x2F;etc&#x2F;services<br>输出 db2c_db2inst1 50000&#x2F;tcp<br>#其中50000就是db2数据库所占用的端口号<br>二、windows系统查看DB2占用端口号方式如下：<br>1、使用命令 db2 get dbm cfg<br>找到”SVCENAME” 查找到TCP&#x2F;IP 服务名<br>2、到系统配置文件里找到service name 对应的 port number<br>windows：查看 c:\windows\system32\drivers\etc\services<br>aix： 查看 &#x2F;etc&#x2F;services<br>如下：<br>DB2_DB2 60000&#x2F;tcp<br>DB2_DB2_1 60001&#x2F;tcp<br>DB2_DB2_2 60002&#x2F;tcp<br>DB2_DB2_END 60003&#x2F;tcp<br>db2c_DB2 50000&#x2F;tcp</p>
+<p>[jcc][t4][2043][11550][4.26.14] 异常 java.net.ConnectException：打开端口 25,000 上服务器 localhost&#x2F;127.0.0.1 的套接字时出错，消息为：Connection refused: connect。 ERRORCODE&#x3D;-4499, SQLSTATE&#x3D;08001<br>  Connection refused: connect<br>  Connection refused: connect</p>
+<p>c:\windows\system32\drivers\etc\services</p>
+<p>DB2_DB2         20000&#x2F;tcp<br>DB2_DB2_1       20001&#x2F;tcp<br>DB2_DB2_2       20002&#x2F;tcp<br>DB2_DB2_3       20003&#x2F;tcp<br>DB2_DB2_4       20004&#x2F;tcp<br>DB2_DB2_END     20005&#x2F;tcp<br>directplaysrvr  47624&#x2F;tcp                           #Direct Play Server<br>directplaysrvr  47624&#x2F;udp                           #Direct Play Server</p>
+<p>db2c_DB2    25000&#x2F;tcp</p>
+
+              
+            </div>
+            
+            <!-- 打赏模块，参考：https://blog.kukmoon.com/7bf76e1d.html -->
+            <div style="text-align: center; margin: auto;"><!--自己添加的打赏模块：开始-->
+              <!--如果主题的  _config.yml 中开启打赏-->
+                <hr><!--放一条水平线与文章正文内容区分-->
+                <div style="background-color: #663399; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; border-radius: 8px;margin-bottom: 10px;"><!-- 显示“打赏支持”的盒子-->
+                 <!--如果博客语言是中文，就显示“打赏支持”，非中文一律显示“Donate”-->
+                  打赏支持
+                	
+              </div>
+                <div style="font-size: 14px;margin-bottom: 10px;">
+                “请博主喝杯咖啡 o(*^ω^*)o” <!--在主题的 _config.yml 中设置打赏提示语-->
+              </div>
+                <div style="width: auto; height: auto; max-width: 600px; max-height: 600px; text-align: center; margin: auto; "><!--两张二维码强制放在同一行，以免换行，强制设定图片的宽度随页面的变化而变化，图片最大宽度为300 px-->
+                <img src="/img/alipay_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height:auto; max-width: 50%;"><img src="/img/weChat_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height: auto; max-width: 50%;"><!--在主题的 _config.yaml 中设置打赏二维码图片-->
+              </div>
+              
+            </div> <!--自己添加的打赏模块：结束-->
+
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/db2/" class="category-chain-item">db2</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>db2学习</div>
+      <div>https://chris-z-su.github.io/2022/09/25/数据库/db2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Chris</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月25日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/20/%E6%8A%80%E6%9C%AF/cmd%E8%84%9A%E6%9C%AC/" title="cmd脚本">
+                        <span class="hidden-mobile">cmd脚本</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.7.2/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"6809b6d7b005b26f279f","clientSecret":"ce8b843f080f2b78f23fc0a19607785882fb66fb","repo":"chris-z-su.github.io","owner":"Chris-z-su","admin":["Chris-z-su"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
+          {
+            id: '9bc4717d63f8d1489cee3b158754012f'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
