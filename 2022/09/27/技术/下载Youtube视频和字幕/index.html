@@ -16,21 +16,22 @@
   <meta name="author" content="Chris">
   <meta name="keywords" content="">
   
-    <meta name="description" content="cmd脚本">
+    <meta name="description" content="下载Youtube视频和字幕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cmd脚本">
-<meta property="og:url" content="https://chris-z-su.github.io/2022/09/20/%E6%8A%80%E6%9C%AF/cmd%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:title" content="下载Youtube视频和字幕">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/09/27/%E6%8A%80%E6%9C%AF/%E4%B8%8B%E8%BD%BDYoutube%E8%A7%86%E9%A2%91%E5%92%8C%E5%AD%97%E5%B9%95/index.html">
 <meta property="og:site_name" content="Bookpackage">
-<meta property="og:description" content="cmd脚本">
+<meta property="og:description" content="下载Youtube视频和字幕">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-20T12:41:25.000Z">
-<meta property="article:modified_time" content="2022-10-01T16:44:15.115Z">
+<meta property="article:published_time" content="2022-09-27T14:15:43.000Z">
+<meta property="article:modified_time" content="2022-09-27T15:23:56.098Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="技术">
+<meta property="article:tag" content="Windows">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>cmd脚本 - Bookpackage</title>
+  <title>下载Youtube视频和字幕 - Bookpackage</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -339,7 +340,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="cmd脚本"></span>
+            <span id="subtitle" data-typed-text="下载Youtube视频和字幕"></span>
           
         </div>
 
@@ -355,8 +356,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-20 20:41" pubdate>
-          2022年9月20日 晚上
+        <time datetime="2022-09-27 22:15" pubdate>
+          2022年9月27日 晚上
         </time>
       </span>
     
@@ -368,7 +369,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          4k 字
+          3.6k 字
         
       </span>
     
@@ -380,7 +381,7 @@
         
         
           <!-- compatible with older versions-->
-          34 分钟
+          31 分钟
         
       </span>
     
@@ -426,45 +427,73 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">cmd脚本</h1>
+            <h1 style="display: none">下载Youtube视频和字幕</h1>
             
               <p class="note note-info">
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：12 天前
+                    本文最后更新于：16 天前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h1 id="7z"><a href="#7z" class="headerlink" title="7z"></a>7z</h1><blockquote>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.likecs.com/show-208495.html?sc=3300.302490234375">https://www.likecs.com/show-208495.html?sc=3300.302490234375</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/shadow_2011/article/details/120056749">https://blog.csdn.net/shadow_2011/article/details/120056749</a></p>
+              <blockquote>
+<p>原文:<a target="_blank" rel="noopener" href="https://www.ccava.cc/201.html">https://www.ccava.cc/201.html</a></p>
+<p>教程：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6bae57859325%EF%BC%882021%E5%B9%B42%E6%9C%887%E6%97%A5%EF%BC%89">https://www.jianshu.com/p/6bae57859325（2021年2月7日）</a></p>
 </blockquote>
-<p>7zip也是目前为止使用非常普遍的一种压缩程序，它的压缩、解压缩效率高，而且没有广告，是免费工具。它不是Windows系统自带的，所以要调用它之前得确认是否安装了7zip，如果没有安装则自行下载安装即可。7zip下载地址：<a target="_blank" rel="noopener" href="https://sparanoid.com/lab/7z/">https://sparanoid.com/lab/7z/</a></p>
-<p>bat调用7zip压缩实例：</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@echo</span> 定位到待压缩的文件夹<br>cd <span class="hljs-attribute">F</span>:\数据压缩测试\<span class="hljs-number">0101</span>C  <br><span class="hljs-variable">@echo</span> 使用<span class="hljs-number">7</span>z先将<span class="hljs-number">1</span>这个目录下的所有文件压缩为tar格式 <br><span class="hljs-string">&quot;C:\Program Files\7-Zip\7z.exe&quot;</span> a -ttar <span class="hljs-attribute">F</span>:\数据压缩测试\<span class="hljs-number">510101</span>C.tar <span class="hljs-number">1</span>\*<br><span class="hljs-variable">@echo</span> 将压缩后的tar格式再压缩为gzip格式，最终得到需要的tar.gz格式 <br><span class="hljs-string">&quot;C:\Program Files\7-Zip\7z.exe&quot;</span> a -tgzip <span class="hljs-attribute">F</span>:\数据压缩测试\<span class="hljs-number">2016</span>_1_510101C.tar.gz <span class="hljs-attribute">F</span>:\数据压缩测试\<span class="hljs-number">510101</span>C.tar<br>@删除中间过程生成的文件<br>del <span class="hljs-string">&quot;F:\数据压缩测试\510101C.tar&quot;</span><br></code></pre></td></tr></table></figure>
+<h1 id="一、第三方网站下载"><a href="#一、第三方网站下载" class="headerlink" title="一、第三方网站下载"></a>一、第三方网站下载</h1><p>① <a target="_blank" rel="noopener" href="http://www.clipconverter.cc/">www.clipconverter.cc</a></p>
+<p>优点：懒人专用，音频和视频可分开下载，也可以合并再下载，可以直接下载4K视频<br>缺点：下载不方便，需要第三方支持。</p>
+<p>② <a target="_blank" rel="noopener" href="http://keepvid.com/">http://keepvid.com</a><br>可下载字幕和最高720P的视频</p>
+<p>③<a target="_blank" rel="noopener" href="http://en.savefrom.net/">http://en.savefrom.net</a><br>优点：可以下载其他很多网站的视频 （可下载油猴插件）  缺点：不能下载4K视频。</p>
+<h1 id="二、浏览器内置脚本下载"><a href="#二、浏览器内置脚本下载" class="headerlink" title="二、浏览器内置脚本下载"></a>二、浏览器内置脚本下载</h1><p>优点：方便一键下载<br>缺点：安装需要一定的动手能力</p>
+<p>① 安装 Chrome 浏览器 + Tampermonkey 扩展<br>程序一定要安装到 Tampermonkey 里面，而不是作为 Chrome 扩展安装。<br>“安装到 Tampermonkey 里”的意思是：先安装 Tampermonkey ，然后再点击下面脚本。<br>而不是直接去点脚本链接。<br>Tampermonkey 官网：Tampermonkey</p>
+<p>说明：Firefox + Greasemonkey 扩展 ，Windows, Mac, Linux 均可使用，和操作系统无关。只要用 Chrome 浏览器就行<br>② 搜索脚本，安装即可<br>关于 Tampermonkey的更加强大的玩法请跳转至：</p>
+<p>Chrome浏览器插件推荐：强大的脚本管理器Tampermonkey</p>
+<p>还有一个脚本也不错，但是只能下载视频，点击安装即可：</p>
+<p><a target="_blank" rel="noopener" href="https://greasyfork.org/scripts/1317-download-youtube-videos-as-mp4/code/Download%20YouTube%20Videos%20as%20MP4.user.js">https://greasyfork.org/scripts/1317-download-youtube-videos-as-mp4/code/Download%20YouTube%20Videos%20as%20MP4.user.js</a></p>
+<h1 id="三、在-YouTube-網址後面加上-my-就能快速下載（2021年6月27日可用）"><a href="#三、在-YouTube-網址後面加上-my-就能快速下載（2021年6月27日可用）" class="headerlink" title="三、在 YouTube 網址後面加上 my 就能快速下載（2021年6月27日可用）"></a>三、在 YouTube 網址後面加上 my 就能快速下載（2021年6月27日可用）</h1><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">示例：<br>	https:<span class="hljs-regexp">//</span>www.youtube.com/watch?v=nFQKvjM9HCw<br>		——&gt; https:<span class="hljs-regexp">//</span>www.youtubemy.com/watch?v=nFQKvjM9HCw<br></code></pre></td></tr></table></figure>
 
-<p>bat调用7zip解压实例一：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs routeros">@echo off<br>setlocal enabledelayedexpansion<br>echo please make sure you are admin！<br>echo 执行此脚本前，请确认已经安装解压缩程序7-Zip<br>:::::::::: 配置参数 ::::::::::<br>::解压程序WinRAR.exe所在目录 32位%ProgramFiles(x86)% 或64位 %ProgramFiles%<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">7ZipDir</span>=%ProgramFiles%\7-Zip<br><br>REM 当前目录下用来测试的压缩包<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">plegodemo</span>=plegodemo.zip<br><br>:: 解压<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">curdir</span>=%~dp0<br><span class="hljs-built_in">set</span> <span class="hljs-attribute">deploydir</span>=E:\mytest<br><span class="hljs-built_in">set</span> <span class="hljs-string">&quot;plegodemodir=!plegodemo:.zip=!&quot;</span><br>:: C:\01_MyApp\7-Zip\7z.exe x newPack.zip -oc:\Doc -aoa<br>start /wait <span class="hljs-string">&quot;&quot;</span> <span class="hljs-string">&quot;!7ZipDir!\7z.exe&quot;</span> x !curdir!!plegodemo! -o!deploydir!\!plegodemodir!\ -aoa<br><br>:: 压缩<br><span class="hljs-built_in">set</span> <span class="hljs-string">&quot;name=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%&quot;</span><br>:: C:\01_MyApp\7-Zip\7z.exe a -t7z newPack.7z <span class="hljs-string">&quot;F:\14_newWork\7z\testDoc\*&quot;</span> -r <span class="hljs-attribute">-mx</span>=9 <span class="hljs-attribute">-m0</span>=LZMA2 <span class="hljs-attribute">-ms</span>=10m <span class="hljs-attribute">-mf</span>=on <span class="hljs-attribute">-mhc</span>=on <span class="hljs-attribute">-mmt</span>=on <br>start /wait <span class="hljs-string">&quot;&quot;</span> <span class="hljs-string">&quot;!7ZipDir!\7z.exe&quot;</span> a -tzip !deploydir!\!plegodemodir!_%name%.zip <span class="hljs-string">&quot;C:\inetpub\*&quot;</span> -r <span class="hljs-attribute">-mx</span>=9 <br></code></pre></td></tr></table></figure>
-
-<p>用7z来解压.tar.gz</p>
-<p>7 zip软件可以实现文件的压缩和解压缩，如果使用7z.exe对tar.gz文件进行解压缩，需要经过两次解压，第一次解压成tar文件，再解压一次生成源文件，例如test.tar.gz解压一次生成test.tar。再次解压生成test</p>
-<h1 id="batch"><a href="#batch" class="headerlink" title="batch"></a>batch</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="http://www.dzwebs.net/837.html">http://www.dzwebs.net/837.html</a></p>
-</blockquote>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><code class="hljs gams">http:<span class="hljs-comment">//www.dzwebs.net/837.html</span><br><br>Windows命令行Dos命令截取变量字符串一定长度的详细说明<br><br>@echo off<br><span class="hljs-keyword">set</span> str=123456789<br>echo 第一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,1%</span><br>echo 头两个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,2%</span><br>echo 头<span class="hljs-comment">5</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,5%</span><br>echo 去掉最后一个字符后的字符串为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,-1%</span><br>echo 去掉最后<span class="hljs-comment">3</span>个字符后的字符串为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,-3%</span><br>echo 第<span class="hljs-comment">4</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">3,1%</span><br>echo 第<span class="hljs-comment">4</span>个及其之后的<span class="hljs-comment">3</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">3,4%</span><br>echo 最后一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-1%</span><br>echo 最后一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-1,1%</span><br>echo 最后一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-1,2%</span><br>echo 倒数第<span class="hljs-comment">4</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4,1%</span><br>echo 倒数第<span class="hljs-comment">4</span>个及其之后的字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4%</span><br>echo 倒数第<span class="hljs-comment">4</span>个及其之后的<span class="hljs-comment">1</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4,2%</span><br>echo 倒数第<span class="hljs-comment">4</span>个及其之后的<span class="hljs-comment">2</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4,3%</span><br>pause<br>为了说明这个问题,我在这里把批处理取字符,做下进一步的解释,希望对新手有所启发<br>如下:<br>echo <span class="hljs-comment">%var:</span>~<span class="hljs-comment">n,k%</span><br>我们在这里对每个参数做个说明:<span class="hljs-string">&quot;%var&quot;</span>,即我们要从中要截取字符的字符串.<span class="hljs-string">&quot; ~ &quot;</span>取字<br>符标志符(我是这么理解的),<span class="hljs-string">&quot;n&quot;</span> 我们将其理解为指针,<span class="hljs-string">&quot;k&quot;</span>我们将其理解为偏移地址.(注<br>:指针和偏移地址都是从零开始数的)<br><br>我们还是用namejm版主的例子做下说明:<br>@echo <span class="hljs-comment">off</span><br><span class="hljs-keyword">set</span> <span class="hljs-comment">str=123456789</span><br>rem 定义一个<span class="hljs-comment">str</span>字符串为<span class="hljs-comment">123456789</span><br>echo 第一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,1%</span><br>rem 指针为<span class="hljs-comment">0,</span>偏移地址为<span class="hljs-comment">1,</span>即从第<span class="hljs-comment">0</span>位开始<span class="hljs-comment">,</span>取<span class="hljs-comment">1</span>位<br>echo 头两个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,2%</span><br>rem 指针为<span class="hljs-comment">0,</span>偏移地址为<span class="hljs-comment">2,</span>即从第<span class="hljs-comment">0</span>位开始<span class="hljs-comment">,</span>取<span class="hljs-comment">2</span>位<br>echo 头<span class="hljs-comment">5</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,5%</span><br>rem    指针为<span class="hljs-comment">0,</span>偏移地址为<span class="hljs-comment">5,</span>即从第<span class="hljs-comment">0</span>位开始<span class="hljs-comment">,</span>取<span class="hljs-comment">5</span>位<br>echo 去掉最后一个字符后的字符串为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,-1%</span><br>rem 当<span class="hljs-comment">&quot;k&quot;</span>为负值时<span class="hljs-comment">,</span>我们可以这样理解<span class="hljs-comment">:</span>从指针开始处开始取其后面所有字符<span class="hljs-comment">,</span>然后减去<br>后面<span class="hljs-string">&quot;abs(k)位&quot;</span>..所以这个句字我们可以做如下解释:从第0位开始取其全部字符<br>为:123456789然后从后面减去abs(k)位,所以最后结果为:12345678<br><br>echo 去掉最后<span class="hljs-comment">3</span>个字符后的字符串为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">0,-3%</span><br>rem    该句解释同上↑<br>echo 最后一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-1%</span><br>rem    参数<span class="hljs-comment">&quot;n,&quot;</span>和<span class="hljs-comment">&quot;k&quot;</span>都可以为缺省<span class="hljs-comment">,</span>缺省<span class="hljs-comment">&quot;n,&quot;</span>时可以理解为<span class="hljs-comment">:</span>从<span class="hljs-comment">abs(k)</span>位开始取其全部<br>echo 倒数第<span class="hljs-comment">4</span>个及其之后的字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4%</span><br>rem    解释同上↑<br>echo 最后一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-1,1%</span><br>rem    <span class="hljs-comment">n</span>为负值时<span class="hljs-comment">,</span>表示从后面开始截取字符<span class="hljs-comment">,</span>取<span class="hljs-comment">k</span>位<span class="hljs-comment">(</span>此时<span class="hljs-comment">n</span>应从<span class="hljs-comment">1</span>开始数<span class="hljs-comment">)</span><br>echo 最后一个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-1,2%</span><br>rem    解释同上↑<br>echo 倒数第<span class="hljs-comment">4</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4,1%</span><br>rem    解释同上↑<br>echo 倒数第<span class="hljs-comment">4</span>个及其之后的<span class="hljs-comment">1</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4,2%</span><br>rem    解释同上↑<br>echo 倒数第<span class="hljs-comment">4</span>个及其之后的<span class="hljs-comment">2</span>个字符为：<span class="hljs-comment">%str:</span>~<span class="hljs-comment">-4,3%</span><br>rem 解释同上↑<br><br>pause<br></code></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-meta">:: 示例:</span> 压缩文件<br><br></code></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs dos">:: 示例: 练习截取<br>@<span class="hljs-built_in">echo</span> off<br><br>::需要进行备份的源文件夹<br><span class="hljs-built_in">set</span> sourceDir=&quot;D:\Program Files\Minecraft\<span class="hljs-number">1</span>.<span class="hljs-number">18</span>.<span class="hljs-number">2</span>\.minecraft\saves\&quot;<br><span class="hljs-built_in">set</span> outName=单人生存_1_18<br><span class="hljs-built_in">set</span> CURRENT_DATE_STRING=<span class="hljs-variable">%date:~0,4%</span><span class="hljs-variable">%date:~5,2%</span><span class="hljs-variable">%date:~8,2%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_DATE_STRING=<span class="hljs-variable">%CURRENT_DATE_STRING%</span><br><span class="hljs-built_in">set</span> &quot;TIME_STRING_FILL_ZREO=%<span class="hljs-built_in">time</span>: =<span class="hljs-number">0</span>%&quot;<br>::<span class="hljs-built_in">echo</span> TIME_STRING_FILL_ZREO=<span class="hljs-variable">%TIME_STRING_FILL_ZREO%</span><br><span class="hljs-built_in">set</span> CURRENT_TIME_STRING=<span class="hljs-variable">%TIME_STRING_FILL_ZREO:~0,2%</span><span class="hljs-variable">%TIME_STRING_FILL_ZREO:~3,2%</span><span class="hljs-variable">%TIME_STRING_FILL_ZREO:~6,2%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_TIME_STRING=<span class="hljs-variable">%CURRENT_TIME_STRING%</span><br><span class="hljs-built_in">set</span> CURRENT_DATE_TIME_STRING=<span class="hljs-variable">%CURRENT_DATE_STRING%</span><span class="hljs-variable">%CURRENT_TIME_STRING%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_DATE_TIME_STRING=<span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span><br><span class="hljs-built_in">echo</span> 输出: <span class="hljs-variable">%sourceDir%</span><span class="hljs-variable">%outName%</span><span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span>.zip<br><br><span class="hljs-built_in">set</span> sourceDir=<span class="hljs-variable">%sourceDir:~1%</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">%sourceDir%</span><br><span class="hljs-built_in">set</span> sourceDir=<span class="hljs-variable">%sourceDir:~0,-1%</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">%sourceDir%</span><br><span class="hljs-built_in">echo</span> 输出: <span class="hljs-variable">%sourceDir%</span><span class="hljs-variable">%outName%</span><span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span>.zip<br><br><span class="hljs-built_in">echo</span> 执行完成!<br><br><span class="hljs-built_in">pause</span><br></code></pre></td></tr></table></figure>
-
+<h2 id="STEP-1"><a href="#STEP-1" class="headerlink" title="STEP 1"></a>STEP 1</h2><p>開啟 Youtubemy 網站，把要下載的 YouTube 影片網址複製、貼上，點選下方的藍色按鈕「Start」即可獲取影片擷圖和下載按鈕。</p>
+<p>前面有提到，要透過 Youtubemy 下載影片的另一個方法是直接於 YouTube 網址後面加上「my」快速打開下載頁面，改了網址後就能直接跳轉到影片下載功能。</p>
+<h2 id="STEP-2"><a href="#STEP-2" class="headerlink" title="STEP 2"></a>STEP 2</h2><p>在 Youtubemy 抓取到影片擷圖後，點選影片下方的「Download」按鈕就能開始下載保存影片的 Mp4 格式。</p>
+<p>通常瀏覽器會直接跳出下載提示畫面，只要確認或選擇要保存檔案的路徑就能完成操作，其實相當簡單，另一好處是 Youtubemy 或類似線上工具在使用上無須額外下載或安裝軟體，只要透過瀏覽器就能完成，另一方面也符合跨平台的特性。</p>
+<p>值得一試的三個理由：<br>無須安裝軟體，透過瀏覽器即可保存 YouTube 影片<br>下載影片 Mp4 格式可離線觀賞<br>直接於網址後面加上 my 快速開啟下載功能</p>
+<h1 id="四、利用Youtube-dl下载（专业人士观看）"><a href="#四、利用Youtube-dl下载（专业人士观看）" class="headerlink" title="四、利用Youtube-dl下载（专业人士观看）"></a>四、利用Youtube-dl下载（专业人士观看）</h1><p>优点：速度最快，可在线观看，可离线下载，可下载200多种网站视频</p>
+<p>缺点：需要一定的服务器操作基础</p>
+<h2 id="1-Linux系统安装："><a href="#1-Linux系统安装：" class="headerlink" title="1. Linux系统安装："></a>1. Linux系统安装：</h2><p>以下下载安装方式选择一个就行了:</p>
+<p>sudo curl -L <a target="_blank" rel="noopener" href="https://yt-dl.org/downloads/2016.07.13/youtube-dl">https://yt-dl.org/downloads/2016.07.13/youtube-dl</a> -o &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dl<br>sudo chmod a+rx &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dl</p>
+<p>如果你的vps没有安装 curl ，可以使用 wget 来下载。</p>
+<p>sudo wget <a target="_blank" rel="noopener" href="https://yt-dl.org/downloads/2016.07.13/youtube-dl">https://yt-dl.org/downloads/2016.07.13/youtube-dl</a> -O &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dl<br>sudo chmod a+rx &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dl</p>
+<p>当然你也可以用pip来安装，如果你没有pip就先安装pip， apt-get install python-pip -y</p>
+<p>sudo pip install –upgrade youtube_dl</p>
+<p>基础功能介绍<br>Youtube-dl的官网是：<a target="_blank" rel="noopener" href="http://rg3.github.io/youtube-dl/">http://rg3.github.io/youtube-dl/</a></p>
+<p>Github项目地址是：<a target="_blank" rel="noopener" href="https://github.com/rg3/youtube-dl">https://github.com/rg3/youtube-dl</a></p>
+<p>在这里都能看到最新最全的youtube-dl信息。</p>
+<p>Youtube-dl支持八百多家视频网站，具体列表可以看这里：<a target="_blank" rel="noopener" href="http://rg3.github.io/youtube-dl/supportedsites.html">http://rg3.github.io/youtube-dl/supportedsites.html</a> ，优酷、爱奇艺等国内视频网站也是支持的。 			<br>下载视频<br>以下教程均以 这个youtube视频链接为例 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=jK5coaM2X9g">https://www.youtube.com/watch?v=jK5coaM2X9g</a></p>
+<p>最基础的下载视频的方法很简单，直接</p>
+<p>youtube-dl URL youtube-dl <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=jK5coaM2X9g">https://www.youtube.com/watch?v=jK5coaM2X9g</a></p>
+<p>这样就会自动选择一个最好的视频格式和清晰度下载到 当前的文件夹 了。</p>
+<p>如果想把这个视频的所有格式都下载下来怎么办？</p>
+<p>下载全部格式</p>
+<p>youtube-dl –all-formats <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=jK5coaM2X9g">https://www.youtube.com/watch?v=jK5coaM2X9g</a><br>–all-formats</p>
+<p>添加这个参数之后，所有存在的格式全部下载</p>
+<p>具体操作方法请参考：使用Youtube-dl离线下载YouTube视频并且VPS上在线观看</p>
+<p> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=qLFeijbLGgg&amp;list=PLWOOq0tRT6x7AVYw4UoEgR7LBcPYMw5ag&amp;index=2">https://www.youtube.com/watch?v=qLFeijbLGgg&amp;list=PLWOOq0tRT6x7AVYw4UoEgR7LBcPYMw5ag&amp;index=2</a></p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46064078/article/details/124791802">https://blog.csdn.net/qq_46064078/article/details/124791802</a></p>
+<p>配置CMD命令行</p>
+<p>临时生效</p>
+<p>如果只是暂时使用代理，你可以在windows的cmd命令行中，执行下面命令：</p>
+<h2 id="2-使用sock5代理"><a href="#2-使用sock5代理" class="headerlink" title="2. 使用sock5代理"></a>2. 使用sock5代理</h2><p>set http_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:10808<br>set https_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:10808</p>
+<p> 如果你要取消设置：<br>set http_proxy&#x3D;<br>set https_proxy&#x3D;</p>
+<p>临时生效方案中，当你关闭cmd，再次打开时，之前的设置将会失效，代理依然使用不了。</p>
+<p>长期生效</p>
+<p>为了每次打开cmd，cmd都使用代理，那么，可以通过设置系统环境变量的方式，进行设置。右键  我的电脑 -&gt;  属性 -&gt;  高级系统设置 -&gt;  高级 -&gt;  环境变量 ，然后在  系统环境 中，新建两个系统环境变量，变量名称分别为  https_proxy 和  http_proxy ，值为  https_proxy&#x3D;socks5:&#x2F;&#x2F;127.0.0.1:10808 ：</p>
+<p>然后重启cmd命令行，使用  curl <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a> ，如果有内容返回，说明设置成功（不可以是 ping 命令进行测试）。 </p>
+<p>转载链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1c37903dd09d">https://www.jianshu.com/p/1c37903dd09d</a></p>
 
               
             </div>
@@ -501,7 +530,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%84%9A%E6%9C%AC/" class="category-chain-item">脚本</a>
+  <a href="/categories/YouTube/" class="category-chain-item">YouTube</a>
   
   
 
@@ -518,6 +547,8 @@
       
         <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
       
+        <a href="/tags/Windows/">#Windows</a>
+      
     </div>
   
 </div>
@@ -528,8 +559,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>cmd脚本</div>
-      <div>https://chris-z-su.github.io/2022/09/20/技术/cmd脚本/</div>
+      <div>下载Youtube视频和字幕</div>
+      <div>https://chris-z-su.github.io/2022/09/27/技术/下载Youtube视频和字幕/</div>
     </div>
     <div class="license-meta">
       
@@ -541,7 +572,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月20日</div>
+          <div>2022年9月27日</div>
         </div>
       
       
@@ -571,18 +602,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/25/%E6%95%B0%E6%8D%AE%E5%BA%93/db2/" title="db2学习">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">db2学习</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/18/%E6%8A%80%E6%9C%AF/vscode/" title="vscode">
-                        <span class="hidden-mobile">vscode</span>
+                      <a href="/2022/09/25/%E6%95%B0%E6%8D%AE%E5%BA%93/db2/" title="db2学习">
+                        <span class="hidden-mobile">db2学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -603,7 +628,7 @@
         var options = Object.assign(
           {"clientID":"6809b6d7b005b26f279f","clientSecret":"ce8b843f080f2b78f23fc0a19607785882fb66fb","repo":"chris-z-su.github.io","owner":"Chris-z-su","admin":["Chris-z-su"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
           {
-            id: '76f10a47860e60ec4bc5b8d1a6ccf4aa'
+            id: 'dbac0191b24096f8cb2eaeba93944a49'
           }
         )
         var gitalk = new Gitalk(options);
