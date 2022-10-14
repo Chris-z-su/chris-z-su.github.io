@@ -1,0 +1,1038 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chris">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PLSQL学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PLSQL学习">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/09/27/%E6%95%B0%E6%8D%AE%E5%BA%93/PLSQL%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Bookpackage">
+<meta property="og:description" content="PLSQL学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-27T14:12:00.000Z">
+<meta property="article:modified_time" content="2022-10-13T15:53:44.823Z">
+<meta property="article:author" content="Chris">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>PLSQL学习 - Bookpackage</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_pdf/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_yule/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_music/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_xiangce/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_shipin/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_shoucangjia/iconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chris-z-su.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bookpackage</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/pdf/">
+                <i class="iconfont icon-pdf"></i>
+                PDF
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-wenhuayule"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/music/">
+                    <i class="iconfont icon-yinle"></i>
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/galleries/">
+                    <i class="iconfont icon-xiangce"></i>
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies/">
+                    <i class="iconfont icon-shipin"></i>
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://y.qq.com/">
+                    
+                    QQ音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://v.qq.com/">
+                    
+                    腾讯视频
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-yule"></i>
+                小游戏
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/clock/index.html">
+                    
+                    H5时钟
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/tower-defense/src/td.html">
+                    
+                    塔防
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/adarkroom/index.html">
+                    
+                    小黑屋
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/muboard/muboard.html">
+                    
+                    数学白板工具
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/UniverseSim/index.html">
+                    
+                    三体模拟程序
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/h5zwjs/index.html">
+                    
+                    植物大战僵尸
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://chris-z-su.github.io/NavigationPage/">
+                <i class="iconfont icon-shoucangjia"></i>
+                导航页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PLSQL学习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Chris
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-27 22:12" pubdate>
+          2022年9月27日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          7.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          65 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PLSQL学习</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：21 小时前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1 id="PLSQL学习"><a href="#PLSQL学习" class="headerlink" title="PLSQL学习"></a>PLSQL学习</h1><h2 id="一、程序结构"><a href="#一、程序结构" class="headerlink" title="一、程序结构"></a>一、程序结构</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">declare</span> <br>  <br><span class="hljs-keyword">begin</span><br>  <br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、赋值"><a href="#二、赋值" class="headerlink" title="二、赋值"></a>二、赋值</h2><ol>
+<li><p>直接赋值</p>
+<p>:&#x3D;</p>
+</li>
+<li><p>语句赋值</p>
+<p>select x into y from z;</p>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 打印人员个人信息，包括：姓名、薪水、地址</span><br><span class="hljs-keyword">declare</span> <br>  <span class="hljs-comment">-- 姓名</span><br>  v_name varchar2(<span class="hljs-number">20</span>) :<span class="hljs-operator">=</span> <span class="hljs-string">&#x27;张三&#x27;</span>;<br>  <span class="hljs-comment">-- 薪水</span><br>  v_sal number;<br>  <span class="hljs-comment">-- 地址</span><br>  v_addr varchar2(<span class="hljs-number">200</span>);<br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- 直接赋值</span><br>  v_sal :<span class="hljs-operator">=</span> <span class="hljs-number">500</span>;<br><br>  <span class="hljs-comment">-- 语句赋值</span><br>  <span class="hljs-keyword">select</span> <span class="hljs-string">&#x27;北京&#x27;</span> <span class="hljs-keyword">into</span> v_addr <span class="hljs-keyword">from</span> dual;<br><br>  <span class="hljs-comment">-- 打印输出</span><br>  dbms_output.put_line(<span class="hljs-string">&#x27;姓名：&#x27;</span> <span class="hljs-operator">||</span> v_name <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;, 薪水：&#x27;</span> <span class="hljs-operator">||</span> v_sal <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;, 地址：&#x27;</span> <span class="hljs-operator">||</span> v_addr);<br><br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>普通变量</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 打印人员个人信息，包括：姓名、薪水、地址</span><br><span class="hljs-keyword">declare</span> <br>  <span class="hljs-comment">-- 姓名</span><br>  v_name varchar2(<span class="hljs-number">20</span>) :<span class="hljs-operator">=</span> <span class="hljs-string">&#x27;张三&#x27;</span>;<br>  <span class="hljs-comment">-- 薪水</span><br>  v_sal number;<br>  <span class="hljs-comment">-- 地址</span><br>  v_addr varchar2(<span class="hljs-number">200</span>);<br><span class="hljs-keyword">begin</span><br><br>  <span class="hljs-comment">-- 语句赋值</span><br>  <span class="hljs-keyword">SELECT</span> ename, sal <span class="hljs-keyword">into</span> v_name, v_sal <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> empno <span class="hljs-operator">=</span> <span class="hljs-number">7839</span>;<br><br>  <span class="hljs-comment">-- 打印输出</span><br>  dbms_output.put_line(<span class="hljs-string">&#x27;姓名：&#x27;</span> <span class="hljs-operator">||</span> v_name <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;, 薪水：&#x27;</span> <span class="hljs-operator">||</span> v_sal <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;, 地址：&#x27;</span> <span class="hljs-operator">||</span> v_addr);<br><br><span class="hljs-keyword">end</span>;<br><br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>引用型变量</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 打印人员个人信息，包括：姓名、薪水、地址</span><br><span class="hljs-keyword">declare</span> <br>  <span class="hljs-comment">-- 姓名</span><br>  v_name emp.ename<span class="hljs-operator">%</span>type;<br>  <span class="hljs-comment">-- 薪水</span><br>  v_sal emp.sal<span class="hljs-operator">%</span>type;<br>  <span class="hljs-comment">-- 地址</span><br>  v_addr varchar2(<span class="hljs-number">200</span>);<br><span class="hljs-keyword">begin</span><br><br>  <span class="hljs-comment">-- 语句赋值</span><br>  <span class="hljs-keyword">SELECT</span> ename, sal <span class="hljs-keyword">into</span> v_name, v_sal <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> empno <span class="hljs-operator">=</span> <span class="hljs-number">7839</span>;<br><br>  <span class="hljs-comment">-- 打印输出</span><br>  dbms_output.put_line(<span class="hljs-string">&#x27;姓名：&#x27;</span> <span class="hljs-operator">||</span> v_name <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;, 薪水：&#x27;</span> <span class="hljs-operator">||</span> v_sal);<br><br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>记录型变量</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sq">-- 打印人员个人信息，包括：姓名、薪水、地址<br>declare <br>  -- 记录型变量<br>  v_emp emp%rowtype;<br><br>begin<br><br>  -- 语句赋值<br>  SELECT * into v_emp from emp where empno = 7839;<br><br>  -- 打印输出<br>  dbms_output.put_line(&#x27;姓名：&#x27; || v_emp.ename || &#x27;, 薪水：&#x27; || v_emp.sal);<br><br>end;<br></code></pre></td></tr></table></figure>
+
+<h2 id="三、流程控制"><a href="#三、流程控制" class="headerlink" title="三、流程控制"></a>三、流程控制</h2><h3 id="1-if-else"><a href="#1-if-else" class="headerlink" title="1. if else"></a>1. if else</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">begin</span><br>	if 条件 <span class="hljs-keyword">then</span> 执行<span class="hljs-number">1</span><br>	 elseif 条件<span class="hljs-number">2</span> <span class="hljs-keyword">then</span> 执行<span class="hljs-number">2</span><br>	 <span class="hljs-keyword">else</span> 执行<span class="hljs-number">3</span><br>	<span class="hljs-keyword">end</span> if;<br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 判断emp表中记录是否超过20条，10-20之间，或者10条以下</span><br><span class="hljs-keyword">declare</span><br>   <span class="hljs-comment">-- 声明变量接收emp中的数量</span><br>   v_count number;<br><br><span class="hljs-keyword">begin</span><br>   <span class="hljs-keyword">select</span> <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>) <span class="hljs-keyword">into</span> v_count <span class="hljs-keyword">from</span> emp;<br>   if v_count <span class="hljs-operator">&gt;</span> <span class="hljs-number">20</span> <span class="hljs-keyword">then</span><br>      dbms_output.put_line(<span class="hljs-string">&#x27;emp表中的记录超过了20条，为&#x27;</span> <span class="hljs-operator">||</span> v_count <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;条&#x27;</span>);<br>   elsif v_count <span class="hljs-operator">&gt;=</span> <span class="hljs-number">10</span> <span class="hljs-keyword">then</span><br>      dbms_output.put_line(<span class="hljs-string">&#x27;emp表中的记录超过了10-20条之间，为&#x27;</span> <span class="hljs-operator">||</span> v_count <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;条&#x27;</span>);<br>   <span class="hljs-keyword">else</span><br>      dbms_output.put_line(<span class="hljs-string">&#x27;emp表中的记录为10条以下，为&#x27;</span> <span class="hljs-operator">||</span> v_count <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;条&#x27;</span>);<br>   <span class="hljs-keyword">end</span> if;<br><br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-when"><a href="#2-when" class="headerlink" title="2. when"></a>2. when</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 打印数字1-10</span><br><span class="hljs-keyword">declare</span><br>   <span class="hljs-comment">-- 声明循环变量</span><br>   v_num number :<span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">begin</span><br>   loop<br>   <br>   exit <span class="hljs-keyword">when</span> v_num <span class="hljs-operator">&gt;</span> <span class="hljs-number">10</span>;<br>   <br>   dbms_output.put_line(v_num);<br>   <br>   <span class="hljs-comment">-- 循环变量的自增</span><br>   v_num :<span class="hljs-operator">=</span> v_num <span class="hljs-operator">+</span> <span class="hljs-number">1</span>;<br>   <br>   <span class="hljs-keyword">end</span> loop;<br><br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="四、游标"><a href="#四、游标" class="headerlink" title="四、游标"></a>四、游标</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><p>用于存储一个查询返回的多行数据（结果集，类似于java的JDBC连接返回的ResultSet集合），通过遍历游标，可以逐行访问处理该结果集的数据。</p>
+<p>游标的使用方式：声明–&gt;打开–&gt;读取–&gt;关闭</p>
+<h3 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h3><h4 id="1-声明"><a href="#1-声明" class="headerlink" title="1) 声明"></a>1) 声明</h4><p>cursor 游标名[(参数列表)] is 查询语句;</p>
+<h4 id="2-打开"><a href="#2-打开" class="headerlink" title="2) 打开"></a>2) 打开</h4><p>open 游标名;</p>
+<h4 id="3-取值"><a href="#3-取值" class="headerlink" title="3) 取值"></a>3) 取值</h4><p>fetch 游标名 into 变量列表;</p>
+<h4 id="4-关闭"><a href="#4-关闭" class="headerlink" title="4) 关闭"></a>4) 关闭</h4><p>close 游标名;</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 使用游标查询emp表中所有员工的姓名和工资，并将其依次打印出来。</span><br><span class="hljs-keyword">declare</span><br>   <span class="hljs-comment">-- 声明游标</span><br>   <span class="hljs-keyword">cursor</span> c_emp <span class="hljs-keyword">is</span> <span class="hljs-keyword">select</span> ename, sal <span class="hljs-keyword">from</span> emp;<br>   <br>   <span class="hljs-comment">-- 声明变量接收游标中的数据</span><br>   v_ename emp.ename<span class="hljs-operator">%</span>type;<br>   v_sal emp.sal<span class="hljs-operator">%</span>type;<br><br><span class="hljs-keyword">begin</span><br><br>   <span class="hljs-comment">-- 打开游标</span><br>   <span class="hljs-keyword">open</span> c_emp;<br>   <br>   <span class="hljs-comment">-- 遍历游标</span><br>   loop<br>   <br>   <span class="hljs-comment">-- 获取游标中的数据</span><br>   <span class="hljs-keyword">fetch</span> c_emp <span class="hljs-keyword">into</span> v_ename, v_sal;<br>   <br>   <span class="hljs-comment">-- 退出循环条件</span><br>   exit <span class="hljs-keyword">when</span> c_emp<span class="hljs-operator">%</span>notfound;<br>   <br>   dbms_output.put_line(v_ename <span class="hljs-operator">||</span> <span class="hljs-string">&#x27; - &#x27;</span> <span class="hljs-operator">||</span> v_sal);<br>   <br>   <span class="hljs-keyword">end</span> loop;<br>   <br>   <span class="hljs-comment">-- 关闭游标</span><br>   <span class="hljs-keyword">close</span> c_emp;<br><br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="带参数的游标"><a href="#带参数的游标" class="headerlink" title="带参数的游标"></a>带参数的游标</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 使用游标查询并打印某部分的员工的姓名和薪资，部门编号为运行时手动输入。</span><br><span class="hljs-keyword">declare</span><br>   <span class="hljs-comment">-- 声明游标</span><br>   <span class="hljs-keyword">cursor</span> c_emp(v_deptno emp.deptno<span class="hljs-operator">%</span>type) <span class="hljs-keyword">is</span> <span class="hljs-keyword">select</span> ename, sal <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> deptno <span class="hljs-operator">=</span> v_deptno;<br>   <br>   <span class="hljs-comment">-- 声明变量接收游标中的数据</span><br>   v_ename emp.ename<span class="hljs-operator">%</span>type;<br>   v_sal emp.sal<span class="hljs-operator">%</span>type;<br><br><span class="hljs-keyword">begin</span><br><br>   <span class="hljs-comment">-- 打开游标</span><br>   <span class="hljs-keyword">open</span> c_emp(<span class="hljs-number">10</span>);<br>   <br>   <span class="hljs-comment">-- 遍历游标</span><br>   loop<br>   <br>   <span class="hljs-comment">-- 获取游标中的数据</span><br>   <span class="hljs-keyword">fetch</span> c_emp <span class="hljs-keyword">into</span> v_ename, v_sal;<br>   <br>   <span class="hljs-comment">-- 退出循环条件</span><br>   exit <span class="hljs-keyword">when</span> c_emp<span class="hljs-operator">%</span>notfound;<br>   <br>   dbms_output.put_line(v_ename <span class="hljs-operator">||</span> <span class="hljs-string">&#x27; - &#x27;</span> <span class="hljs-operator">||</span> v_sal);<br>   <br>   <span class="hljs-keyword">end</span> loop;<br>   <br>   <span class="hljs-comment">-- 关闭游标</span><br>   <span class="hljs-keyword">close</span> c_emp;<br><br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="五、存储过程"><a href="#五、存储过程" class="headerlink" title="五、存储过程"></a>五、存储过程</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1. 概念"></a>1. 概念</h3><h3 id="2-语法-1"><a href="#2-语法-1" class="headerlink" title="2. 语法"></a>2. 语法</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> 过程名称[(参数列表)] <span class="hljs-keyword">is</span><br><span class="hljs-keyword">begin</span><br><br><span class="hljs-keyword">end</span> [过程名称]<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-无参存储过程"><a href="#3-无参存储过程" class="headerlink" title="3. 无参存储过程"></a>3. 无参存储过程</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> p_hello <span class="hljs-keyword">as</span> <span class="hljs-comment">-- is和as可以互用</span><br><span class="hljs-comment">-- 声明变量</span><br><span class="hljs-keyword">begin</span><br>dbms_output.put_line(<span class="hljs-string">&#x27;hello, world&#x27;</span>);<br><span class="hljs-keyword">end</span> p_hello;<br><br><span class="hljs-comment">-- 调用</span><br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- plsql调用存储过程</span><br>  p_hello;<br><span class="hljs-keyword">end</span>;<br><br><span class="hljs-comment">-- sqlplus窗口中调用</span><br>exex p_hello;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-带输入参数的存储过程"><a href="#4-带输入参数的存储过程" class="headerlink" title="4. 带输入参数的存储过程"></a>4. 带输入参数的存储过程</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 查询并打印某个员工(如7839号员工)的姓名和薪水</span><br><span class="hljs-comment">-- 存储过程：要求，调用的时候传入员工编号，自动控制台打印</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> p_querynameandsal(i_empno <span class="hljs-keyword">in</span> emp.empno<span class="hljs-operator">%</span>type) <span class="hljs-keyword">as</span><br><span class="hljs-comment">-- 声明变量</span><br>v_name emp.ename<span class="hljs-operator">%</span>type;<br>v_sal emp.sal<span class="hljs-operator">%</span>type;<br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- 查询</span><br>  <span class="hljs-keyword">select</span> ename, sal <span class="hljs-keyword">into</span> v_name, v_sal <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> empno <span class="hljs-operator">=</span> i_empno;<br>  <br>  dbms_output.put_line(v_name <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;_&#x27;</span> <span class="hljs-operator">||</span> v_sal);<br><br><span class="hljs-keyword">end</span> p_querynameandsal;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 调用</span><br><span class="hljs-comment">-- Created on 2022/08/17 by CHRIS </span><br><span class="hljs-keyword">declare</span> <br>  <span class="hljs-comment">-- Local variables here</span><br>  i <span class="hljs-type">integer</span>;<br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- Test statements here</span><br>  p_querynameandsal(<span class="hljs-number">7839</span>);<br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-带输出参数的存储过程"><a href="#5-带输出参数的存储过程" class="headerlink" title="5. 带输出参数的存储过程"></a>5. 带输出参数的存储过程</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 查询并打印某个员工(如7839号员工)的姓名和薪水</span><br><span class="hljs-comment">-- 存储过程：要求，调用的时候传入员工编号，自动控制台打印</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> p_querysal_out(i_empno <span class="hljs-keyword">in</span> emp.empno<span class="hljs-operator">%</span>type, o_sal <span class="hljs-keyword">out</span> emp.sal<span class="hljs-operator">%</span>type) <span class="hljs-keyword">as</span><br><span class="hljs-comment">-- 声明变量</span><br>v_name emp.ename<span class="hljs-operator">%</span>type;<br>v_sal emp.sal<span class="hljs-operator">%</span>type;<br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- 查询</span><br>  <span class="hljs-keyword">select</span> sal <span class="hljs-keyword">into</span> v_sal <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> empno <span class="hljs-operator">=</span> i_empno;<br><br><span class="hljs-keyword">end</span> p_querysal_out;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 调用</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 输入员工号查询某个员工(7839号员工)的信息，要求：将薪水作为返回值输出，给调用的程序使用。</span><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> p_querysal_out(i_empno <span class="hljs-keyword">in</span> emp.empno<span class="hljs-operator">%</span>type, o_sal <span class="hljs-keyword">out</span> emp.sal<span class="hljs-operator">%</span>type) <span class="hljs-keyword">as</span><br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- 查询</span><br>  <span class="hljs-keyword">select</span> sal <span class="hljs-keyword">into</span> o_sal <span class="hljs-keyword">from</span> emp <span class="hljs-keyword">where</span> empno <span class="hljs-operator">=</span> i_empno;<br><br><span class="hljs-keyword">end</span> p_querysal_out;<br><br><span class="hljs-comment">-- 调用</span><br><span class="hljs-comment">-- Created on 2022/08/17 by CHRIS </span><br><span class="hljs-keyword">declare</span> <br>  <span class="hljs-comment">-- 声明变量接收存储过程中输出的参数</span><br>  v_sal emp.sal<span class="hljs-operator">%</span>type;<br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- Test statements here</span><br>  p_querysal_out(<span class="hljs-number">7839</span>, v_sal);<br>  dbms_output.put_line(v_sal);<br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs sql"><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> sptDatePro( <span class="hljs-comment">--存储过程名称</span><br>                                       v_spt_date_st <span class="hljs-keyword">in</span> test02.spt_date<span class="hljs-operator">%</span>TYPE, <span class="hljs-comment">--起始日期</span><br>                                       v_spt_date_ed <span class="hljs-keyword">in</span> test02.spt_date<span class="hljs-operator">%</span>TYPE, <span class="hljs-comment">--终止日期</span><br>                                       v_spt_date    <span class="hljs-keyword">out</span> test02.spt_date<span class="hljs-operator">%</span>TYPE,<br>                                       v_code1       <span class="hljs-keyword">in</span> <span class="hljs-keyword">out</span> test02.code1<span class="hljs-operator">%</span>TYPE,<br>                                       v_code2       <span class="hljs-keyword">in</span> <span class="hljs-keyword">out</span> test02.code2<span class="hljs-operator">%</span>TYPE,<br>                                       v_code3       <span class="hljs-keyword">in</span> <span class="hljs-keyword">out</span> test02.code3<span class="hljs-operator">%</span>TYPE,<br>                                       v_num         <span class="hljs-keyword">out</span> test02.num<span class="hljs-operator">%</span>TYPE) <span class="hljs-keyword">is</span><br><span class="hljs-comment">-- 申明变量</span><br><span class="hljs-keyword">declare</span>  <br>   v_currdate <span class="hljs-type">date</span>; <span class="hljs-comment">--当前日期</span><br>   v_ymd      <span class="hljs-type">date</span>; <span class="hljs-comment">--开始日期</span><br>   v_endymd   <span class="hljs-type">date</span>; <span class="hljs-comment">--结束日期</span><br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">/*****程序变量******/</span><br><br>  <span class="hljs-comment">/*****程序变量******/</span><br>  <span class="hljs-comment">-- set v_currdat = to_date(I_DATE, &#x27;YYYYMMDD&#x27;);  --数据日期</span><br>  v_ymd    :<span class="hljs-operator">=</span> to_date(v_spt_date_st, <span class="hljs-string">&#x27;YYYYMMDD&#x27;</span>); <span class="hljs-comment">--开始日期</span><br>  v_endymd :<span class="hljs-operator">=</span> to_date(v_spt_date_ed, <span class="hljs-string">&#x27;YYYYMMDD&#x27;</span>); <span class="hljs-comment">--结束日期</span><br><br>  print v_ymd;<br>  print v_endymd;<br><br>  <span class="hljs-comment">/*****执行体******/</span><br>  while v_ymd <span class="hljs-operator">&lt;=</span> v_endymd <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test02( <span class="hljs-comment">--表名</span><br>               spt_date,<br>               code1,<br>               code2,<br>               code3,<br>               num)<br>    <span class="hljs-keyword">select</span> v_ymd, v_code1, v_code2, v_code3, <span class="hljs-type">int</span>(rand() <span class="hljs-operator">*</span> <span class="hljs-number">100</span>)<br>           <span class="hljs-keyword">from</span> sysibm.dual; <span class="hljs-keyword">set</span> v_ymd <span class="hljs-operator">=</span> v_ymd <span class="hljs-operator">+</span> <span class="hljs-number">1</span>; <br>   <span class="hljs-keyword">end</span> loop;<br>   <span class="hljs-keyword">commit</span>;<br>    <span class="hljs-comment">/*****执行逻辑结束******/</span><br>  <span class="hljs-comment">-- set s_stepds = &#x27;结束&#x27;;</span><br>  <span class="hljs-comment">-- call SCM_ITF.sp_pb_log(&#x27;done&#x27;, s_procds, s_datadt, null, s_stepds, s_steno);</span><br>  <span class="hljs-comment">-- commit;</span><br><span class="hljs-keyword">end</span>;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">OR</span> REPLACE <span class="hljs-keyword">PROCEDURE</span> query_emp (                                <br>  v_emp_no          <span class="hljs-keyword">IN</span>      emp.empno<span class="hljs-operator">%</span>TYPE,              <br>  v_emp_name          <span class="hljs-keyword">OUT</span>      emp.ename<span class="hljs-operator">%</span>TYPE,              <br>  v_emp_sal          <span class="hljs-keyword">OUT</span>      emp.sal<span class="hljs-operator">%</span>TYPE,              <br>  v_emp_comm          <span class="hljs-keyword">OUT</span>      emp.comm<span class="hljs-operator">%</span>TYPE)              <br><span class="hljs-keyword">IS</span>                                                         <br><span class="hljs-keyword">BEGIN</span>                                <br>  <span class="hljs-keyword">SELECT</span> ename,sal,comm <span class="hljs-keyword">INTO</span> v_emp_name,v_emp_sal,v_emp_comm <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> empno <span class="hljs-operator">=</span> v_emp_no;                              <br><span class="hljs-keyword">END</span> query_emp;                                <br><br><br><span class="hljs-keyword">SELECT</span> t.<span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span>  emp t;<br><br><br><span class="hljs-keyword">begin</span><br>  <span class="hljs-comment">-- Call the procedure</span><br>  query_emp(v_emp_no <span class="hljs-operator">=</span><span class="hljs-operator">&gt;</span> :v_emp_no,<br>            v_emp_name <span class="hljs-operator">=</span><span class="hljs-operator">&gt;</span> :v_emp_name,<br>            v_emp_sal <span class="hljs-operator">=</span><span class="hljs-operator">&gt;</span> :v_emp_sal,<br>            v_emp_comm <span class="hljs-operator">=</span><span class="hljs-operator">&gt;</span> :v_emp_comm);<br><span class="hljs-keyword">end</span>;<br><br><br><span class="hljs-keyword">declare</span><br>  I <span class="hljs-type">integer</span>;<br><span class="hljs-keyword">begin</span><br>  Dbms_Output.put_line(<span class="hljs-string">&#x27;hello, world&#x27;</span>);<br><span class="hljs-keyword">end</span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> test02(<br> spt_date varchar2(<span class="hljs-number">10</span>),<br> code1 varchar2(<span class="hljs-number">2</span>),<br> code2 varchar2(<span class="hljs-number">2</span>),<br> code3 varchar2(<span class="hljs-number">2</span>),<br> num number(<span class="hljs-number">10</span>,<span class="hljs-number">0</span>)<br>);<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> SCM_ITF.dataPro ( <span class="hljs-comment">--存储过程名称</span><br>    <span class="hljs-keyword">IN</span> &quot;I_DATE&quot; <span class="hljs-type">VARCHAR</span>(<span class="hljs-number">8</span>) <span class="hljs-comment">--起始日期</span><br>) <br><span class="hljs-keyword">is</span><br><span class="hljs-keyword">begin</span><br>    <span class="hljs-comment">/*****程序变量******/</span><br>    <span class="hljs-keyword">declare</span> v_currdate <span class="hljs-type">date</span>; <span class="hljs-comment">--当前日期</span><br>    <span class="hljs-keyword">declare</span> v_ymd <span class="hljs-type">date</span>; <span class="hljs-comment">--开始日期</span><br>    <span class="hljs-keyword">declare</span> v_endymd <span class="hljs-type">date</span>;  <span class="hljs-comment">--结束日期</span><br>    <span class="hljs-comment">/*****程序变量******/</span><br>    <span class="hljs-keyword">set</span> v_currdat <span class="hljs-operator">=</span> to_date(I_DATE, <span class="hljs-string">&#x27;YYYYMMDD&#x27;</span>);  <span class="hljs-comment">--数据日期</span><br>    <span class="hljs-keyword">set</span> v_ymd <span class="hljs-operator">=</span> to_date(<span class="hljs-keyword">year</span>(v_currdate)<span class="hljs-operator">||</span><span class="hljs-string">&#x27;-01-01&#x27;</span>, <span class="hljs-string">&#x27;YYYYMMDD&#x27;</span>);  <span class="hljs-comment">--开始日期</span><br>    <span class="hljs-keyword">set</span> v_endymd <span class="hljs-operator">=</span> to_date(<span class="hljs-keyword">year</span>(v_currdate)<span class="hljs-operator">||</span><span class="hljs-string">&#x27;-12-31&#x27;</span>, <span class="hljs-string">&#x27;YYYYMMDD&#x27;</span>);  <span class="hljs-comment">--结束日期</span><br><br>    <span class="hljs-comment">/*****执行体******/</span><br>    while v_ymd <span class="hljs-operator">&lt;=</span> v_endymd<br>    do<br>        <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> scm_app.t_tabname ( <span class="hljs-comment">--表名</span><br>            a<br>            , b<br>            , c<br>            , d<br>        )<br>        <span class="hljs-keyword">select</span> <br>            <span class="hljs-string">&#x27;001&#x27;</span><br>            , <span class="hljs-string">&#x27;usd&#x27;</span><br>            , v_ymd<br>            , <span class="hljs-number">0</span><br>            , <span class="hljs-keyword">null</span><br>        <span class="hljs-keyword">from</span> sysibm.dual<br>        ;<br>        <span class="hljs-keyword">set</span> v_ymd <span class="hljs-operator">=</span> v_ymd <span class="hljs-operator">+</span> <span class="hljs-number">1</span> <span class="hljs-keyword">day</span>;<br>    <span class="hljs-keyword">end</span> while;<br>    <span class="hljs-keyword">commit</span>;<br>    <span class="hljs-comment">/*****执行逻辑结束******/</span><br>    <span class="hljs-keyword">set</span> s_stepds <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;结束&#x27;</span>;<br>    <span class="hljs-keyword">call</span> SCM_ITF.sp_pb_log(<span class="hljs-string">&#x27;done&#x27;</span>, s_procds, s_datadt, <span class="hljs-keyword">null</span>, s_stepds, s_steno);<br>    <span class="hljs-keyword">commit</span>;<br><span class="hljs-keyword">end</span>@<br><br><br><span class="hljs-number">2022</span><span class="hljs-number">-01</span><span class="hljs-number">-01</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs sql"><br><span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> replace <span class="hljs-keyword">procedure</span> sptDatePro ( <span class="hljs-comment">--存储过程名称</span><br>    v_spt_date_st <span class="hljs-keyword">in</span> test02.spt_date<span class="hljs-operator">%</span>TYPE, <span class="hljs-comment">--起始日期</span><br>    v_spt_date_ed <span class="hljs-keyword">in</span> test02.spt_date<span class="hljs-operator">%</span>TYPE, <span class="hljs-comment">--终止日期</span><br>    v_spt_date <span class="hljs-keyword">out</span> test02.spt_date<span class="hljs-operator">%</span>TYPE,<br>    v_code1 <span class="hljs-keyword">in</span> <span class="hljs-keyword">out</span> test02.code1<span class="hljs-operator">%</span>TYPE,<br>    v_code2 <span class="hljs-keyword">in</span> <span class="hljs-keyword">out</span> test02.code2<span class="hljs-operator">%</span>TYPE,<br>    v_code3 <span class="hljs-keyword">in</span> <span class="hljs-keyword">out</span> test02.code3<span class="hljs-operator">%</span>TYPE,<br>    v_num <span class="hljs-keyword">out</span> test02.num<span class="hljs-operator">%</span>TYPE<br>) <br><span class="hljs-keyword">is</span><br><span class="hljs-keyword">declare</span> <br>    v_currdate <span class="hljs-type">date</span>; <span class="hljs-comment">--当前日期</span><br>    v_ymd <span class="hljs-type">date</span>; <span class="hljs-comment">--开始日期</span><br>    v_endymd <span class="hljs-type">date</span>;  <span class="hljs-comment">--结束日期</span><br><span class="hljs-keyword">begin</span><br>    <span class="hljs-comment">/*****程序变量******/</span><br><br>    <span class="hljs-comment">/*****程序变量******/</span><br>    <span class="hljs-comment">-- set v_currdat = to_date(I_DATE, &#x27;YYYYMMDD&#x27;);  --数据日期</span><br>    v_ymd :<span class="hljs-operator">=</span> to_date(v_spt_date_st, <span class="hljs-string">&#x27;YYYYMMDD&#x27;</span>);  <span class="hljs-comment">--开始日期</span><br>    v_endymd :<span class="hljs-operator">=</span> to_date(v_spt_date_ed, <span class="hljs-string">&#x27;YYYYMMDD&#x27;</span>);  <span class="hljs-comment">--结束日期</span><br><br>    print v_ymd;<br>    print v_endymd;<br><br>    <span class="hljs-comment">/*****执行体******/</span><br>    while v_ymd <span class="hljs-operator">&lt;=</span> v_endymd<br>        <span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test02 ( <span class="hljs-comment">--表名</span><br>            spt_date<br>            , code1<br>            , code2<br>            , code3<br>            , num<br>        )<br>        <span class="hljs-keyword">select</span> <br>            v_ymd<br>            , v_code1<br>            , v_code2<br>            , v_code3<br>            , <span class="hljs-type">int</span>(rand()<span class="hljs-operator">*</span><span class="hljs-number">100</span>)<br>        <span class="hljs-keyword">from</span> sysibm.dual<br>        ;<br>        <span class="hljs-keyword">set</span> v_ymd <span class="hljs-operator">=</span> v_ymd <span class="hljs-operator">+</span> <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">end</span> loop;<br>    <span class="hljs-keyword">commit</span>;<br>    <span class="hljs-comment">/*****执行逻辑结束******/</span><br>    <span class="hljs-comment">-- set s_stepds = &#x27;结束&#x27;;</span><br>    <span class="hljs-comment">-- call SCM_ITF.sp_pb_log(&#x27;done&#x27;, s_procds, s_datadt, null, s_stepds, s_steno);</span><br>    <span class="hljs-comment">-- commit;</span><br><span class="hljs-keyword">end</span> sptDatePro;<br><br><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> test02;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+              
+            </div>
+            
+            <!-- 打赏模块，参考：https://blog.kukmoon.com/7bf76e1d.html -->
+            <div style="text-align: center; margin: auto;"><!--自己添加的打赏模块：开始-->
+              <!--如果主题的  _config.yml 中开启打赏-->
+                <hr><!--放一条水平线与文章正文内容区分-->
+                <div style="background-color: #663399; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; border-radius: 8px;margin-bottom: 10px;"><!-- 显示“打赏支持”的盒子-->
+                 <!--如果博客语言是中文，就显示“打赏支持”，非中文一律显示“Donate”-->
+                  打赏支持
+                	
+              </div>
+                <div style="font-size: 14px;margin-bottom: 10px;">
+                “请博主喝杯咖啡 o(*^ω^*)o” <!--在主题的 _config.yml 中设置打赏提示语-->
+              </div>
+                <div style="width: auto; height: auto; max-width: 600px; max-height: 600px; text-align: center; margin: auto; "><!--两张二维码强制放在同一行，以免换行，强制设定图片的宽度随页面的变化而变化，图片最大宽度为300 px-->
+                <img src="/img/alipay_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height:auto; max-width: 50%;"><img src="/img/weChat_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height: auto; max-width: 50%;"><!--在主题的 _config.yaml 中设置打赏二维码图片-->
+              </div>
+              
+            </div> <!--自己添加的打赏模块：结束-->
+
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/PLSQL/" class="category-chain-item">PLSQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PLSQL学习</div>
+      <div>https://chris-z-su.github.io/2022/09/27/数据库/PLSQL学习/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Chris</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月27日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/27/%E6%8A%80%E6%9C%AF/%E4%B8%8B%E8%BD%BDYoutube%E8%A7%86%E9%A2%91%E5%92%8C%E5%AD%97%E5%B9%95/" title="下载Youtube视频和字幕">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">下载Youtube视频和字幕</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/25/%E6%95%B0%E6%8D%AE%E5%BA%93/db2/" title="db2学习">
+                        <span class="hidden-mobile">db2学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/gitalk/1.7.2/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"6809b6d7b005b26f279f","clientSecret":"ce8b843f080f2b78f23fc0a19607785882fb66fb","repo":"chris-z-su.github.io","owner":"Chris-z-su","admin":["Chris-z-su"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
+          {
+            id: 'f448099d9e207369e3b055bda48f6c0c'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
