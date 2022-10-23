@@ -16,20 +16,21 @@
   <meta name="author" content="Chris">
   <meta name="keywords" content="">
   
-    <meta name="description" content="winclean">
+    <meta name="description" content="Windows脚本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="winclean">
-<meta property="og:url" content="https://chris-z-su.github.io/2022/10/15/%E6%8A%80%E6%9C%AF/winclean/index.html">
+<meta property="og:title" content="Windows脚本">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/10/15/%E6%8A%80%E6%9C%AF/Windows%E8%84%9A%E6%9C%AC/index.html">
 <meta property="og:site_name" content="Bookpackage">
-<meta property="og:description" content="winclean">
+<meta property="og:description" content="Windows脚本">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-15T13:39:50.000Z">
-<meta property="article:modified_time" content="2022-10-16T01:46:59.485Z">
+<meta property="article:modified_time" content="2022-10-23T02:37:44.673Z">
 <meta property="article:author" content="Chris">
+<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>winclean - Bookpackage</title>
+  <title>Windows脚本 - Bookpackage</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -351,7 +352,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="winclean"></span>
+            <span id="subtitle" data-typed-text="Windows脚本"></span>
           
         </div>
 
@@ -380,7 +381,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.9k 字
+          4.7k 字
         
       </span>
     
@@ -392,7 +393,7 @@
         
         
           <!-- compatible with older versions-->
-          24 分钟
+          39 分钟
         
       </span>
     
@@ -438,32 +439,35 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">winclean</h1>
+            <h1 style="display: none">Windows脚本</h1>
             
               <p class="note note-info">
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：7 天前
+                    本文最后更新于：几秒前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h1 id="winclean"><a href="#winclean" class="headerlink" title="winclean"></a>winclean</h1><h2 id="Windows-C盘清理脚本"><a href="#Windows-C盘清理脚本" class="headerlink" title="Windows C盘清理脚本"></a>Windows C盘清理脚本</h2><blockquote>
+              <h1 id="Windows脚本"><a href="#Windows脚本" class="headerlink" title="Windows脚本"></a>Windows脚本</h1><h2 id="1-Windows-C盘清理脚本"><a href="#1-Windows-C盘清理脚本" class="headerlink" title="1. Windows C盘清理脚本"></a>1. Windows C盘清理脚本</h2><blockquote>
 <p>cclear.bat</p>
 </blockquote>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">@<span class="hljs-keyword">echo</span> off<br> rem https:<span class="hljs-string">//www.tangshanwei.com/n/29579.html</span><br> <span class="hljs-keyword">echo</span> 正在清除系统垃圾文件，请稍等……<br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %systemdrive%\*<span class="hljs-string">.tmp</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %systemdrive%\*<span class="hljs-string">._mp</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %systemdrive%\*<span class="hljs-string">.log</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %systemdrive%\*<span class="hljs-string">.gid</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %systemdrive%\*<span class="hljs-string">.chk</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %systemdrive%\*<span class="hljs-string">.old</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %systemdrive%\recycled\*.*<br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %windir%\*<span class="hljs-string">.bak</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %windir%\prefetch\*.*<br> rd <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> %windir%\temp &amp; md %windir%\temp<br> del <span class="hljs-string">/f</span> <span class="hljs-string">/q</span> %userprofile%\cookies\*.*<br> del <span class="hljs-string">/f</span> <span class="hljs-string">/q</span> %userprofile%\recent\*.*<br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> <span class="hljs-string">&quot;%userprofile%\Local Settings\Temporary Internet Files\*.*&quot;</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> <span class="hljs-string">&quot;%userprofile%\Local Settings\Temp\*.*&quot;</span><br> del <span class="hljs-string">/f</span> <span class="hljs-string">/s</span> <span class="hljs-string">/q</span> <span class="hljs-string">&quot;%userprofile%\recent\*.*&quot;</span><br> <span class="hljs-keyword">echo</span> 一键清理系统垃圾完成！<br><br> <span class="hljs-keyword">echo</span>. &amp; pause<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">@echo off<br> rem https://www.tangshanwei.com/n/29579.html<br> echo 正在清除系统垃圾文件，请稍等……<br> del /f /s /q %systemdrive%\*.tmp<br> del /f /s /q %systemdrive%\*._mp<br> del /f /s /q %systemdrive%\*.log<br> del /f /s /q %systemdrive%\*.gid<br> del /f /s /q %systemdrive%\*.chk<br> del /f /s /q %systemdrive%\*.old<br> del /f /s /q %systemdrive%\recycled\*.*<br> del /f /s /q %windir%\*.bak<br> del /f /s /q %windir%\prefetch\*.*<br> rd /s /q %windir%\temp &amp; md %windir%\temp<br> del /f /q %userprofile%\cookies\*.*<br> del /f /q %userprofile%\recent\*.*<br> del /f /s /q &quot;%userprofile%\Local Settings\Temporary Internet Files\*.*&quot;<br> del /f /s /q &quot;%userprofile%\Local Settings\Temp\*.*&quot;<br> del /f /s /q &quot;%userprofile%\recent\*.*&quot;<br> echo 一键清理系统垃圾完成！<br><br> echo. &amp; pause<br></code></pre></td></tr></table></figure>
 
-<h2 id="cmd脚本示例"><a href="#cmd脚本示例" class="headerlink" title="cmd脚本示例"></a>cmd脚本示例</h2><blockquote>
+<h2 id="2-cmd脚本示例"><a href="#2-cmd脚本示例" class="headerlink" title="2. cmd脚本示例"></a>2. cmd脚本示例</h2><blockquote>
 <p>test.bat</p>
 </blockquote>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs dos">@<span class="hljs-built_in">echo</span> off<br><br>::需要进行备份的源文件夹<br><span class="hljs-built_in">set</span> sourceDir=&quot;D:\Program Files\Minecraft\<span class="hljs-number">1</span>.<span class="hljs-number">18</span>.<span class="hljs-number">2</span>\.minecraft\saves\&quot;<br><span class="hljs-built_in">set</span> outName=单人生存_1_18<br><br><span class="hljs-built_in">set</span> sourceDir=<span class="hljs-variable">%sourceDir:~1%</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">%sourceDir%</span><br><span class="hljs-built_in">set</span> sourceDir=<span class="hljs-variable">%sourceDir:~0,-1%</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">%sourceDir%</span><br><span class="hljs-built_in">echo</span> 输出: <span class="hljs-variable">%sourceDir%</span><span class="hljs-variable">%outName%</span><span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span>.zip<br><br><span class="hljs-built_in">echo</span> 执行完成!<br><br><span class="hljs-built_in">echo</span> 请选择需要备份文件夹，按<span class="hljs-number">3</span>跳过<br>choice /C <span class="hljs-number">123</span> /T <span class="hljs-number">15</span> /D <span class="hljs-number">3</span> /M &quot;<span class="hljs-number">1</span>、单人生存_1_18  <span class="hljs-number">2</span>、空岛生存  <span class="hljs-number">3</span>、跳过(默认)&quot;<br><br><span class="hljs-keyword">if</span> <span class="hljs-keyword">errorlevel</span> <span class="hljs-number">1</span> <span class="hljs-built_in">set</span> outName2=单人生存_1_18<br><span class="hljs-keyword">if</span> <span class="hljs-keyword">errorlevel</span> <span class="hljs-number">2</span> <span class="hljs-built_in">set</span> outName2=空岛生存<br><span class="hljs-keyword">if</span> <span class="hljs-keyword">errorlevel</span> <span class="hljs-number">3</span> <span class="hljs-built_in">set</span> outName2=单人生存_1_18<br><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">%outName2%</span><br><br><span class="hljs-built_in">set</span> CURRENT_DATE_STRING=<span class="hljs-variable">%date:~0,4%</span><span class="hljs-variable">%date:~5,2%</span><span class="hljs-variable">%date:~8,2%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_DATE_STRING=<span class="hljs-variable">%CURRENT_DATE_STRING%</span><br><span class="hljs-built_in">set</span> &quot;TIME_STRING_FILL_ZREO=%<span class="hljs-built_in">time</span>: =<span class="hljs-number">0</span>%&quot;<br>::<span class="hljs-built_in">echo</span> TIME_STRING_FILL_ZREO=<span class="hljs-variable">%TIME_STRING_FILL_ZREO%</span><br><span class="hljs-built_in">set</span> CURRENT_TIME_STRING=<span class="hljs-variable">%TIME_STRING_FILL_ZREO:~0,2%</span><span class="hljs-variable">%TIME_STRING_FILL_ZREO:~3,2%</span><span class="hljs-variable">%TIME_STRING_FILL_ZREO:~6,2%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_TIME_STRING=<span class="hljs-variable">%CURRENT_TIME_STRING%</span><br><span class="hljs-built_in">set</span> CURRENT_DATE_TIME_STRING=<span class="hljs-variable">%CURRENT_DATE_STRING%</span><span class="hljs-variable">%CURRENT_TIME_STRING%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_DATE_TIME_STRING=<span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span><br><br><span class="hljs-built_in">echo</span> 输出: <span class="hljs-variable">%sourceDir%</span><span class="hljs-variable">%outName2%</span><span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span>.zip<br><br><span class="hljs-built_in">pause</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs shell">@echo off<br><br>::需要进行备份的源文件夹<br>set sourceDir=&quot;D:\Program Files\Minecraft\1.18.2\.minecraft\saves\&quot;<br>set outName=单人生存_1_18<br><br>set sourceDir=%sourceDir:~1%<br>echo %sourceDir%<br>set sourceDir=%sourceDir:~0,-1%<br>echo %sourceDir%<br>echo 输出: %sourceDir%%outName%%CURRENT_DATE_TIME_STRING%.zip<br><br>echo 执行完成!<br><br>echo 请选择需要备份文件夹，按3跳过<br>choice /C 123 /T 15 /D 3 /M &quot;1、单人生存_1_18  2、空岛生存  3、跳过(默认)&quot;<br><br>if errorlevel 1 set outName2=单人生存_1_18<br>if errorlevel 2 set outName2=空岛生存<br>if errorlevel 3 set outName2=单人生存_1_18<br><br>echo %outName2%<br><br>set CURRENT_DATE_STRING=%date:~0,4%%date:~5,2%%date:~8,2%<br>::echo CURRENT_DATE_STRING=%CURRENT_DATE_STRING%<br>set &quot;TIME_STRING_FILL_ZREO=%time: =0%&quot;<br>::echo TIME_STRING_FILL_ZREO=%TIME_STRING_FILL_ZREO%<br>set CURRENT_TIME_STRING=%TIME_STRING_FILL_ZREO:~0,2%%TIME_STRING_FILL_ZREO:~3,2%%TIME_STRING_FILL_ZREO:~6,2%<br>::echo CURRENT_TIME_STRING=%CURRENT_TIME_STRING%<br>set CURRENT_DATE_TIME_STRING=%CURRENT_DATE_STRING%%CURRENT_TIME_STRING%<br>::echo CURRENT_DATE_TIME_STRING=%CURRENT_DATE_TIME_STRING%<br><br>echo 输出: %sourceDir%%outName2%%CURRENT_DATE_TIME_STRING%.zip<br><br>pause<br></code></pre></td></tr></table></figure>
 
-<p>备份：</p>
-<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs dos">@<span class="hljs-built_in">echo</span> off<br><br>::需要进行备份的源文件夹<br><span class="hljs-built_in">set</span> sourceDir=&quot;D:\Program Files\Minecraft\<span class="hljs-number">1</span>.<span class="hljs-number">18</span>.<span class="hljs-number">2</span>\.minecraft\saves\&quot;<br><span class="hljs-built_in">set</span> outName=单人生存_1_18<br><br><span class="hljs-built_in">echo</span> 请选择需要备份文件夹，按<span class="hljs-number">3</span>跳过<br><br><span class="hljs-built_in">set</span> /p input=请选择一个喜欢的数字：<br><span class="hljs-comment"></span><br><span class="hljs-comment">@REM choice /C 123 /T 15 /D 3 /M &quot;1、单人生存_1_18  2、空岛生存  3、跳过(默认)&quot;</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">@REM if errorlevel 1 set outName2=单人生存_1_18</span><br><span class="hljs-comment">@REM if errorlevel 2 set outName2=空岛生存</span><br><span class="hljs-comment">@REM if errorlevel 3 set outName2=单人生存_1_18</span><br><br><span class="hljs-built_in">set</span> outName2=单人生存_1_18<br><span class="hljs-keyword">if</span> <span class="hljs-variable">%input%</span>=<span class="hljs-number">1</span>(<br>    <span class="hljs-built_in">set</span> outName2=单人生存_1_18<br>) <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-variable">%input%</span>=<span class="hljs-number">2</span>(<br>    <span class="hljs-built_in">set</span> outName2=空岛生存<br>) <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-variable">%input%</span>=<span class="hljs-number">3</span>(<br>    <span class="hljs-built_in">set</span> outName2=单人生存_1_18<br>)<br><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">%outName2%</span><br><br><span class="hljs-built_in">set</span> CURRENT_DATE_STRING=<span class="hljs-variable">%date:~0,4%</span><span class="hljs-variable">%date:~5,2%</span><span class="hljs-variable">%date:~8,2%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_DATE_STRING=<span class="hljs-variable">%CURRENT_DATE_STRING%</span><br><span class="hljs-built_in">set</span> &quot;TIME_STRING_FILL_ZREO=%<span class="hljs-built_in">time</span>: =<span class="hljs-number">0</span>%&quot;<br>::<span class="hljs-built_in">echo</span> TIME_STRING_FILL_ZREO=<span class="hljs-variable">%TIME_STRING_FILL_ZREO%</span><br><span class="hljs-built_in">set</span> CURRENT_TIME_STRING=<span class="hljs-variable">%TIME_STRING_FILL_ZREO:~0,2%</span><span class="hljs-variable">%TIME_STRING_FILL_ZREO:~3,2%</span><span class="hljs-variable">%TIME_STRING_FILL_ZREO:~6,2%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_TIME_STRING=<span class="hljs-variable">%CURRENT_TIME_STRING%</span><br><span class="hljs-built_in">set</span> CURRENT_DATE_TIME_STRING=<span class="hljs-variable">%CURRENT_DATE_STRING%</span><span class="hljs-variable">%CURRENT_TIME_STRING%</span><br>::<span class="hljs-built_in">echo</span> CURRENT_DATE_TIME_STRING=<span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span><br><br><span class="hljs-built_in">echo</span> 输出: <span class="hljs-variable">%sourceDir%</span><span class="hljs-variable">%outName2%</span><span class="hljs-variable">%CURRENT_DATE_TIME_STRING%</span>.zip<br><br><span class="hljs-built_in">pause</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-备份："><a href="#3-备份：" class="headerlink" title="3. 备份："></a>3. 备份：</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs shell">@echo off<br><br>::需要进行备份的源文件夹<br>set sourceDir=&quot;D:\Program Files\Minecraft\1.18.2\.minecraft\saves\&quot;<br>set outName=单人生存_1_18<br><br>echo 请选择需要备份文件夹，按3跳过<br><br>set /p input=请选择一个喜欢的数字：<br><br>@REM choice /C 123 /T 15 /D 3 /M &quot;1、单人生存_1_18  2、空岛生存  3、跳过(默认)&quot;<br><br>@REM if errorlevel 1 set outName2=单人生存_1_18<br>@REM if errorlevel 2 set outName2=空岛生存<br>@REM if errorlevel 3 set outName2=单人生存_1_18<br><br>set outName2=单人生存_1_18<br>if %input%=1(<br>    set outName2=单人生存_1_18<br>) else if %input%=2(<br>    set outName2=空岛生存<br>) else if %input%=3(<br>    set outName2=单人生存_1_18<br>)<br><br>echo %outName2%<br><br>set CURRENT_DATE_STRING=%date:~0,4%%date:~5,2%%date:~8,2%<br>::echo CURRENT_DATE_STRING=%CURRENT_DATE_STRING%<br>set &quot;TIME_STRING_FILL_ZREO=%time: =0%&quot;<br>::echo TIME_STRING_FILL_ZREO=%TIME_STRING_FILL_ZREO%<br>set CURRENT_TIME_STRING=%TIME_STRING_FILL_ZREO:~0,2%%TIME_STRING_FILL_ZREO:~3,2%%TIME_STRING_FILL_ZREO:~6,2%<br>::echo CURRENT_TIME_STRING=%CURRENT_TIME_STRING%<br>set CURRENT_DATE_TIME_STRING=%CURRENT_DATE_STRING%%CURRENT_TIME_STRING%<br>::echo CURRENT_DATE_TIME_STRING=%CURRENT_DATE_TIME_STRING%<br><br>echo 输出: %sourceDir%%outName2%%CURRENT_DATE_TIME_STRING%.zip<br><br>pause<br></code></pre></td></tr></table></figure>
 
+<h2 id="4-minecraft存档Windows备份脚本"><a href="#4-minecraft存档Windows备份脚本" class="headerlink" title="4. minecraft存档Windows备份脚本"></a>4. minecraft存档Windows备份脚本</h2><blockquote>
+<p>minecraftzip.bat # bat格式</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs shell">@echo off<br>::需要进行备份的源文件夹<br>set sourceDir=&quot;D:\Program Files\Minecraft\1.18.2\.minecraft\saves\&quot;<br><br>echo 请选择需要备份文件夹，按3跳过<br>choice /C 123 /T 15 /D 3 /M &quot;1、单人生存_1_18  2、空岛生存  3、跳过(默认)&quot;<br><br>if errorlevel 1 set outName=单人生存_1_18<br>if errorlevel 2 set outName=空岛生存<br>if errorlevel 3 set outName=单人生存_1_18<br><br>::set outName=单人生存_1_18<br>cd D:\Program Files\Minecraft\1.18.2\.minecraft\saves<br><br>REM 压缩文件夹A 并以当前时间命名<br>set name=%date:0,4%%date:5,2%%date:8,2%%time:0,2%%time:3,2%%time:6,2%<br><br>set CURRENT_DATE_STRING=%date:~0,4%%date:~5,2%%date:~8,2%<br>::echo CURRENT_DATE_STRING=%CURRENT_DATE_STRING%<br>set &quot;TIME_STRING_FILL_ZREO=%time: =0%&quot;<br>::echo TIME_STRING_FILL_ZREO=%TIME_STRING_FILL_ZREO%<br>set CURRENT_TIME_STRING=%TIME_STRING_FILL_ZREO:~0,2%%TIME_STRING_FILL_ZREO:~3,2%%TIME_STRING_FILL_ZREO:~6,2%<br>::echo CURRENT_TIME_STRING=%CURRENT_TIME_STRING%<br>set CURRENT_DATE_TIME_STRING=%CURRENT_DATE_STRING%%CURRENT_TIME_STRING%<br>::echo CURRENT_DATE_TIME_STRING=%CURRENT_DATE_TIME_STRING%<br><br>echo 开始压缩...<br><br>7z a -tzip %sourceDir%%outName%%CURRENT_DATE_TIME_STRING%.zip %sourceDir%%outName%\*<br><br>::@echo 定位到待压缩的文件夹<br>::cd F:\数据压缩测试\0101C  <br>::@echo 使用7z先将1这个目录下的所有文件压缩为tar格式 <br>::&quot;C:\Program Files\7-Zip\7z.exe&quot; a -ttar F:\数据压缩测试\510101C.tar 1\*<br>::@echo 将压缩后的tar格式再压缩为gzip格式，最终得到需要的tar.gz格式 <br>::&quot;C:\Program Files\7-Zip\7z.exe&quot; a -tgzip F:\数据压缩测试\2016_1_510101C.tar.gz F:\数据压缩测试\510101C.tar<br>::@删除中间过程生成的文件<br>::del &quot;F:\数据压缩测试\510101C.tar&quot;<br><br>::在指定目录下删除过期的文件，参数-d后的数字表示要删除多少天以前的文件<br>::forfiles /p &quot;D:\Data\数据备份\Ftp_Back&quot; /m HanpuFtpBack* -d -7 /c &quot;cmd /c del /f ::@path&quot;<br><br>::start &quot;&quot; &quot;%~dp0v2rayB\v2ray.exe&quot;<br><br>set sourceDir=%sourceDir:~1%<br>set sourceDir=%sourceDir:~0,-1%<br>echo 文件压缩路径: %sourceDir%%outName%%CURRENT_DATE_TIME_STRING%.zip<br><br>echo 压缩完成!<br><br>pause<br></code></pre></td></tr></table></figure>
               
             </div>
             
@@ -489,6 +493,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Windows/" class="category-chain-item">Windows</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+    </div>
   
 </div>
 
@@ -498,8 +530,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>winclean</div>
-      <div>https://chris-z-su.github.io/2022/10/15/技术/winclean/</div>
+      <div>Windows脚本</div>
+      <div>https://chris-z-su.github.io/2022/10/15/技术/Windows脚本/</div>
     </div>
     <div class="license-meta">
       
