@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://chris-z-su.github.io/images/image-20220717222641345.png">
 <meta property="og:image" content="https://chris-z-su.github.io/images/image-20220717222703789.png">
 <meta property="article:published_time" content="2020-07-11T15:12:39.000Z">
-<meta property="article:modified_time" content="2022-10-24T12:15:05.562Z">
+<meta property="article:modified_time" content="2022-10-26T14:10:57.138Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="技术">
@@ -403,7 +403,7 @@
         
         
           <!-- compatible with older versions-->
-          194 分钟
+          196 分钟
         
       </span>
     
@@ -455,7 +455,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2 天前
+                    本文最后更新于：1 分钟前
                   
                 
               </p>
@@ -496,6 +496,9 @@
 <h4 id="3-删除本地的远程分支-解除关联"><a href="#3-删除本地的远程分支-解除关联" class="headerlink" title="(3) 删除本地的远程分支(解除关联)"></a>(3) 删除本地的远程分支(解除关联)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 先查看查看远程库信息</span><br>$ git remote -v<br>origin  git@github.com:xxx/xxx.git (fetch)<br>origin  git@github.com:xxx/xxx.git (push)<br><span class="hljs-comment"># 然后，根据名字删除，比如删除origin：</span><br>$ git remote <span class="hljs-built_in">rm</span> origin<br></code></pre></td></tr></table></figure>
 
 <h4 id="4-远程删除Git服务器上的分支"><a href="#4-远程删除Git服务器上的分支" class="headerlink" title="(4) 远程删除Git服务器上的分支"></a>(4) 远程删除Git服务器上的分支</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">git push origin -d BranchName<br><br>其中-d也可以是--delete，如：<br><br>git push origin --delete BranchName<br><br>注意：git命令区分大小写，例如-D和-d在不同的地方虽然都是删除的意思，并且它们的完整写法都是--delete，但简易写法用错大小写会执行失败。<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-修改分支名"><a href="#5-修改分支名" class="headerlink" title="5. 修改分支名"></a>5. 修改分支名</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">参考：https:<span class="hljs-regexp">//</span>blog.csdn.net<span class="hljs-regexp">/weixin_42343307/</span>article<span class="hljs-regexp">/details/</span><span class="hljs-number">125648147</span><br><span class="hljs-number">1</span>、修改本地分支名称<br>git branch -m oldBranchName newBranchName<br><br><span class="hljs-number">2</span>、将本地分支的远程分支删除<br>git push origin :oldBranchName<br><br><span class="hljs-number">3</span>、将改名后的本地分支推送到远程，并将本地分支与之关联<br>git push --set-upstream origin newBranchName<br></code></pre></td></tr></table></figure>
+
 
 <h2 id="三、Git操作远程项目"><a href="#三、Git操作远程项目" class="headerlink" title="三、Git操作远程项目"></a>三、Git操作远程项目</h2><h3 id="1-Git关联远程项目"><a href="#1-Git关联远程项目" class="headerlink" title="1. Git关联远程项目"></a>1. Git关联远程项目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin 你的远程库地址。<br>如：<br>git remote add origin https://github.com/xxx/xxx.git<br></code></pre></td></tr></table></figure>
 
