@@ -1,0 +1,1036 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.png">
+  <link rel="icon" href="/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chris">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="youtube-dl使用介绍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="youtube-dl使用介绍">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/06/13/%E6%8A%80%E6%9C%AF/youtube-dl%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="Bookpackage">
+<meta property="og:description" content="youtube-dl使用介绍">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload.jianshu.io/users/upload_avatars/1294473/245972fd-8b0d-484b-abea-44c6cd699b02.jpg?imageMogr2/auto-orient/strip%7CimageView2/1/w/96/h/96/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-83af12768c40f2c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-7e7961778136f4ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/670/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-21caa19540d84149.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-e766c991e95fe903.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-0a76315c2296c2f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-c40760b1c4a52d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-f8599a1ad0fac743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/699/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-5e9fa3d6aa3d09ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/650/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-be3ee87474a50cc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1124/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-96115f82aa23d76b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1119/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-9734296ba4a849b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-be0d40052e2ef1d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/376/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-75d000f7b4520ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/977/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-5c8620972c0957c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-5fabdc8817bb3135.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-191ff153e45eea04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-4e1b9f4b18e94700.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1294473-5720dba2d2ab972e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp">
+<meta property="article:published_time" content="2022-06-13T05:53:26.000Z">
+<meta property="article:modified_time" content="2022-09-27T14:12:19.445Z">
+<meta property="article:author" content="Chris">
+<meta property="article:tag" content="技术">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://upload.jianshu.io/users/upload_avatars/1294473/245972fd-8b0d-484b-abea-44c6cd699b02.jpg?imageMogr2/auto-orient/strip%7CimageView2/1/w/96/h/96/format/webp">
+  
+  
+  <title>youtube-dl使用介绍 - Bookpackage</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/iconfont_pdf/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_yule/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_music/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_xiangce/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_shipin/iconfont.css">
+<link rel="stylesheet" href="/css/iconfont_bookmark/iconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chris-z-su.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Bookpackage</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/pdf/">
+                <i class="iconfont icon-pdf"></i>
+                资料
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-wenhuayule"></i>
+                娱乐
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/music/">
+                    <i class="iconfont icon-yinle"></i>
+                    音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/galleries/">
+                    <i class="iconfont icon-xiangce"></i>
+                    相册
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/movies/">
+                    <i class="iconfont icon-shipin"></i>
+                    视频
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://y.qq.com/">
+                    
+                    QQ音乐
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://v.qq.com/">
+                    
+                    腾讯视频
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-yule"></i>
+                游戏
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/clock/index.html">
+                    
+                    H5时钟
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/tower-defense/src/td.html">
+                    
+                    塔防
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/adarkroom/index.html">
+                    
+                    小黑屋
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/muboard/muboard.html">
+                    
+                    数学白板工具
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/UniverseSim/index.html">
+                    
+                    三体模拟程序
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/games/h5zwjs/index.html">
+                    
+                    植物大战僵尸
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="https://chris-z-su.github.io/NavigationPage/">
+                <i class="iconfont icon-bookmark_icon"></i>
+                导航
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/3.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="youtube-dl使用介绍"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Chris
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-13 13:53" pubdate>
+          2022年6月13日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">youtube-dl使用介绍</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    <!-- compatible with older versions-->
+                    本文最后更新于：2 个月前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1 id="【备份】youtube-dl使用介绍"><a href="#【备份】youtube-dl使用介绍" class="headerlink" title="【备份】youtube-dl使用介绍"></a>【备份】youtube-dl使用介绍</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/36a21d20d831"><img src="https://upload.jianshu.io/users/upload_avatars/1294473/245972fd-8b0d-484b-abea-44c6cd699b02.jpg?imageMogr2/auto-orient/strip%7CimageView2/1/w/96/h/96/format/webp" srcset="/img/loading.gif" lazyload alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/u/36a21d20d831">江南之恋</a>关注</p>
+<p>42019.01.03 21:10:56字数 1,244阅读 136,731</p>
+<p>去年12月18日，那篇介绍youtube-dl的文章突然被封，修改申诉未得到任何回复。下面是后台的备份。</p>
+<hr>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6bae57859325">https://www.jianshu.com/p/6bae57859325</a></p>
+</blockquote>
+<h1 id="下载安装所需软件"><a href="#下载安装所需软件" class="headerlink" title="下载安装所需软件"></a>下载安装所需软件</h1><h4 id="Step1-下载与安装Python"><a href="#Step1-下载与安装Python" class="headerlink" title="Step1 下载与安装Python"></a>Step1 下载与安装Python</h4><p>1.访问<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://www.python.org/">Python官网</a>下载最新版本的Python</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-83af12768c40f2c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>Python官网</p>
+<p>2.安装<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://www.python.org/ftp/python/3.5.2/python-3.5.2.exe">Python 3.5.2</a>,注意勾选下面的<code>Add Python 3.5 to PATH</code></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-7e7961778136f4ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/670/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>安装Python</p>
+<p>3.按<code>Win+R</code>键打开运行，输入<code>cmd</code>，再输入<code>python</code>并回车执行，如果出现如下界面，则代表安装成功</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-21caa19540d84149.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>Python</p>
+<h4 id="Step2-安装youtube-dl"><a href="#Step2-安装youtube-dl" class="headerlink" title="Step2 安装youtube-dl"></a>Step2 安装youtube-dl</h4><ul>
+<li><p><strong>方式一</strong> 下载Windows exe程序使用<br>从<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://rg3.github.io/youtube-dl/">官网</a>下载<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://yt-dl.org/downloads/2016.10.02/youtube-dl.exe">youtube-dl.exe</a>然后放在电脑的任意目录下(比如我这里的C:\Users\LOLO)即可使用;可以通过下面的命令来更新youtube-dl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">youtube-dl -U<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>方式二</strong> 直接使用命令行来安装<strong>（推荐）</strong><br>在安装了Python之后,按<code>Win+R</code>键打开运行，输入<code>cmd</code>，再输入下面的代码即可自动下载安装youtube-dl</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">pip install youtube-dl <span class="hljs-comment">//直接安装youtube-dl</span><br>pip install --upgrade youtube-dl <span class="hljs-comment">//安装youtube-dl并更新</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>安装完之后,输入<code>youtube-dl</code>,如果出现下面的提示,则表明youtube-dl已经安装好啦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-e766c991e95fe903.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>youtube-dl</p>
+<h4 id="Step3-安装ffmpeg"><a href="#Step3-安装ffmpeg" class="headerlink" title="Step3 安装ffmpeg"></a>Step3 安装ffmpeg</h4><p><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://ffmpeg.org/">FFmpeg</a>主要用来合并视频分段以及对视频重新编码&#x2F;封装，与youtube-dl配合使用；不是必须的，但建议安装。<br>1.进入<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://ffmpeg.org/download.html">FFmpeg官网</a>,进入下载页面,根据自己的操作系统选择下载最新的32位或64位static版本</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-0a76315c2296c2f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>选择下面对应的操作系统，比如中间的Windows</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-c40760b1c4a52d63.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>FFmpeg 64-bit Static</p>
+<p>2.下载之后解压出来,将会看到这么一堆文件夹</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-f8599a1ad0fac743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/699/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>FFmpeg</p>
+<p>不用管它,直接把这个文件夹改个名字改成”ffmpeg”然后移到C盘根目录</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-5e9fa3d6aa3d09ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/650/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>FFmpeg</p>
+<p>3.打开系统属性&gt;高级系统设置&gt;环境变量</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-be3ee87474a50cc5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1124/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>环境变量</p>
+<p>4.在环境变量&gt;系统变量 里找到Path,点击编辑&gt;新建,然后把刚才那个文件夹里的bin路径(C:\ffmpeg\bin)复制到这里</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-96115f82aa23d76b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1119/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>添加Path</p>
+<p>5.打开Win+R,输入cmd,回车,输入以下命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">ffmpeg -version<br></code></pre></td></tr></table></figure>
+
+<p>如果出现如下图所示的版本号信息,则表明FFmpeg安装成功了，你可以在命令提示行中任意文件夹下运行FFmpeg</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-9734296ba4a849b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>FFmpeg版本</p>
+<hr>
+<h1 id="代理设置"><a href="#代理设置" class="headerlink" title="代理设置"></a>代理设置</h1><p>以SS为例（其他的请自行查阅相关资料，不过多介绍）<br>开启全局模式之后，无需代理设置，本步骤略过</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-be0d40052e2ef1d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/376/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>SS全局代理模式</p>
+<p>如果用PAC模式，那么后文提到的命令都需要加上这样的代理设置</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">--proxy <span class="hljs-string">&quot;https://127.0.0.1:1080&quot;</span><br><span class="hljs-comment">//或者直接这样</span><br>--proxy <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">1080</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-75d000f7b4520ca7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/977/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>加上SS代理设置</p>
+<hr>
+<h1 id="下载YouTube视频"><a href="#下载YouTube视频" class="headerlink" title="下载YouTube视频"></a>下载YouTube视频</h1><ul>
+<li>查看视频所有类型,只看不下载<br><code>youtube-dl -F [url]</code><br>或者<br><code>youtube-dl --list-formats [url]</code><br>这是一个列清单参数，执行后并不会下载视频，但能知道这个目标视频都有哪些格式存在，这样就可以有选择的下载啦！</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-5c8620972c0957c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>查看YouTube视频所有类型</p>
+<ul>
+<li>下载指定质量的视频和音频并自动合并<br><code>youtube-dl -f [format code] [url]</code><br>通过上一步获取到了所有视频格式的清单，最左边一列就是编号对应着不同的格式.<br>由于YouTube的1080p及以上的分辨率都是音视频分离的,所以我们需要分别下载视频和音频,可以使用137+140这样的组合.<br>如果系统中安装了ffmpeg的话, youtube-dl 会自动合并下下好的视频和音频, 然后自动删除单独的音视频文件</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-5fabdc8817bb3135.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>下载1080p的视频</p>
+<ul>
+<li><p>下载字幕<br>youtube-dl –write-sub [url] &#x2F;&#x2F;这样会下载一个vtt格式的英文字幕和mkv格式的1080p视频下来</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">youtube-dl --write-sub --skip-download [url] <span class="hljs-comment">//下载单独的vtt字幕文件,而不会下载视频</span><br><br>youtube-dl --write-sub --all-subs [url] <span class="hljs-comment">//下载所有语言的字幕(如果有的话)</span><br><br>youtube-dl --write-<span class="hljs-keyword">auto</span>-sub [url] <span class="hljs-comment">//下载自动生成的字幕(YouTube only)</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-191ff153e45eea04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>下载字幕和视频</p>
+<ul>
+<li><p>下载视频列表<br>youtube-dl -f [format code] [palylist_url] &#x2F;&#x2F;这种方式可以下载制定清晰度的mp4视频</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">youtube-dl [playlist_url] <span class="hljs-comment">//下载视频列表,这种方式下载的视频可能是mkv格式或者webm格式</span><br><br>youtube-dl -cit [playlist_url] <span class="hljs-comment">//下载视频列表,这种方式下载的视频可能是mkv格式或者webm格式</span><br><br>youtube-dl --yes-playlist [url] <span class="hljs-comment">//当链接为视频列表,则下载该列表视频,跟上面的一样,可能是mkv或者webm格式</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h1 id="下载Vimeo视频"><a href="#下载Vimeo视频" class="headerlink" title="下载Vimeo视频"></a>下载Vimeo视频</h1><p>Vimeo的视频下载起来比较方便,因为没有分离,可以直接下载1080p带音频的视频<br>命令与下载YouTube的基本一致;下面贴几张图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-4e1b9f4b18e94700.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>解查看Vimeo视频所有类型</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1294473-5720dba2d2ab972e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/979/format/webp" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>直接下载Vimeo最高质量视频</p>
+<hr>
+<p>youtube-dl支持的网站很多,大家可以从作者整理的<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://rg3.github.io/youtube-dl/supportedsites.html">这个列表</a>里查看支持的网站(不过由于有的网站接口算法升级,可能当初支持的网站现在不能很好的支持了),如果您要下载的视频网站现在不能用youtube-dl下载的,不妨试试另外一个同样基于Python开发的下载工具You-Get~</p>
+<blockquote>
+<p>youtube-dl官网：<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://yt-dl.org/">https://yt-dl.org/</a><br>GitHub项目：<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://github.com/rg3/youtube-dl/">https://github.com/rg3/youtube-dl/</a></p>
+</blockquote>
+
+              
+            </div>
+            
+            <!-- 打赏模块，参考：https://blog.kukmoon.com/7bf76e1d.html -->
+            <div style="text-align: center; margin: auto;"><!--自己添加的打赏模块：开始-->
+              <!--如果主题的  _config.yml 中开启打赏-->
+                <hr><!--放一条水平线与文章正文内容区分-->
+                <div style="background-color: #663399; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; border-radius: 8px;margin-bottom: 10px;"><!-- 显示“打赏支持”的盒子-->
+                 <!--如果博客语言是中文，就显示“打赏支持”，非中文一律显示“Donate”-->
+                  打赏支持
+                	
+              </div>
+                <div style="font-size: 14px;margin-bottom: 10px;">
+                “请博主喝杯咖啡 o(*^ω^*)o” <!--在主题的 _config.yml 中设置打赏提示语-->
+              </div>
+                <div style="width: auto; height: auto; max-width: 600px; max-height: 600px; text-align: center; margin: auto; "><!--两张二维码强制放在同一行，以免换行，强制设定图片的宽度随页面的变化而变化，图片最大宽度为300 px-->
+                <img src="/img/alipay_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height:auto; max-width: 50%;"><img src="/img/weChat_qrcode.png" srcset="/img/loading.gif" lazyload style="width: auto; height: auto; max-width: 50%;"><!--在主题的 _config.yaml 中设置打赏二维码图片-->
+              </div>
+              
+            </div> <!--自己添加的打赏模块：结束-->
+
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/YouTube/" class="category-chain-item">YouTube</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>youtube-dl使用介绍</div>
+      <div>https://chris-z-su.github.io/2022/06/13/技术/youtube-dl使用介绍/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Chris</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月13日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/13/java/redis%E5%AD%A6%E4%B9%A0/" title="redis启动命令">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">redis启动命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/java/%E7%8B%82%E7%A5%9E%E8%AF%B4Redis%E7%AC%94%E8%AE%B0%EF%BC%88CSDN%E6%95%B4%E7%90%86%E7%89%88%EF%BC%89/" title="狂神说Redis笔记（CSDN整理版）">
+                        <span class="hidden-mobile">狂神说Redis笔记（CSDN整理版）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/love.js"></script> -->
+<!--单击显示文字 -->
+<!-- <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script> -->
+<!-- <script type="text/javascript" src="/js/click_show_text.js"></script> -->
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
