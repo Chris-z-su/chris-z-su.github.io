@@ -16,12 +16,12 @@
   <meta name="author" content="Chris">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Spring是分层的Java SE&#x2F;EE应用full-stack轻量级开源框架，以loc(Inverse Of Control：反转控制)和AOP(Aspect Oriented Programming：面向切面编程)为核心。">
+    <meta name="description" content="Spring快速入门的基础知识，包括Spring、SpringMVC、Mybatis和SSM框架整合。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring基础知识">
-<meta property="og:url" content="https://chris-z-su.github.io/2022/01/02/java/Spring%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:title" content="Spring学习">
+<meta property="og:url" content="https://chris-z-su.github.io/2022/01/02/java/Spring%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Bookpackage">
-<meta property="og:description" content="Spring是分层的Java SE&#x2F;EE应用full-stack轻量级开源框架，以loc(Inverse Of Control：反转控制)和AOP(Aspect Oriented Programming：面向切面编程)为核心。">
+<meta property="og:description" content="Spring快速入门的基础知识，包括Spring、SpringMVC、Mybatis和SSM框架整合。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://chris-z-su.github.io/images/spring-overview.png">
 <meta property="og:image" content="https://chris-z-su.github.io/images/Spring%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4.png">
@@ -41,8 +41,12 @@
 <meta property="og:image" content="https://chris-z-su.github.io/images/%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%8A%80%E6%9C%AF.png">
 <meta property="og:image" content="https://chris-z-su.github.io/images/2022-03-02-20-03-09-image.png">
 <meta property="og:image" content="https://chris-z-su.github.io/images/%E4%BA%8B%E5%8A%A1%E4%BC%A0%E6%92%AD%E7%BA%A7%E5%88%AB.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220511213634336.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220511213807404.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220511213844315.png">
+<meta property="og:image" content="https://chris-z-su.github.io/images/image-20220511213913847.png">
 <meta property="article:published_time" content="2022-01-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-27T14:12:19.000Z">
+<meta property="article:modified_time" content="2023-09-04T13:50:19.000Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="Java">
@@ -52,7 +56,7 @@
 <meta name="twitter:image" content="https://chris-z-su.github.io/images/spring-overview.png">
   
   
-  <title>Spring基础知识 - Bookpackage</title>
+  <title>Spring学习 - Bookpackage</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -390,7 +394,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Spring基础知识"></span>
+            <span id="subtitle" data-typed-text="Spring学习"></span>
           
         </div>
 
@@ -419,7 +423,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          140k 字
+          143k 字
         
       </span>
     
@@ -431,7 +435,7 @@
         
         
           <!-- compatible with older versions-->
-          1167 分钟
+          1196 分钟
         
       </span>
     
@@ -477,20 +481,20 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Spring基础知识</h1>
+            <h1 style="display: none">Spring学习</h1>
             
               <p class="note note-info">
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：1 年前
+                    本文最后更新于：30 分钟前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h1 id="Spring基础知识"><a href="#Spring基础知识" class="headerlink" title="Spring基础知识"></a>Spring基础知识</h1><blockquote>
+              <h1 id="Spring学习"><a href="#Spring学习" class="headerlink" title="Spring学习"></a>Spring学习</h1><blockquote>
 <p>视频链接：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1WZ4y1P7Bp/" title="SSM框架">黑马程序员最全SSM框架教程|Spring+SpringMVC+MyBatis全套教程</a></p>
 </blockquote>
 <h2 id="一、Spring简介"><a href="#一、Spring简介" class="headerlink" title="一、Spring简介"></a>一、Spring简介</h2><h3 id="1-Spring是什么"><a href="#1-Spring是什么" class="headerlink" title="1. Spring是什么"></a>1. Spring是什么</h3><p>Spring是分层的Java SE&#x2F;EE应用full-stack轻量级开源框架，以loc(Inverse Of Control：反转控制)和AOP(Aspect Oriented Programming：面向切面编程)为核心。</p>
@@ -1727,7 +1731,11 @@
 <li><p>事务注解驱动的配置&lt;tx:annotion-driven &#x2F;&gt;</p>
 </li>
 </ul>
-<h2 id="十六、MyBatis"><a href="#十六、MyBatis" class="headerlink" title="十六、MyBatis"></a>十六、MyBatis</h2><ul>
+<h2 id="十六、MyBatis"><a href="#十六、MyBatis" class="headerlink" title="十六、MyBatis"></a>十六、MyBatis</h2><blockquote>
+<p>官网：<a target="_blank" rel="noopener" href="https://mybatis.net.cn/">https://mybatis.net.cn/</a></p>
+<p>视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1MT4y1k7wZ">https://www.bilibili.com/video/BV1MT4y1k7wZ</a></p>
+</blockquote>
+<ul>
 <li>MyBatis的简介</li>
 <li>MyBatis的快速入门</li>
 <li>MyBatis的映射文件概述</li>
@@ -1735,7 +1743,11 @@
 <li>MyBatis的核心配置文件概述</li>
 <li>MyBatis的相应API</li>
 </ul>
-<h3 id="1-MyBatis的简介"><a href="#1-MyBatis的简介" class="headerlink" title="1. MyBatis的简介"></a>1. MyBatis的简介</h3><h4 id="1-原始Jdbc操作（查询数据）"><a href="#1-原始Jdbc操作（查询数据）" class="headerlink" title="1) 原始Jdbc操作（查询数据）"></a>1) 原始Jdbc操作（查询数据）</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">省略。。。<br></code></pre></td></tr></table></figure>
+<h3 id="1-MyBatis的简介"><a href="#1-MyBatis的简介" class="headerlink" title="1. MyBatis的简介"></a>1. MyBatis的简介</h3><p>什么是MyBatis？</p>
+<ul>
+<li>MyBatis是一款优秀的持久层框架，用于简化JDBC开发</li>
+</ul>
+<h4 id="1-原始Jdbc操作（查询数据）"><a href="#1-原始Jdbc操作（查询数据）" class="headerlink" title="1) 原始Jdbc操作（查询数据）"></a>1) 原始Jdbc操作（查询数据）</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">省略。。。<br></code></pre></td></tr></table></figure>
 
 <h4 id="2-原始Jdbc操作（插入数据）"><a href="#2-原始Jdbc操作（插入数据）" class="headerlink" title="2) 原始Jdbc操作（插入数据）"></a>2) 原始Jdbc操作（插入数据）</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">省略。。。<br></code></pre></td></tr></table></figure>
 
@@ -2087,6 +2099,8 @@
 <td>代替了标签, 是多表查询的关键，在注解中用来指定子查询返回对象集合。 <br/>使用格式：@Result(property&#x3D;””,column&#x3D;””,many&#x3D;@Many(select&#x3D;””))</td>
 </tr>
 </tbody></table>
+<h3 id="11-附：idea配置热部署devtools"><a href="#11-附：idea配置热部署devtools" class="headerlink" title="11.附：idea配置热部署devtools"></a>11.附：idea配置热部署devtools</h3><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">1.添加springboot热部署依赖devtools<br>2.打开自动编译，Settings -&gt; <span class="hljs-keyword">Build</span>, Execution, Deployment -&gt; Compiler, 勾选 <span class="hljs-keyword">Build</span> Project automatically<br><span class="hljs-number">3.</span>部署<br>① idea: <span class="hljs-keyword">Build</span> -&gt; <span class="hljs-keyword">Build</span> Project   (Ctrl + F9)<br>② 旧版idea自动部署: Ctrl + Shift + Alt + / , 打开registry，找到compiler.automake.allow.<span class="hljs-keyword">when</span>.app.running, 勾选<br>③ 新版(IDEA2021版)idea自动部署：Settings -&gt; Advanced Settings,<br>找到 allow auto-make <span class="hljs-keyword">to</span> <span class="hljs-keyword">start</span> even <span class="hljs-keyword">if</span> developed application <span class="hljs-keyword">is</span> currently running,  勾选<br>②和③ idea失去焦点<span class="hljs-number">5</span>秒后，会自动部署<br>参考：https://www.cnblogs.com/fanqisoft/p/<span class="hljs-number">15200894.</span>html<br><br>默认不触发热部署的目录：<br> /<span class="hljs-built_in">META</span>-INF/maven<br> /<span class="hljs-built_in">META</span>-INF/resources<br> /resources<br> /static<br> /templates<br> /<span class="hljs-keyword">public</span><br></code></pre></td></tr></table></figure>
+
 <h2 id="十七、SSM框架整合"><a href="#十七、SSM框架整合" class="headerlink" title="十七、SSM框架整合"></a>十七、SSM框架整合</h2><h3 id="1-整合思路"><a href="#1-整合思路" class="headerlink" title="1. 整合思路"></a>1. 整合思路</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 查询操作</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@throws</span> IOException</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test1</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-comment">//获取核心配置文件</span><br>    <span class="hljs-type">InputStream</span> <span class="hljs-variable">resourceAsStream</span> <span class="hljs-operator">=</span> Resources.getResourceAsStream(<span class="hljs-string">&quot;mybatis.xml&quot;</span>);<br>    <span class="hljs-comment">//获得session工厂对象</span><br>    <span class="hljs-type">SqlSessionFactory</span> <span class="hljs-variable">sqlSessionFactory</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SqlSessionFactoryBuilder</span>().build(resourceAsStream);<br>    <span class="hljs-comment">//获得session会话对象</span><br>    <span class="hljs-type">SqlSession</span> <span class="hljs-variable">sqlSession</span> <span class="hljs-operator">=</span> sqlSessionFactory.openSession();<br>    <span class="hljs-comment">//执行操作，参数：namespace + id</span><br>    List&lt;User&gt; userList = sqlSession.selectList(<span class="hljs-string">&quot;userMapper.findAllForMybatis&quot;</span>);<br>    <span class="hljs-comment">//打印数据</span><br>    System.out.println(<span class="hljs-string">&quot;userList = &quot;</span> + userList);<br>    <span class="hljs-comment">//释放资源</span><br>    sqlSession.close();<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
@@ -2113,6 +2127,35 @@
 
 <p>jdbc.properties</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#jdbc.driver=com.mysql.jdbc.Driver</span><br><span class="hljs-attr">jdbc.driver</span>=<span class="hljs-string">com.mysql.cj.jdbc.Driver</span><br><span class="hljs-comment">#jdbc.url=jdbc:mysql://localhost:3306/wollo</span><br><span class="hljs-attr">jdbc.url</span>=<span class="hljs-string">jdbc:mysql://localhost:3306/wollo?characterEncoding=utf8</span><br><span class="hljs-attr">jdbc.username</span>=<span class="hljs-string">root</span><br><span class="hljs-attr">jdbc.password</span>=<span class="hljs-string">1106135</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="十八、REST风格简介"><a href="#十八、REST风格简介" class="headerlink" title="十八、REST风格简介"></a>十八、REST风格简介</h2><ul>
+<li>按照REST风格访问资源时，使用<strong>行为动作</strong>区分对资源进行了何种操作<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/users">http://127.0.0.1/users</a>				   查询全部用户信息			GET（查询）</li>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/users/1">http://127.0.0.1/users/1</a>				查询指定用户信息			GET（查询）</li>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/users">http://127.0.0.1/users</a>				   添加用户信息			       POST（新增&#x2F;保存）</li>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/users">http://127.0.0.1/users</a>				   修改用户信息			       PUT（修改&#x2F;更新）</li>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1/users/1">http://127.0.0.1/users/1</a>				删除用户信息			       DELETE（删除）</li>
+</ul>
+</li>
+</ul>
+<p>上述行为是约定方式，约定不是规范，可以打破，所以称为REST风格，而不是REST规范。</p>
+<p>描述模块的名称通常使用复数，也就是加s的格式描述，表示此类资源，而非单个资源，例如：users、books、accounts…</p>
+<p>请求路径：</p>
+<h3 id="1-查询"><a href="#1-查询" class="headerlink" title="1. 查询"></a>1. 查询</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>/books<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20220511213634336.png" srcset="/img/loading.gif" lazyload alt="image-20220511213634336"></p>
+<h3 id="2-新增"><a href="#2-新增" class="headerlink" title="2. 新增"></a>2. 新增</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>/books<br>&#123;<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;《三体》&quot;</span>,<span class="hljs-string">&quot;author&quot;</span>:<span class="hljs-string">&quot;刘慈欣&quot;</span>,<span class="hljs-string">&quot;price&quot;</span>:<span class="hljs-string">&quot;13.5&quot;</span>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20220511213807404.png" srcset="/img/loading.gif" lazyload alt="image-20220511213807404"></p>
+<h3 id="3-删除"><a href="#3-删除" class="headerlink" title="3. 删除"></a>3. 删除</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span><span class="hljs-regexp">/books/</span><span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20220511213844315.png" srcset="/img/loading.gif" lazyload alt="image-20220511213844315"></p>
+<h3 id="4-更新"><a href="#4-更新" class="headerlink" title="4. 更新"></a>4. 更新</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">http:<span class="hljs-regexp">//</span><span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>/books<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../images/image-20220511213913847.png" srcset="/img/loading.gif" lazyload alt="image-20220511213913847"></p>
+<p>实例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.shubao.controller;<br><br><span class="hljs-keyword">import</span> com.shubao.domain.Book;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@program</span>: SpringBoot2022</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: BookController 控制器类  Rest模式</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span>: chris</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2022-05-11 19:07</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@since</span> JDK1.8</span><br><span class="hljs-comment"> **/</span><br><span class="hljs-comment">// @Controller + @ResponseBody = @RestController</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/books&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BookController</span> &#123;<br><br>    <span class="hljs-comment">// 查询所有 RequestMethod.GET</span><br>    <span class="hljs-meta">@GetMapping</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getAll</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;SpringBoot is running...2&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello Books2&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 根据id查询，使用@PathVariable注解接收参数 RequestMethod.GET</span><br>    <span class="hljs-comment">// @RequestMapping(value = &quot;/&#123;id&#125;&quot;, method = RequestMethod.GET)</span><br>    <span class="hljs-meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getById</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Integer id)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;book getById...&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#123;&#x27;module&#x27;:&#x27;book getById&#x27;, &#x27;status&#x27;:&#x27;success&#x27;&#125;&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 新增、保存 RequestMethod.POST</span><br>    <span class="hljs-comment">// @RequestMapping(method = RequestMethod.POST) 相当于 @PostMapping</span><br>    <span class="hljs-meta">@PostMapping</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">save</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> Book book)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;book save...&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;book = &quot;</span> + book);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#123;&#x27;module&#x27;:&#x27;book save&#x27;, &#x27;status&#x27;:&#x27;success&#x27;&#125;&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 更新、修改 RequestMethod.PUT</span><br>    <span class="hljs-comment">// @RequestMapping(method = RequestMethod.PUT)</span><br>    <span class="hljs-meta">@PutMapping</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> Book book)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;book update...&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;book = &quot;</span> + book);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#123;&#x27;module&#x27;:&#x27;book update&#x27;, &#x27;status&#x27;:&#x27;success&#x27;&#125;&quot;</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 删除 RequestMethod.DELETE</span><br>    <span class="hljs-comment">// @PathVariable: 形参注解，作用：绑定路径参数与处理器方法参数间的映射关系，要求路径参数和处理器方法参数名称一致，使用&#123;参数名称&#125;描述路径参数</span><br>    <span class="hljs-comment">// @RequestBody: 用于接收JSON数据，并转换为对象</span><br>    <span class="hljs-comment">// @RequestParam: 用于接收URL地址中的参数或者表单中的参数</span><br>    <span class="hljs-comment">// @RequestMapping(value = &quot;/&#123;id&#125;&quot;, method = RequestMethod.DELETE)</span><br>    <span class="hljs-meta">@DeleteMapping(&quot;/&#123;id&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">delete</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Integer id)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;book delete...&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#123;&#x27;module&#x27;:&#x27;book delete&#x27;, &#x27;status&#x27;:&#x27;success&#x27;&#125;&quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
               
             </div>
@@ -2176,8 +2219,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Spring基础知识</div>
-      <div>https://chris-z-su.github.io/2022/01/02/java/Spring基础知识/</div>
+      <div>Spring学习</div>
+      <div>https://chris-z-su.github.io/2022/01/02/java/Spring学习/</div>
     </div>
     <div class="license-meta">
       
@@ -2251,7 +2294,7 @@
         var options = Object.assign(
           {"clientID":"6809b6d7b005b26f279f","clientSecret":"ce8b843f080f2b78f23fc0a19607785882fb66fb","repo":"chris-z-su.github.io","owner":"Chris-z-su","admin":["Chris-z-su"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
           {
-            id: '8b3b0bd5a310bc0b74f53408927b0095'
+            id: '7beb39c672829d4a13a8c181e8429a6d'
           }
         )
         var gitalk = new Gitalk(options);
