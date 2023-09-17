@@ -28,8 +28,8 @@
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Nginx">
 <meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -400,7 +400,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.3k 字
+          1.4k 字
         
       </span>
     
@@ -412,7 +412,7 @@
         
         
           <!-- compatible with older versions-->
-          11 分钟
+          12 分钟
         
       </span>
     
@@ -471,7 +471,11 @@
             
             <div class="markdown-body">
               
-              <h1 id="Nginx学习"><a href="#Nginx学习" class="headerlink" title="Nginx学习"></a>Nginx学习</h1><h2 id="一、Nginx反向代理"><a href="#一、Nginx反向代理" class="headerlink" title="一、Nginx反向代理"></a>一、Nginx反向代理</h2><h3 id="1-配置代理组"><a href="#1-配置代理组" class="headerlink" title="1.配置代理组"></a>1.配置代理组</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">upstream</span> ssmp &#123;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:8080</span>;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:8081</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+              <h1 id="Nginx学习"><a href="#Nginx学习" class="headerlink" title="Nginx学习"></a>Nginx学习</h1><blockquote>
+<p>黑马程序员Nginx教程，Java进阶从0到1学会Nginx分布式框架</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ov41187bq/">https://www.bilibili.com/video/BV1ov41187bq/</a></p>
+</blockquote>
+<h2 id="一、Nginx反向代理"><a href="#一、Nginx反向代理" class="headerlink" title="一、Nginx反向代理"></a>一、Nginx反向代理</h2><h3 id="1-配置代理组"><a href="#1-配置代理组" class="headerlink" title="1.配置代理组"></a>1.配置代理组</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">upstream</span> ssmp &#123;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:8080</span>;<br>    <span class="hljs-attribute">server</span> <span class="hljs-number">127.0.0.1:8081</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="2-在location中配置proxy-pass"><a href="#2-在location中配置proxy-pass" class="headerlink" title="2.在location中配置proxy_pass"></a>2.在location中配置proxy_pass</h3><figure class="highlight glsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs glsl"><span class="hljs-keyword">location</span> / &#123;<br>    root   html;<br>    <span class="hljs-keyword">index</span>  <span class="hljs-keyword">index</span>.html <span class="hljs-keyword">index</span>.htm;<br><br>    <span class="hljs-meta"># Nginx负载均衡配置</span><br>    proxy_pass http:<span class="hljs-comment">//ssmp;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -537,9 +541,9 @@
       
         <a href="/tags/Linux/">#Linux</a>
       
-        <a href="/tags/Nginx/">#Nginx</a>
-      
         <a href="/tags/Windows/">#Windows</a>
+      
+        <a href="/tags/Nginx/">#Nginx</a>
       
     </div>
   
