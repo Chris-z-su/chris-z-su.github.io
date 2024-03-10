@@ -418,7 +418,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          5 字
+          799 字
         
       </span>
     
@@ -430,7 +430,7 @@
         
         
           <!-- compatible with older versions-->
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -489,7 +489,45 @@
             
             <div class="markdown-body">
               
-              <h1 id="vim-命令"><a href="#vim-命令" class="headerlink" title="vim 命令"></a>vim 命令</h1><p><img src="/../images/vivim-graphical.png" srcset="/img/loading.gif" lazyload></p>
+              <h1 id="vim-命令"><a href="#vim-命令" class="headerlink" title="vim 命令"></a>vim 命令</h1><h2 id="1-搜索内容"><a href="#1-搜索内容" class="headerlink" title="1. 搜索内容"></a>1. 搜索内容</h2><ul>
+<li><p>基本搜索。首先确保处于Vim的命令模式(通常通过按<code>ESC</code>键进入)，然后输入<code>/</code>和想要搜索的字符串，按下<code>Enter</code>键后，Vim会从当前光标位置开始向下搜索该字符串，高亮显示匹配的部分。1234567</p>
+</li>
+<li><p>搜索特定位置的字符串。可以使用<code>/</code>和<code>?</code>命令来搜索字符串，但<code>?</code>命令是从光标所在行向上搜索。16</p>
+</li>
+<li><p>搜索以特定字符开头的字符串。可以使用正则表达式<code>\&lt;</code>来搜索以特定字符开头的字符串，例如<code>/^\&lt;gnu\&gt;</code>会搜索以”gnu”开头的所有单词。1</p>
+</li>
+<li><p>搜索以特定字符结尾的字符串。可以使用正则表达式<code>\&gt;</code>来搜索以特定字符结尾的字符串，例如<code>/Linux\&gt;$</code>会搜索以”Linux”结尾的所有单词。</p>
+</li>
+<li><p>搜索多个字符串。可以使用<code>*</code>和<code>+</code>来搜索多个字符，例如<code>/[0-9a-zA-Z]</code>会匹配任意一个字母或数字。5</p>
+</li>
+<li><p>忽略大小写搜索。可以使用<code>set ignorecase</code>命令来忽略大小写进行搜索，例如<code>/Linux</code>和<code>/Linux</code>会匹配相同的字符串。</p>
+</li>
+<li><p>搜索历史。可以使用<code>:history</code>命令查看和重复之前的搜索操作，使用<code>:nohlsearch</code>命令可以取消高亮显示。145</p>
+</li>
+<li><p>替换操作。可以使用<code>:%s/oldstring/newstring/g</code>命令来全局替换文件中的所有匹配的字符串，其中<code>oldstring</code>是要被替换的字符串，<code>newstring</code>是替换后的新字符串。3456</p>
+</li>
+</ul>
+<p>这些是Vim中搜索和替换文本的基本方法，可以根据具体需求进行灵活使用。</p>
+<ol>
+<li>查询字符</li>
+</ol>
+<p>命令模式下（shift + ：），输入 <strong>&#x2F;字符串</strong></p>
+<p>比如：搜索 Blog, 输入 <strong>&#x2F;Blog</strong></p>
+<p>按下 Enter 之后，可以看到 vim 已经把光标移动到该字符处和高亮了匹配的字符串</p>
+<ol start="2">
+<li>查询下一个</li>
+</ol>
+<p>按下 n (小写 n)</p>
+<ol start="3">
+<li>跳回上一个</li>
+</ol>
+<p>按下 N（大写 N）</p>
+<ol start="4">
+<li>查询字符取消高亮显示</li>
+</ol>
+<p>命令模式下（shift + ：），输入 <strong>nohlsearch</strong> 或 <strong>nohl</strong></p>
+<p>也可以输入 <strong>set nohlsearch</strong> 或 <strong>set nohls</strong></p>
+<p><img src="/../images/vivim-graphical.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/../images/20160907135207839.png" srcset="/img/loading.gif" lazyload></p>
 
               
