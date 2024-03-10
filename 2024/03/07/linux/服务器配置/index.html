@@ -414,7 +414,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1k 字
+          1.6k 字
         
       </span>
     
@@ -426,7 +426,7 @@
         
         
           <!-- compatible with older versions-->
-          9 分钟
+          14 分钟
         
       </span>
     
@@ -478,7 +478,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：20 小时前
+                    本文最后更新于：3 天前
                   
                 
               </p>
@@ -502,10 +502,32 @@
 <p>接口文档：<a target="_blank" rel="noopener" href="https://akshare.akfamily.xyz/">https://akshare.akfamily.xyz/</a></p>
 <p>视频教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ds4y1p7ew">!T10 Python数据库基础操作——基于Akshare存储股票行情数据</a></p>
 </blockquote>
-<h2 id="4-nginx"><a href="#4-nginx" class="headerlink" title="4. nginx"></a>4. nginx</h2><h2 id="5-服务管理"><a href="#5-服务管理" class="headerlink" title="5. 服务管理"></a>5. 服务管理</h2><blockquote>
+<h2 id="4-nginx"><a href="#4-nginx" class="headerlink" title="4. nginx"></a>4. nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl start nginx<br>systemctl status nginx<br>systemctl stop nginx<br>systemctl reload nginx<br><br>配置文件 /etc/nginx<br>/etc/nginx/nginx.conf <br>日志：/var/log/nginx<br>/etc/nginx/access.log<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-服务管理"><a href="#5-服务管理" class="headerlink" title="5. 服务管理"></a>5. 服务管理</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_18195031/article/details/106129434">阿里云ECS服务器CentOS如何关闭AliYunDun？-CSDN博客</a></p>
 </blockquote>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gradle"># 启用、停用和查看云监控插件的操作方法<br>bash <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/cloudmonitor/</span>cloudmonitorCtl.sh start<br>bash <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/cloudmonitor/</span>cloudmonitorCtl.sh stop<br>ps aux | <span class="hljs-keyword">grep</span> argusagent | <span class="hljs-keyword">grep</span> -v <span class="hljs-keyword">grep</span><br><br>systemctl stop aegis.service<br></code></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs gradle"># 启用、停用和查看云监控插件的操作方法<br>bash <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/cloudmonitor/</span>cloudmonitorCtl.sh start<br>bash <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/cloudmonitor/</span>cloudmonitorCtl.sh stop<br>ps aux | <span class="hljs-keyword">grep</span> argusagent | <span class="hljs-keyword">grep</span> -v <span class="hljs-keyword">grep</span><br><br>systemctl stop aegis.service<br><br># tcp_stats.sh:行<span class="hljs-number">2</span>: $<span class="hljs-string">&#x27;\r&#x27;</span>: 未找到命令<br>[root@iZ2zeb7ybli3zzdll6airpZ files]# sed -i <span class="hljs-string">&#x27;s/\r//&#x27;</span> tcp_stats.sh<br></code></pre></td></tr></table></figure>
+
+<h2 id="6-Linux宝塔禁止国外ip访问服务器，屏蔽国外ip访问网站代码"><a href="#6-Linux宝塔禁止国外ip访问服务器，屏蔽国外ip访问网站代码" class="headerlink" title="6. Linux宝塔禁止国外ip访问服务器，屏蔽国外ip访问网站代码"></a>6. Linux宝塔禁止国外ip访问服务器，屏蔽国外ip访问网站代码</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhanghuiqi205/article/details/121242769">Linux宝塔禁止国外ip访问服务器，屏蔽国外ip访问网站代码_iptables -a allcnrule -s 127.0.0.0&#x2F;8 -j return-CSDN博客</a></p>
+</blockquote>
+<p>先运行如下命令行语句来获取国内IP网段，保存到此目录下：<code>/root/china_ssr.txt</code></p>
+<p>将下面脚本保存为<code>/root/allcn.sh</code> ，设置可执行权限：</p>
+<p>设置可执行权限: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">chmod</span> 777 allcn.sh<br></code></pre></td></tr></table></figure>
+
+<p>执行下面代码，执行后国外ip将无法打开网站</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cobol">/root/allcn.sh<br></code></pre></td></tr></table></figure>
+
+<p>如果要停止的话执行下面这个命令可恢复国外ip访问网站：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cobol">/root/allcn.sh stop<br></code></pre></td></tr></table></figure>
+
+
+
+
 
 
               
