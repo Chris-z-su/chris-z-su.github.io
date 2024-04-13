@@ -414,7 +414,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.6k 字
+          2.2k 字
         
       </span>
     
@@ -426,7 +426,7 @@
         
         
           <!-- compatible with older versions-->
-          14 分钟
+          19 分钟
         
       </span>
     
@@ -478,14 +478,16 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：17 天前
+                    本文最后更新于：1 个月前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><h2 id="1-源码："><a href="#1-源码：" class="headerlink" title="1. 源码："></a>1. 源码：</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi-Vue">RuoYi-Vue: 🎉 基于SpringBoot，Spring Security，JWT，Vue &amp; Element 的前后端分离权限管理系统，同时提供了 Vue3 的版本 (gitee.com)</a></p>
+              <h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">常用配置命令</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">fail2ban配置：banit nginx-cc</span><br>fail2ban-client status banit<br>vim /etc/fail2ban/jail.local<br>tail /var/log/fail2ban.log<br><br>tcpdump -i eth0 tcp port 80<br><br>systemctl start fail2ban.service<br>systemctl status fail2ban.service<br>systemctl restart fail2ban.service <br>systemctl stop fail2ban.service <br><br>fail2ban-client status banit<br><br>fail2ban-client set banit unbanip 117.133.51.5<br>fail2ban-client set banit addignoreip 117.133.51.5<br><br>fail2ban-client set nginx-cc unbanip 117.133.51.5<br>fail2ban-client set nginx-cc addignoreip 117.133.51.5<br></code></pre></td></tr></table></figure>
+
+<h2 id="1-源码："><a href="#1-源码：" class="headerlink" title="1. 源码："></a>1. 源码：</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi-Vue">RuoYi-Vue: 🎉 基于SpringBoot，Spring Security，JWT，Vue &amp; Element 的前后端分离权限管理系统，同时提供了 Vue3 的版本 (gitee.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/akfamily/akshare">akfamily&#x2F;akshare: AKShare is an elegant and simple financial data interface library for Python, built for human beings! 开源财经数据接口库 (github.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://doc.ruoyi.vip/ruoyi/">介绍 | RuoYi</a></p>
 <h2 id="2-后端管理系统UI：若依管理系统"><a href="#2-后端管理系统UI：若依管理系统" class="headerlink" title="2. 后端管理系统UI：若依管理系统"></a>2. 后端管理系统UI：<a target="_blank" rel="noopener" href="http://localhost/index">若依管理系统</a></h2><p><a target="_blank" rel="noopener" href="http://localhost/index">http://localhost/index</a></p>
@@ -502,7 +504,10 @@
 <p>接口文档：<a target="_blank" rel="noopener" href="https://akshare.akfamily.xyz/">https://akshare.akfamily.xyz/</a></p>
 <p>视频教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ds4y1p7ew">!T10 Python数据库基础操作——基于Akshare存储股票行情数据</a></p>
 </blockquote>
-<h2 id="4-nginx"><a href="#4-nginx" class="headerlink" title="4. nginx"></a>4. nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl start nginx<br>systemctl status nginx<br>systemctl stop nginx<br>systemctl reload nginx<br><br>配置文件 /etc/nginx<br>/etc/nginx/nginx.conf <br>日志：/var/log/nginx<br>/etc/nginx/access.log<br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">① 更新 AKShare</span><br>pip install akshare --upgrade<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">② 更新aktools</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">AKTools<span class="hljs-string">&#x27;s version should great than 0.0.70</span></span><br>pip install aktools --upgrade -i https://pypi.org/simple<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="4-nginx"><a href="#4-nginx" class="headerlink" title="4. nginx"></a>4. nginx</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl start nginx<br>systemctl status nginx<br>systemctl stop nginx<br>systemctl reload nginx<br><br>配置文件 /etc/nginx<br>/etc/nginx/nginx.conf <br><br>日志：/var/log/nginx<br>/etc/nginx/access.log<br></code></pre></td></tr></table></figure>
 
 
 
@@ -624,9 +629,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/25/%E6%8A%80%E6%9C%AF/docker/" title="Docker">
+                      <a href="/2024/03/25/%E6%8A%80%E6%9C%AF/%E6%A0%87%E7%AD%BE%E4%B8%8E%E5%88%86%E7%B1%BB/" title="标签与分类">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker</span>
+                        <span class="hidden-mobile">标签与分类</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

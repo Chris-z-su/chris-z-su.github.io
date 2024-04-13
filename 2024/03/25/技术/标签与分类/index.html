@@ -16,27 +16,21 @@
   <meta name="author" content="Chris">
   <meta name="keywords" content="">
   
-    <meta name="description" content="SQL查询语句的执行顺序解析">
+    <meta name="description" content="标签与分类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SQL查询语句的执行顺序解析">
-<meta property="og:url" content="https://chris-z-su.github.io/2022/07/04/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL%E6%9F%A5%E8%AF%A2%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:title" content="标签与分类">
+<meta property="og:url" content="https://chris-z-su.github.io/2024/03/25/%E6%8A%80%E6%9C%AF/%E6%A0%87%E7%AD%BE%E4%B8%8E%E5%88%86%E7%B1%BB/index.html">
 <meta property="og:site_name" content="Bookpackage">
-<meta property="og:description" content="SQL查询语句的执行顺序解析">
+<meta property="og:description" content="标签与分类">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://chris-z-su.github.io/images/bffd7c92c21a427ea20f4936f45b6d69.png">
-<meta property="og:image" content="https://chris-z-su.github.io/images/b6c224ceaef04347a2269a3141d485f3.png">
-<meta property="og:image" content="https://chris-z-su.github.io/images/488d41b2fda94ba79808735038e95be9.png">
-<meta property="og:image" content="https://chris-z-su.github.io/images/ee8f5e59572e48288ef32d097942899b.png">
-<meta property="article:published_time" content="2022-07-04T14:31:53.000Z">
-<meta property="article:modified_time" content="2022-09-27T14:12:19.000Z">
+<meta property="article:published_time" content="2024-03-25T00:12:34.000Z">
+<meta property="article:modified_time" content="2024-03-25T00:12:34.000Z">
 <meta property="article:author" content="Chris">
 <meta property="article:tag" content="技术">
-<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://chris-z-su.github.io/images/bffd7c92c21a427ea20f4936f45b6d69.png">
   
   
-  <title>SQL查询语句的执行顺序解析 - Bookpackage</title>
+  <title>标签与分类 - Bookpackage</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -390,7 +384,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="SQL查询语句的执行顺序解析"></span>
+            <span id="subtitle" data-typed-text="标签与分类"></span>
           
         </div>
 
@@ -406,8 +400,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-04 22:31" pubdate>
-          2022年7月4日 晚上
+        <time datetime="2024-03-25 08:12" pubdate>
+          2024年3月25日 早上
         </time>
       </span>
     
@@ -419,7 +413,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k 字
+          611 字
         
       </span>
     
@@ -431,7 +425,7 @@
         
         
           <!-- compatible with older versions-->
-          19 分钟
+          6 分钟
         
       </span>
     
@@ -477,96 +471,96 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">SQL查询语句的执行顺序解析</h1>
+            <h1 style="display: none">标签与分类</h1>
             
               <p class="note note-info">
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2 年前
+                    本文最后更新于：19 天前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h1 id="SQL查询语句的执行顺序解析"><a href="#SQL查询语句的执行顺序解析" class="headerlink" title="SQL查询语句的执行顺序解析"></a>SQL查询语句的执行顺序解析</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.toutiao.com/article/6729452080848699918/">https://www.toutiao.com/article/6729452080848699918/</a></p>
-</blockquote>
-<p><img src="/../images/bffd7c92c21a427ea20f4936f45b6d69.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
-<p>结合上图，整理出如下伪SQL查询语句。</p>
-<p><img src="/../images/b6c224ceaef04347a2269a3141d485f3.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
-<p>从这个顺序中我们可以发现，所有的查询语句都是从 <strong>FROM</strong> 开始执行的。在实际执行过程中，每个步骤都会为下一个步骤生成一个虚拟表，这个虚拟表将作为下一个执行步骤的输入。 接下来，我们详细的介绍下每个步骤的具体执行过程。</p>
-<hr>
-<h1 id="1-FROM-执行笛卡尔积"><a href="#1-FROM-执行笛卡尔积" class="headerlink" title="1 FROM 执行笛卡尔积"></a><strong>1 FROM</strong> 执行笛卡尔积</h1><p>FROM 才是 SQL 语句执行的第一步，并非 SELECT 。对FROM子句中的前两个表执行笛卡尔积(交叉联接），生成虚拟表VT1，获取不同数据源的数据集。</p>
-<p><strong>FROM子句执行顺序为从后往前、从右到左</strong>，FROM 子句中写在最后的表(基础表 driving table)将被最先处理，即最后的表为驱动表，当FROM 子句中包含多个表的情况下，我们需要选择数据最少的表作为基础表。</p>
-<hr>
-<h1 id="2-ON-应用ON过滤器"><a href="#2-ON-应用ON过滤器" class="headerlink" title="2 ON 应用ON过滤器"></a><strong>2 ON 应用ON过滤器</strong></h1><p>对虚拟表<strong>VT1</strong> 应用ON筛选器，ON 中的逻辑表达式将应用到虚拟表 <strong>VT1</strong>中的各个行，筛选出满足ON 逻辑表达式的行，生成虚拟表 <strong>VT2</strong> 。</p>
-<hr>
-<h1 id="3-JOIN-添加外部行"><a href="#3-JOIN-添加外部行" class="headerlink" title="3 JOIN 添加外部行"></a><strong>3 JOIN 添加外部行</strong></h1><p>如果指定了OUTER JOIN保留表中未找到匹配的行将作为外部行添加到虚拟表 <strong>VT2</strong>，生成虚拟表 <strong>VT3</strong>。保留表如下：</p>
-<ul>
-<li>LEFT OUTER JOIN把左表记为保留表</li>
-<li>RIGHT OUTER JOIN把右表记为保留表</li>
-<li>FULL OUTER JOIN把左右表都作为保留表</li>
+              <h1 id="标签与分类"><a href="#标签与分类" class="headerlink" title="标签与分类"></a>标签与分类</h1><h3 id="分类（Categories）："><a href="#分类（Categories）：" class="headerlink" title="分类（Categories）："></a>分类（Categories）：</h3><ol>
+<li>技术与开发（Technology &amp; Development）<ul>
+<li>Java</li>
+<li>Spring</li>
+<li>消息队列（Message Queue）</li>
+<li>Python</li>
+<li>Go</li>
+<li>Nginx</li>
+<li>数据库（Database）<ul>
+<li>Redis</li>
+<li>DB2</li>
+<li>PLSQL</li>
 </ul>
-<p>在虚拟表 <strong>VT2</strong>表的基础上添加保留表中被过滤条件过滤掉的数据，非保留表中的数据被赋予NULL值，最后生成虚拟表 <strong>VT3</strong>。</p>
-<p>如果FROM子句包含两个以上的表，则对上一个联接生成的结果表和下一个表重复执行步骤1~3，直到处理完所有的表为止。</p>
-<hr>
-<h1 id="4-WHERE-应用WEHRE过滤器"><a href="#4-WHERE-应用WEHRE过滤器" class="headerlink" title="4 WHERE 应用WEHRE过滤器"></a><strong>4 WHERE 应用WEHRE过滤器</strong></h1><p>对虚拟表 <strong>VT3</strong>应用WHERE筛选器。根据指定的条件对数据进行筛选，并把满足的数据插入虚拟表 <strong>VT4</strong>。</p>
-<ul>
-<li>由于数据还没有分组，因此现在还不能在WHERE过滤器中使用聚合函数对分组统计的过滤。</li>
-<li>同时，由于还没有进行列的选取操作，因此在SELECT中使用列的别名也是不被允许的。</li>
+</li>
+<li>Git</li>
+<li>MyEclipse</li>
+<li>IDEA</li>
+<li>ElementUI</li>
+<li>WebLogic</li>
 </ul>
-<hr>
-<h1 id="5-GROUP-BY-分组"><a href="#5-GROUP-BY-分组" class="headerlink" title="5 GROUP BY 分组"></a><strong>5 GROUP BY 分组</strong></h1><p>按GROUP BY子句中的列&#x2F;列表将虚拟表 <strong>VT4</strong>中的行唯一的值组合成为一组，生成虚拟表<strong>VT5</strong>。如果应用了GROUP BY，那么后面的所有步骤都只能得到的虚拟表VT5的列或者是聚合函数（count、sum、avg等）。原因在于最终的结果集中只为每个组包含一行。</p>
-<p>同时，从这一步开始，后面的语句中都可以使用SELECT中的别名。</p>
-<hr>
-<h1 id="6-AGG-FUNC-计算聚合函数"><a href="#6-AGG-FUNC-计算聚合函数" class="headerlink" title="6 AGG_FUNC 计算聚合函数"></a><strong>6</strong> AGG_FUNC <strong>计算聚合函数</strong></h1><p>计算 max 等聚合函数。SQL Aggregate 函数计算从列中取得的值，返回一个单一的值。常用的 Aggregate 函数包涵以下几种：</p>
-<ul>
-<li>AVG：返回平均值</li>
-<li>COUNT：返回行数</li>
-<li>FIRST：返回第一个记录的值</li>
-<li>LAST：返回最后一个记录的值</li>
-<li>MAX： 返回最大值</li>
-<li>MIN：返回最小值</li>
-<li>SUM： 返回总和</li>
+</li>
+<li>娱乐与生活（Entertainment &amp; Lifestyle）<ul>
+<li>Minecraft</li>
+<li>音乐（Music）</li>
+<li>哔哩哔哩</li>
+<li>PotPlayer</li>
+<li>原神（Genshin Impact）</li>
 </ul>
-<hr>
-<h1 id="7-WITH-应用ROLLUP或CUBE"><a href="#7-WITH-应用ROLLUP或CUBE" class="headerlink" title="7 WITH 应用ROLLUP或CUBE"></a><strong>7 WITH 应用ROLLUP或CUBE</strong></h1><p>对虚拟表 <strong>VT5</strong>应用ROLLUP或CUBE选项，生成虚拟表 <strong>VT6</strong>。</p>
-<p>CUBE 和 ROLLUP 区别如下：</p>
-<ul>
-<li>CUBE 生成的结果数据集显示了所选列中值的所有组合的聚合。</li>
-<li>ROLLUP 生成的结果数据集显示了所选列中值的某一层次结构的聚合。</li>
+</li>
+<li>学习与教育（Learning &amp; Education）<ul>
+<li>学习（Study）</li>
+<li>联考（Unified Examination）</li>
+<li>Markdown</li>
+<li>简历（Resume）</li>
+<li>Hexo</li>
 </ul>
-<hr>
-<h1 id="8-HAVING-应用HAVING过滤器"><a href="#8-HAVING-应用HAVING过滤器" class="headerlink" title="8 HAVING 应用HAVING过滤器"></a><strong>8 HAVING 应用HAVING过滤器</strong></h1><p>对虚拟表VT6应用HAVING筛选器。根据指定的条件对数据进行筛选，并把满足的数据插入虚拟表VT7。</p>
-<p><strong>HAVING</strong> 语句在SQL中的主要作用与<strong>WHERE</strong>语句作用是相同的，但是<strong>HAVING</strong>是过滤聚合值，在 SQL 中增加 HAVING 子句原因就是，WHERE 关键字无法与聚合函数一起使用，HAVING子句主要和GROUP BY子句配合使用。</p>
-<hr>
-<h1 id="9-SELECT-选出指定列"><a href="#9-SELECT-选出指定列" class="headerlink" title="9 SELECT 选出指定列"></a><strong>9 SELECT 选出指定列</strong></h1><p>将虚拟表 <strong>VT7</strong>中的在SELECT中出现的列筛选出来，并对字段进行处理，计算SELECT子句中的表达式，产生虚拟表 <strong>VT8</strong>。</p>
-<hr>
-<h1 id="10-DISTINCT-行去重"><a href="#10-DISTINCT-行去重" class="headerlink" title="10 DISTINCT 行去重"></a><strong>10 DISTINCT 行去重</strong></h1><p>将重复的行从虚拟表 <strong>VT8</strong>中移除，产生虚拟表 <strong>VT9</strong>。DISTINCT用来删除重复行，只保留唯一的。</p>
-<hr>
-<h1 id="11-ORDER-BY-排列"><a href="#11-ORDER-BY-排列" class="headerlink" title="11 ORDER BY 排列"></a><strong>11 ORDER BY 排列</strong></h1><p>将虚拟表 <strong>VT9</strong>中的行按ORDER BY 子句中的列&#x2F;列表排序，生成游标 <strong>VC10</strong> ，注意不是虚拟表。因此使用 ORDER BY 子句查询不能应用于表达式。同时，ORDER BY子句的执行顺序为从左到右排序，是非常消耗资源的。</p>
-<hr>
-<h1 id="12-LIMIT-x2F-OFFSET-指定返回行"><a href="#12-LIMIT-x2F-OFFSET-指定返回行" class="headerlink" title="12 LIMIT&#x2F;OFFSET 指定返回行"></a><strong>12 LIMIT&#x2F;OFFSET 指定返回行</strong></h1><p>从VC10的开始处选择指定数量行，生成虚拟表 <strong>VT11</strong>，并返回调用者。</p>
-<hr>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a><strong>实例</strong></h1><p><strong>接下来，我们看一个实例，以下SQL查询语句是否存在问题？</strong></p>
-<p><img src="/../images/488d41b2fda94ba79808735038e95be9.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
-<p>首先，我们先看下如上<strong>SQL</strong>的执行顺序，如下：</p>
-<ol>
-<li>首先执行 FROM 子句, 从<strong>学生成绩表</strong>中组装数据源的数据。</li>
-<li>执行 WHERE 子句, 筛选<strong>学生成绩表</strong>中所有学生的数学成绩不为 NULL 的数据 。</li>
-<li>执行 GROUP BY 子句, 把<strong>学生成绩表</strong>按 “<strong>班级</strong>“ 字段进行分组。</li>
-<li>计算 avg 聚合函数, 按找每个班级分组求出 <strong>数学平均成绩</strong>。</li>
-<li>执行 HAVING 子句, 筛选出班级 <strong>数学平均成绩</strong>大于 75 分的。</li>
-<li>执行SELECT语句，返回数据，但别着急，还需要执行后面几个步骤。</li>
-<li>执行 ORDER BY 子句, 把最后的结果按 “数学平均成绩” 进行排序。</li>
-<li>执行LIMIT ，限制仅返回3条数据。结合ORDER BY 子句，即返回所有班级中数学平均成绩的前三的班级及其数学平均成绩。</li>
+</li>
+<li>操作系统与工具（Operating Systems &amp; Tools）<ul>
+<li>Linux</li>
+<li>Windows</li>
+<li>Nginx</li>
+</ul>
+</li>
 </ol>
-<hr>
-<p><strong>思考一下，如果我们将上面语句改成，如下会怎样？</strong></p>
-<p><img src="/../images/ee8f5e59572e48288ef32d097942899b.png" srcset="/img/loading.gif" lazyload alt="SQL查询语句的执行顺序解析"></p>
-<p>我们发现，若将 <strong>avg(数学成绩) &gt; 75</strong> 放到WHERE子句中，此时GROUP BY语句还未执行，因此此时聚合值 <strong>avg(数学成绩)</strong> 还是未知的，因此会报错。</p>
+<h3 id="标签（Tags）："><a href="#标签（Tags）：" class="headerlink" title="标签（Tags）："></a>标签（Tags）：</h3><ul>
+<li>Java</li>
+<li>Spring</li>
+<li>消息队列（Message Queue）</li>
+<li>Linux</li>
+<li>其他（Others）</li>
+<li>Windows</li>
+<li>数据库（Database）<ul>
+<li>Redis</li>
+<li>DB2</li>
+</ul>
+</li>
+<li>Git</li>
+<li>YouTube</li>
+<li>Github</li>
+<li>学习（Study）</li>
+<li>音乐（Music）</li>
+<li>Markdown</li>
+<li>简历（Resume）</li>
+<li>ElementUI</li>
+<li>Python</li>
+<li>Hexo</li>
+<li>联考（Unified Examination）</li>
+<li>MyEclipse</li>
+<li>Nginx</li>
+<li>壁纸（Wallpapers）</li>
+<li>IDEA</li>
+<li>Go</li>
+<li>PotPlayer</li>
+<li>哔哩哔哩</li>
+<li>PLSQL</li>
+<li>原神（Genshin Impact）</li>
+</ul>
 
               
             </div>
@@ -580,34 +574,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
-      
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">#数据库</a>
       
     </div>
   
@@ -619,8 +590,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>SQL查询语句的执行顺序解析</div>
-      <div>https://chris-z-su.github.io/2022/07/04/数据库/SQL查询语句的执行顺序解析/</div>
+      <div>标签与分类</div>
+      <div>https://chris-z-su.github.io/2024/03/25/技术/标签与分类/</div>
     </div>
     <div class="license-meta">
       
@@ -632,7 +603,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月4日</div>
+          <div>2024年3月25日</div>
         </div>
       
       
@@ -662,9 +633,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/13/%E6%8A%80%E6%9C%AF/idea%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="idea快捷键">
+                      <a href="/2024/03/25/%E6%8A%80%E6%9C%AF/docker/" title="Docker">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">idea快捷键</span>
+                        <span class="hidden-mobile">Docker</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -672,8 +643,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/18/%E5%85%B6%E4%BB%96/study/" title="我们为什么要努力？">
-                        <span class="hidden-mobile">我们为什么要努力？</span>
+                      <a href="/2024/03/07/linux/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/" title="服务器配置">
+                        <span class="hidden-mobile">服务器配置</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -694,7 +665,7 @@
         var options = Object.assign(
           {"clientID":"6809b6d7b005b26f279f","clientSecret":"ce8b843f080f2b78f23fc0a19607785882fb66fb","repo":"chris-z-su.github.io","owner":"Chris-z-su","admin":["Chris-z-su"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token"},
           {
-            id: 'e7659c717f627da77881e062556114dd'
+            id: 'a3ab2087d3de8e1ede637b0001198f9b'
           }
         )
         var gitalk = new Gitalk(options);
