@@ -414,7 +414,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.5k 字
+          7.8k 字
         
       </span>
     
@@ -426,7 +426,7 @@
         
         
           <!-- compatible with older versions-->
-          21 分钟
+          66 分钟
         
       </span>
     
@@ -478,7 +478,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：2 个月前
+                    本文最后更新于：3 个月前
                   
                 
               </p>
@@ -539,6 +539,79 @@
 
 <p>如果要停止的话执行下面这个命令可恢复国外ip访问网站：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cobol">/root/allcn.sh stop<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-Mongodb"><a href="#7-Mongodb" class="headerlink" title="7. Mongodb"></a>7. Mongodb</h2><blockquote>
+<p>MongoDB 源码下载地址：<a target="_blank" rel="noopener" href="https://www.mongodb.com/try/download/community">https://www.mongodb.com/try/download/community</a></p>
+<p>安装文档：<a target="_blank" rel="noopener" href="https://www.runoob.com/mongodb/mongodb-linux-install.html">Linux 平台安装 MongoDB | 菜鸟教程 (runoob.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010541670/article/details/107228775">Linux下MongoDB的安装与配置_mongodb6.0.9linux安装与配置-CSDN博客</a></p>
+</blockquote>
+<h3 id="1-安装Mongodb"><a href="#1-安装Mongodb" class="headerlink" title="(1) 安装Mongodb"></a>(1) 安装Mongodb</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">下载</span><br>[root@iZ2zeb7ybli3zzdll6airpZ files]# wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel80-7.0.9.tgz<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">解压</span><br>[root@iZ2zeb7ybli3zzdll6airpZ files]# tar -zxvf mongodb-linux-x86_64-rhel80-7.0.9.tgz<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">将解压包拷贝</span><br>[root@iZ2zeb7ybli3zzdll6airpZ files]# mv mongodb-linux-x86_64-rhel80-7.0.9 /usr/local/mongodb7<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">安装目录：<span class="hljs-regexp">/usr/</span>local/mongodb7<br>配置文件：<span class="hljs-regexp">/etc/m</span>ongodb.conf<br>数据存储目录：<span class="hljs-regexp">/var/</span>lib/mongo<br>日志文件目录：<span class="hljs-regexp">/var/</span>log/mongodb<br></code></pre></td></tr></table></figure>
+
+<p>启动 Mongodb 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork<br></code></pre></td></tr></table></figure>
+
+<p>停止 Mongodb 服务：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --shutdown<br></code></pre></td></tr></table></figure>
+
+<p>查看日志：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash"><span class="hljs-built_in">tail</span> -10f /var/log/mongodb/mongod.log</span><br>2020-07-09T12:20:17.391+0800 I  NETWORK  [listener] Listening on /tmp/mongodb-27017.sock<br>2020-07-09T12:20:17.392+0800 I  NETWORK  [listener] Listening on 127.0.0.1<br>2020-07-09T12:20:17.392+0800 I  NETWORK  [listener] waiting for connections on port 27017<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-配置Mongodb"><a href="#2-配置Mongodb" class="headerlink" title="(2) 配置Mongodb"></a>(2) 配置Mongodb</h3><h4 id="a-设置-MongoDB-环境变量"><a href="#a-设置-MongoDB-环境变量" class="headerlink" title="a. 设置 MongoDB 环境变量"></a>a. 设置 MongoDB 环境变量</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">vim /etc/profile<br><br>export MONGODB_HOME=/usr/local/mongodb7<br>export PATH=$MONGODB_HOME/bin:$PATH<br><br>source /etc/profile<br></code></pre></td></tr></table></figure>
+
+<h4 id="b-启动和关闭-MongoDB"><a href="#b-启动和关闭-MongoDB" class="headerlink" title="b. 启动和关闭 MongoDB"></a>b. 启动和关闭 MongoDB</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/AXIMI/article/details/106374167">【MongoDB】Linux下启动（指定参数&#x2F;配置文件）与停止_linux mongo启动配置文件-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/phpzhou/articles/5390042.html">mongodb的配置参数 - zhou_blog - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zpzp/p/17119042.html">mongodb 命令行mongod启动报错 - 不积硅步，无以至千里 - 博客园 (cnblogs.com)</a></p>
+</blockquote>
+<p>进入 <code>bin</code> 目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/mongodb7/bin<br></code></pre></td></tr></table></figure>
+
+<p>启动 MongoDB</p>
+<ul>
+<li><p>指令+配置文件（-conf 使用配置文件方式启动）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">cd /usr/local/mongodb7/bin<br>mongod -f /etc/mongodb.conf<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>指令+参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">后台启动mongo服务（常驻 --fork）</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">使用--fork参数常驻启动</span><br>mongod --dbpath /var/lib/mongo/ --logpath /var/log/mongodb/mongod.log --logappend --fork --port 27017<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>关闭mongodb</p>
+<p>netstat -tunlp|grep 27017</p>
+<ul>
+<li><p>通过mongo函数关闭</p>
+<p>进入mongodb，然后：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">use admin <br>db.shutdownServer()<br></code></pre></td></tr></table></figure>
+
+<p>如果关闭失败可以在进入mongo的时候声明一下账号和密码，然后在使用上面的方式关闭</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mongo admin -u username -p password<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在命令行关闭，其中dbpath是存放mongodb数据的位置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --shutdown<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mongod --shutdown --dbpath /var/lib/mongo<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>关闭mongodb的进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps aux | grep mongodb<br>kill -2 pid<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-安装Mongodb-shell"><a href="#3-安装Mongodb-shell" class="headerlink" title="(3) 安装Mongodb shell"></a>(3) 安装Mongodb shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@iZ2zeb7ybli3zzdll6airpZ files]# wget https://downloads.mongodb.com/compass/mongosh-2.2.6-linux-x64.tgz<br>[root@iZ2zeb7ybli3zzdll6airpZ files]# tar -zxvf mongosh-2.2.6-linux-x64.tgz<br>[root@iZ2zeb7ybli3zzdll6airpZ files]# cd mongosh-2.2.6-linux-x64/<br>[root@iZ2zeb7ybli3zzdll6airpZ mongosh-2.2.6-linux-x64]# ls<br>bin  LICENSE-crypt-library  LICENSE-mongosh  mongosh.1.gz  README  THIRD_PARTY_NOTICES<br>[root@iZ2zeb7ybli3zzdll6airpZ mongosh-2.2.6-linux-x64]# cd bin/<br>[root@iZ2zeb7ybli3zzdll6airpZ bin]# ls<br>mongosh  mongosh_crypt_v1.so<br>[root@iZ2zeb7ybli3zzdll6airpZ bin]#<br>[root@iZ2zeb7ybli3zzdll6airpZ files]# mv mongosh-2.2.6-linux-x64/bin/* /usr/local/bin/<br></code></pre></td></tr></table></figure>
+
+<p>启动：测试shell命令行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@iZ2zeb7ybli3zzdll6airpZ files]# mongosh 127.0.0.1:28017<br>Current Mongosh Log ID: 66519506625edbba68a26a12<br>Connecting to:          mongodb://127.0.0.1:28017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.2.6<br>MongoNetworkError: connect ECONNREFUSED 127.0.0.1:28017<br>[root@iZ2zeb7ybli3zzdll6airpZ files]# <br></code></pre></td></tr></table></figure>
+
+<h3 id="3-启动Mongodb-shell"><a href="#3-启动Mongodb-shell" class="headerlink" title="(3) 启动Mongodb shell"></a>(3) 启动Mongodb shell</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@iZ2zeb7ybli3zzdll6airpZ ~]# mongosh<br>Current Mongosh Log ID: 665195de3fad0408e5a26a12<br>Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.2.6<br>Using MongoDB:          7.0.9<br>Using Mongosh:          2.2.6<br><br>For mongosh info see: https://docs.mongodb.com/mongodb-shell/<br><br><br>To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).<br>You can opt-out by running the disableTelemetry() command.<br><br>------<br>   The server generated these startup warnings when booting<br>   2024-05-25T14:04:02.503+08:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted<br>   2024-05-25T14:04:02.503+08:00: You are running this process as the root user, which is not recommended<br>   2024-05-25T14:04:02.503+08:00: This server is bound to localhost. Remote systems will be unable to connect to this server. Start the server with --bind_ip &lt;address&gt; to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces. If this behavior is desired, start the server with --bind_ip 127.0.0.1 to disable this warning<br>   2024-05-25T14:04:02.503+08:00: /sys/kernel/mm/transparent_hugepage/enabled is &#x27;always&#x27;. We suggest setting it to &#x27;never&#x27; in this binary version<br>   2024-05-25T14:04:02.503+08:00: vm.max_map_count is too low<br>------<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">test&gt; </span><span class="language-bash"></span><br><span class="language-bash"><span class="hljs-comment"># 切换到 admin 数据库，并创建 root （管理员）用户：</span></span><br><span class="hljs-meta prompt_">test&gt; </span><span class="language-bash">use admin;</span><br>switched to db admin<br><span class="hljs-meta prompt_">admin&gt; </span><span class="language-bash"></span><br><span class="language-bash"></span><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">admin&gt; </span><span class="language-bash"></span><br><span class="language-bash"></span><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">admin&gt; </span><span class="language-bash">db.createUser(&#123;user:<span class="hljs-string">&#x27;root&#x27;</span>, <span class="hljs-built_in">pwd</span>:<span class="hljs-string">&#x27;123456&#x27;</span>, roles:[&#123;role:<span class="hljs-string">&#x27;root&#x27;</span>, db:<span class="hljs-string">&#x27;admin&#x27;</span>&#125;]&#125;);</span><br>&#123; ok: 1 &#125;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">创建好账号后，可以选择打开 mongodb.conf 中的 auth=<span class="hljs-literal">true</span> 授权验证。</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">验证账号是否授权成功：</span><br><span class="hljs-meta prompt_">admin&gt; </span><span class="language-bash">db.auth(<span class="hljs-string">&quot;root&quot;</span>,<span class="hljs-string">&quot;123456&quot;</span>)</span><br>&#123; ok: 1 &#125;<br><span class="hljs-meta prompt_">admin&gt; </span><span class="language-bash"></span><br><span class="language-bash">admin&gt; <span class="hljs-built_in">exit</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="8-YApi"><a href="#8-YApi" class="headerlink" title="8. YApi"></a>8. YApi</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://hellosean1025.github.io/yapi/devops/index.html">内网部署 (hellosean1025.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/YMFE/yapi/">https://github.com/YMFE/yapi/</a></p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs awk">[root@iZ2zeb7ybli3zzdll6airpZ yapi]<span class="hljs-comment"># pwd</span><br><span class="hljs-regexp">/home/</span>dev/yapi<br>[root@iZ2zeb7ybli3zzdll6airpZ yapi]<span class="hljs-comment"># ls</span><br>config.json  vendors<br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># npm run install-server</span><br><br>&gt; yapi-vendor@<span class="hljs-number">1.11</span>.<span class="hljs-number">0</span> install-server <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<br>&gt;  node server/install.js<br><br>log: mongodb load success...<br>初始化管理员账号成功,账号名：<span class="hljs-string">&quot;xxx&quot;</span>，密码：<span class="hljs-string">&quot;xxx&quot;</span><br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># </span><br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># node server/app.js //启动服务器后，请访问 127.0.0.1:&#123;config.json配置的端口&#125;，初次运行会有个编译的过程，请耐心等候</span><br><br><span class="hljs-comment"># 后台运行</span><br>nohup node <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<span class="hljs-regexp">/server/</span>app.js -o <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>output.log &amp;amp;<br>tail -<span class="hljs-number">1000</span>f <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>nohup.out<br></code></pre></td></tr></table></figure>
+
+
+
+
 
 
 
