@@ -26,8 +26,8 @@
 <meta property="article:published_time" content="2024-03-07T15:20:51.000Z">
 <meta property="article:modified_time" content="2024-03-07T15:20:51.000Z">
 <meta property="article:author" content="Chris">
-<meta property="article:tag" content="技术">
 <meta property="article:tag" content="Linux">
+<meta property="article:tag" content="技术">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -414,7 +414,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          7.8k 字
+          8.2k 字
         
       </span>
     
@@ -426,7 +426,7 @@
         
         
           <!-- compatible with older versions-->
-          66 分钟
+          69 分钟
         
       </span>
     
@@ -607,9 +607,9 @@
 <p><a target="_blank" rel="noopener" href="https://hellosean1025.github.io/yapi/devops/index.html">内网部署 (hellosean1025.github.io)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/YMFE/yapi/">https://github.com/YMFE/yapi/</a></p>
 </blockquote>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs awk">[root@iZ2zeb7ybli3zzdll6airpZ yapi]<span class="hljs-comment"># pwd</span><br><span class="hljs-regexp">/home/</span>dev/yapi<br>[root@iZ2zeb7ybli3zzdll6airpZ yapi]<span class="hljs-comment"># ls</span><br>config.json  vendors<br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># npm run install-server</span><br><br>&gt; yapi-vendor@<span class="hljs-number">1.11</span>.<span class="hljs-number">0</span> install-server <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<br>&gt;  node server/install.js<br><br>log: mongodb load success...<br>初始化管理员账号成功,账号名：<span class="hljs-string">&quot;xxx&quot;</span>，密码：<span class="hljs-string">&quot;xxx&quot;</span><br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># </span><br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># node server/app.js //启动服务器后，请访问 127.0.0.1:&#123;config.json配置的端口&#125;，初次运行会有个编译的过程，请耐心等候</span><br><br><span class="hljs-comment"># 后台运行</span><br>nohup node <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<span class="hljs-regexp">/server/</span>app.js -o <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>output.log &amp;amp;<br>tail -<span class="hljs-number">1000</span>f <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>nohup.out<br></code></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs awk">[root@iZ2zeb7ybli3zzdll6airpZ yapi]<span class="hljs-comment"># pwd</span><br><span class="hljs-regexp">/home/</span>dev/yapi<br>[root@iZ2zeb7ybli3zzdll6airpZ yapi]<span class="hljs-comment"># ls</span><br>config.json  vendors<br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># npm run install-server</span><br><br>&gt; yapi-vendor@<span class="hljs-number">1.11</span>.<span class="hljs-number">0</span> install-server <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<br>&gt;  node server/install.js<br><br>log: mongodb load success...<br>初始化管理员账号成功,账号名：<span class="hljs-string">&quot;xxx&quot;</span>，密码：<span class="hljs-string">&quot;xxx&quot;</span><br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># </span><br>[root@iZ2zeb7ybli3zzdll6airpZ vendors]<span class="hljs-comment"># node server/app.js //启动服务器后，请访问 127.0.0.1:&#123;config.json配置的端口&#125;，初次运行会有个编译的过程，请耐心等候</span><br><br><span class="hljs-comment"># 后台运行</span><br>nohup node <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<span class="hljs-regexp">/server/</span>app.js -o <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>output.log &amp;amp;<br>或者<br>nohup node <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<span class="hljs-regexp">/server/</span>app.js &gt; <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>output.log <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span> &amp;<br>tail -<span class="hljs-number">1000</span>f <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>nohup.out<br><br>pm2 start <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<span class="hljs-regexp">/server/</span>app.js<br>pm2 stop <span class="hljs-regexp">/home/</span>dev<span class="hljs-regexp">/yapi/</span>vendors<span class="hljs-regexp">/server/</span>app.js<br></code></pre></td></tr></table></figure>
 
-
+<h3 id="使用pm2"><a href="#使用pm2" class="headerlink" title="使用pm2"></a>使用pm2</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs clean">## 全局安装pm2<br>npm install -g pm2<br><br>## 启动脚本<br>pm2 start 你的js脚本 <br>## 停止脚本<br>pm2 stop 你的js脚本<br>## 重启脚本<br>pm2 restart 你的js脚本<br>## 停止所有脚本<br>pm2 stop all  <br>## 重启所有脚本<br>pm2 restart all<br><br># 使用PM2的日志功能<br>pm2 logs<br></code></pre></td></tr></table></figure>
 
 
 
@@ -655,9 +655,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
-      
         <a href="/tags/Linux/">#Linux</a>
+      
+        <a href="/tags/%E6%8A%80%E6%9C%AF/">#技术</a>
       
     </div>
   
