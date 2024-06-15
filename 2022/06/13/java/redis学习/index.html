@@ -611,7 +611,7 @@
 <p>③ AOF文件的格式可读性较强，同时还可以检查AOF文件中的错误并进行修复</p>
 <h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><p>① 对相同的数据集来说，AOF文件的体积通常要大于RDB文件的体积，恢复速度慢于RDB</p>
 <p>加载流程</p>
-<p><img src="/../images/redis%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="redis加载流程"></p>
+<p><img src="/../../images/redis%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload alt="redis加载流程"></p>
 <p>如果存在dump.rdb文件和aof文件的话，会优先加载aof文件</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
 <li>Redis允许同时存在rdb和aof两种持久化方式，但是重启时会优先加载aof文件</li>
