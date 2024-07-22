@@ -414,7 +414,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          8.2k 字
+          8.7k 字
         
       </span>
     
@@ -426,7 +426,7 @@
         
         
           <!-- compatible with older versions-->
-          69 分钟
+          73 分钟
         
       </span>
     
@@ -478,7 +478,7 @@
                 
                   
                     <!-- compatible with older versions-->
-                    本文最后更新于：3 个月前
+                    本文最后更新于：5 个月前
                   
                 
               </p>
@@ -486,6 +486,14 @@
             <div class="markdown-body">
               
               <h1 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">常用配置命令</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">fail2ban配置：banit nginx-cc</span><br>fail2ban-client status banit<br>vim /etc/fail2ban/jail.local<br>tail -1000f /var/log/fail2ban.log<br>tail -1000f /var/log/nginx/access.log<br><br>tcpdump -i eth0 tcp port 80<br><br>systemctl start fail2ban.service<br>systemctl status fail2ban.service<br>systemctl restart fail2ban.service <br>systemctl stop fail2ban.service <br><br>fail2ban-client status banit<br><br>fail2ban-client set banit unbanip 117.133.51.5<br>fail2ban-client set banit addignoreip 117.133.51.5<br><br>fail2ban-client set nginx-cc unbanip 117.133.51.5<br>fail2ban-client set nginx-cc addignoreip 117.133.51.5<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 后台运行</span><br>sudo nohup tcpdump -i eth0 port <span class="hljs-number">80</span> -vv &gt; <span class="hljs-regexp">/var/</span>log/tcpdump.log <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span> &amp;<br><br><span class="hljs-comment"># 检查进程</span><br>ps aux | grep tcpdump<br><br><span class="hljs-comment"># 停止 tcpdump</span><br>要停止在后台运行的 tcpdump，可以使用 kill 命令：<br>找到 tcpdump 的进程 ID (PID)：<br>ps aux | grep tcpdump<br><br>使用 kill 命令停止进程：<br>sudo kill &lt;pid&gt;<br><br>将 &lt;pid&gt; 替换为 tcpdump 进程的实际 PID。<br><br>验证配置<br>验证 fail2ban 配置是否正确加载：<br>sudo fail2ban-client status<br><br>检查特定 jail 的状态：<br>sudo fail2ban-client status tcp-rst<br>sudo <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>fail2ban-client status tcp-rst<br><br><span class="hljs-comment"># 规则</span><br>sudo <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/bin/</span>fail2ban-regex <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/tcpdump.log /</span>etc<span class="hljs-regexp">/fail2ban/</span>filter.d/tcp-rst.conf<br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
 
 <h2 id="1-源码："><a href="#1-源码：" class="headerlink" title="1. 源码："></a>1. 源码：</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi-Vue">RuoYi-Vue: 🎉 基于SpringBoot，Spring Security，JWT，Vue &amp; Element 的前后端分离权限管理系统，同时提供了 Vue3 的版本 (gitee.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/akfamily/akshare">akfamily&#x2F;akshare: AKShare is an elegant and simple financial data interface library for Python, built for human beings! 开源财经数据接口库 (github.com)</a></p>
